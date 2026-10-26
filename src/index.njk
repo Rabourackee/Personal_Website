@@ -1,0 +1,15 @@
+---
+layout: base.njk
+permalink: /
+bodyClass: home
+---
+{% from "thumbnails.njk" import thumbnails %}
+<span style="--font-scale: 2;">I’m a Designer, Maker and Creative Technologist producing works <br>on Architecture, XR, Physical Interaction and AI.</span>
+<br><br><br><br>
+<span style="--font-scale: 1.2;">Research Project &amp; Professional Works</span><br>
+<br><br>
+{{ thumbnails(collections.projects | inSection("research"), { gutter: "2rem", mobileColumns: 1, mobileGutter: "3rem", mobileRowGutter: "1.5rem", captions: true }) }}
+<br><br><br>
+<span style="--font-scale: 1.2;">Works out of Interest &amp; Hobbies</span><br>
+<br><br>
+{{ thumbnails(collections.projects | inSection("interests"), { gutter: "2rem", mobileGutter: "1rem", captions: true }) }}

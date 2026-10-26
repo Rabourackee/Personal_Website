@@ -1,0 +1,19 @@
+{
+  "name": "yuhanwang-net",
+  "private": true,
+  "type": "module",
+  "description": "Yuhan Wang's portfolio site (yuhanwang.net), built with Eleventy.",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rabourackee/Personal_Website.git"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7",
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0"
+  }
+}

@@ -1,0 +1,14 @@
+---
+layout: base.njk
+pagination:
+  data: collections.topics
+  size: 1
+  alias: topic
+permalink: "/tag/{{ topic | topicSlug }}/"
+eleventyComputed:
+  title: "{{ topic }}"
+---
+{% from "thumbnails.njk" import thumbnails %}
+<span class="heading-3">{{ topic }}</span><br>
+<br>
+{{ thumbnails(collections.projects | withTopic(topic), { captions: true }) }}

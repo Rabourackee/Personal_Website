@@ -1,0 +1,5 @@
+node_modules/
+_site/
+_cargo-backup/
+.cache/
+__pycache__/

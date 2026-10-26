@@ -1,0 +1,13 @@
+---
+layout: base.njk
+title: Projects
+permalink: /project-categories/
+categories: ["AI", "MR", "Tangible Interface", "Architecture"]
+---
+{% from "thumbnails.njk" import thumbnails %}
+{%- for topic in categories %}
+<span class="heading-3">{{ topic }}</span><br>
+<br>
+{{ thumbnails(collections.projects | withTopic(topic)) }}
+{%- if not loop.last %}<br><br>{% endif %}
+{%- endfor %}

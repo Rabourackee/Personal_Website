@@ -1,0 +1,295 @@
+/*
+  Rebuilt from the Cargo site design. Sizes are in rem, and the root font size
+  scales with the viewport (set by the script in base.njk), so the whole page
+  scales like it did on Cargo. html.mobile = portrait / phone layout.
+*/
+
+:root {
+  --text: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --rule: rgba(255, 255, 255, 0.25);
+  --active: #41715a;
+  --background: #000;
+  --font-sans: "Geist Variable", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, Menlo, monospace;
+  --pad-scale: 1;
+}
+
+html {
+  font-size: var(--base-size, 1.44vmin);
+}
+
+html.mobile {
+  font-size: calc(var(--base-size) * 1.49);
+  --pad-scale: 0.35;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+a:active {
+  opacity: 0.7;
+}
+
+/* ---------------------------------------------------------------- page frame */
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.page-layout {
+  width: 100%;
+  max-width: 85%;
+}
+
+.mobile .page-layout {
+  max-width: 100%;
+}
+
+.page-content {
+  padding: calc(3rem * var(--pad-scale));
+}
+
+main.page {
+  flex: 1 0 auto;
+}
+
+.home main .page-content {
+  padding-top: calc(3.5rem * var(--pad-scale));
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header .page-content {
+  padding-top: calc(2rem * var(--pad-scale));
+  padding-bottom: 0;
+}
+
+.site-header a.active {
+  color: var(--active);
+}
+
+.site-footer .page-content {
+  padding-top: calc(15rem * var(--pad-scale));
+}
+
+/* ---------------------------------------------------------------- text */
+
+.bodycopy {
+  --font-scale: 1;
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+
+.mobile .bodycopy {
+  font-size: 0.6rem;
+}
+
+.bodycopy a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+[style*="--font-scale"] {
+  font-size: calc(var(--font-scale) * 1em);
+}
+
+.caption {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: calc(var(--font-scale, 1) * 1.1rem);
+  line-height: 1.3;
+  color: var(--text-muted);
+}
+
+.caption a {
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+.heading-3 {
+  display: block;
+  font-size: 1.85rem;
+  line-height: 1.2;
+}
+
+hr {
+  height: 1px;
+  margin: 1rem 0;
+  border: 0;
+  background: var(--rule);
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+
+ol {
+  margin: 0;
+  padding: 0 0 0 2.5em;
+  list-style-type: decimal-leading-zero;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+
+sub,
+sup {
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  top: 0.3em;
+}
+
+sup {
+  top: -0.4em;
+}
+
+/* ---------------------------------------------------------------- columns
+   <div class="column-set" style="--columns: 12">
+     <div class="column-unit" style="--span: 4">…</div> …
+   Stacks vertically on mobile unless the set has .no-stack.
+   Gutters shrink on mobile by the same factor as page padding, like Cargo. */
+
+.column-set {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 12), minmax(0, 1fr));
+  column-gap: calc(var(--gutter, 1rem) * var(--pad-scale));
+  align-items: start;
+}
+
+.column-unit {
+  grid-column: span var(--span, 1);
+  min-width: 0;
+}
+
+.mobile .column-set:not(.no-stack) {
+  display: flex;
+  flex-direction: column;
+  row-gap: calc(var(--mobile-gutter, var(--gutter, 1rem)) * var(--pad-scale));
+}
+
+.mobile .column-set:not(.no-stack) > .column-unit.empty {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- media */
+
+.media {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+iframe.media {
+  aspect-ratio: 16 / 9;
+  background: #111;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns, 3), minmax(0, 1fr));
+  gap: calc(var(--gutter, 1rem) * var(--pad-scale));
+  align-items: start;
+}
+
+.mobile .gallery-grid {
+  --_mobile-gutter: var(--mobile-gutter, var(--gutter, 1rem));
+  grid-template-columns: repeat(var(--mobile-columns, var(--columns, 3)), minmax(0, 1fr));
+  column-gap: calc(var(--_mobile-gutter) * var(--pad-scale));
+  row-gap: calc(var(--mobile-row-gutter, var(--_mobile-gutter)) * var(--pad-scale));
+}
+
+.gallery-grid > .media-link > .media {
+  width: 100%;
+}
+
+/* Project thumbnails (homepage, Projects page, tag pages) */
+
+.thumbnail {
+  margin: 0;
+}
+
+.thumbnail .media {
+  display: block;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.thumbnail .caption {
+  margin: 1.5em 0 2em;
+  text-align: center;
+}
+
+.thumbnail .caption .title {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.thumbnail .caption .tags {
+  margin-top: 0.25em;
+}
+
+/* ---------------------------------------------------------------- about page CV */
+
+.pdf-iframe {
+  display: block;
+}
+
+.pdf-link {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .pdf-iframe {
+    display: none;
+  }
+
+  .pdf-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 16px;
+    background: #333;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .pdf-link:hover {
+    background: #555;
+  }
+}

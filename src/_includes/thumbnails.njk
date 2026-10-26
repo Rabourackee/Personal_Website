@@ -1,0 +1,31 @@
+{#
+  Grid of project cover images, like Cargo's thumbnail index.
+  opts: columns, gutter, mobileColumns, mobileGutter, mobileRowGutter,
+        captions (show title + topics)
+#}
+{% macro thumbnails(projects, opts = {}) %}
+<div class="gallery-grid thumbnails" style="--columns: {{ opts.columns or 3 }}; --gutter: {{ opts.gutter or '1rem' }}
+  {%- if opts.mobileColumns %}; --mobile-columns: {{ opts.mobileColumns }}{% endif %}
+  {%- if opts.mobileGutter %}; --mobile-gutter: {{ opts.mobileGutter }}{% endif %}
+  {%- if opts.mobileRowGutter %}; --mobile-row-gutter: {{ opts.mobileRowGutter }}{% endif %}">
+  {%- for p in projects %}
+  <figure class="thumbnail">
+    <a href="{{ p.url }}" title="{{ p.data.title }}">
+      {%- if p.data.cover.endsWith(".mp4") %}
+      <video class="media" src="{{ p.data.cover }}" autoplay loop muted playsinline></video>
+      {%- else %}
+      <img class="media" src="{{ p.data.cover }}" alt="{{ p.data.title }}" loading="lazy" decoding="async">
+      {%- endif %}
+    </a>
+    {%- if opts.captions %}
+    <figcaption class="caption">
+      <a class="title" href="{{ p.url }}">{{ p.data.title }}</a>
+      <div class="tags">
+        {%- for t in p.data.topics %}<a href="/tag/{{ t | topicSlug }}/">{{ t }}</a>{% if not loop.last %}, {% endif %}{% endfor -%}
+      </div>
+    </figcaption>
+    {%- endif %}
+  </figure>
+  {%- endfor %}
+</div>
+{% endmacro %}
