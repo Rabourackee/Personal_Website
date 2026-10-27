@@ -23,6 +23,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("projects", (api) =>
     api.getFilteredByGlob("src/projects/*.html").sort((a, b) => a.data.order - b.data.order)
   );
+  // Projects with `featured: <n>` appear in the homepage carousel, in that order.
+  eleventyConfig.addCollection("featured", (api) =>
+    api
+      .getFilteredByGlob("src/projects/*.html")
+      .filter((p) => p.data.featured)
+      .sort((a, b) => a.data.featured - b.data.featured)
+  );
   eleventyConfig.addCollection("topics", (api) => {
     const topics = new Set();
     for (const p of api.getFilteredByGlob("src/projects/*.html")) {

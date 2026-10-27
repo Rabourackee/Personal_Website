@@ -1,0 +1,50 @@
+{#
+  Highlights carousel at the top of the homepage. A project joins it by adding
+  to its front matter:
+    featured: 2            # position in the carousel
+    summary: "…"           # one line under the title
+    highlight: "…"         # award / publication line (optional)
+    hero: "/media/…/hero.webp"   # wide image (optional, falls back to cover)
+#}
+{%- set slides = collections.featured %}
+{%- if slides.length %}
+<section class="hero" aria-roledescription="carousel" aria-label="Highlighted projects">
+  <div class="hero-track" tabindex="0">
+    {%- for p in slides %}
+    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ slides.length }}: {{ p.data.title }}">
+      <a class="hero-media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
+        <img src="{{ p.data.hero or p.data.cover }}" alt=""{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+      </a>
+      <div class="hero-caption">
+        <a class="hero-title" href="{{ p.url }}">{{ p.data.title }}</a>
+        {%- if p.data.summary %}
+        <span class="caption hero-summary">{{ p.data.summary }}</span>
+        {%- endif %}
+        {%- if p.data.highlight %}
+        <span class="caption hero-highlight">{{ p.data.highlight }}</span>
+        {%- endif %}
+      </div>
+    </article>
+    {%- endfor %}
+  </div>
+  <div class="hero-controls" hidden>
+    <div class="hero-progress">
+      {%- for p in slides %}
+      <button type="button" aria-label="Show {{ p.data.title }}"><span></span></button>
+      {%- endfor %}
+    </div>
+    <span class="caption hero-count" aria-hidden="true"></span>
+    <button type="button" class="hero-button hero-prev" aria-label="Previous project">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button type="button" class="hero-button hero-toggle" aria-label="Pause slideshow">
+      <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>
+      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg>
+    </button>
+    <button type="button" class="hero-button hero-next" aria-label="Next project">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
+<script src="/assets/js/hero.js" defer></script>
+{%- endif %}

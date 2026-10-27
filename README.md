@@ -17,6 +17,7 @@ npm run build      # writes the finished site to _site/
 | Header nav, contact info, site title | `src/_data/site.js` |
 | Page frame (head, header, footer) | `src/_includes/base.njk` |
 | Homepage intro + project grids | `src/index.njk` |
+| Homepage highlights carousel | `src/_includes/hero.njk`, `src/assets/js/hero.js` |
 | Projects page (grids by topic) | `src/project-categories.njk` |
 | Tag pages (`/tag/ai/` …) | `src/tag.njk` (generated for every topic) |
 | One file per project | `src/projects/<url>.html` |
@@ -44,6 +45,15 @@ cover: "/media/roulettective/cover.webp"
   <img class="media" src="/media/roulettective/02.webp" width="2000" height="1333" alt="…">
   …
 </div>
+```
+
+To show a project in the homepage carousel, add these fields to its front matter. The carousel orders slides by `featured`. Remove the fields to take a project out.
+
+```yaml
+featured: 2                                   # position in the carousel
+summary: "One line under the title."
+highlight: "NeurIPS 2025 · UIST 2025"         # award / publication line (optional)
+hero: "/media/roulettective/hero.webp"        # wide image (optional, defaults to cover)
 ```
 
 The file name sets the URL: `src/projects/roulettective.html` is served at `/roulettective/`. To add a project, copy an existing file and change the front matter at the top. It appears on the homepage, the Projects page and its tag pages automatically.
