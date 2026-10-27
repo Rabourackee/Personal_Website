@@ -38,9 +38,17 @@
   }
 
   // Keep the counter and bars in sync when people swipe or scroll by hand.
+  // Only trust a position the track has come to rest at: when a scroll is
+  // cut short by a newer one, it still reports "ended" while the newer one
+  // is moving, and that report is skipped.
   function onScrollEnd() {
-    var i = Math.round(track.scrollLeft / track.clientWidth);
-    if (i !== current) show(i, false);
+    var left = track.scrollLeft;
+    setTimeout(function () {
+      var width = track.clientWidth;
+      if (!width || track.scrollLeft !== left) return;
+      var i = Math.round(left / width);
+      if (i !== current) show(i, false);
+    }, 60);
   }
   if ("onscrollend" in window) {
     track.addEventListener("scrollend", onScrollEnd);
