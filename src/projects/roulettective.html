@@ -8,76 +8,632 @@ featured: 2
 summary: "A physical detective AI game machine, repurposed from a vintage slide projector."
 highlight: "NeurIPS 2025 Creative AI Track · UIST 2025 Adjunct"
 hero: "/media/roulettective/hero.webp"
+description: "Roulettective re-invents the Kodak Carousel slide projector as an AI detective game machine. NeurIPS 2025 Creative AI Track · UIST 2025 Adjunct."
+fullBleed: true
+bodyClass: "rt-page"
+styles: ["/assets/css/roulettective.css"]
+scripts: ["/assets/js/roulettective.js"]
 ---
+<!--
+  Custom product page. Styles: src/assets/css/roulettective.css
+  Interactive parts (simulator, schematic, Geneva drive, case file tabs):
+  src/assets/js/roulettective.js. Everything reads fine without JavaScript.
+-->
+<div class="rt">
 
-<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4"><b>Roulettective<br />
-</b><br />
-<span class="caption"><br />
-Time</span><span class="caption">2025<br />
-<br /></span><span class="caption">Program<br />
-<span style="color: rgba(255, 255, 255, 0.82);"></span>MIT 4.044 Interaction Inteligence<br />
-<br />Instructor:<br />
-Marcelo Coelho
+<!-- ============================================================ hero -->
+<section class="rt-hero rt-lab" aria-labelledby="rt-title">
+  <div class="rt-wrap rt-hero__meta rt-mono">
+    <span>mad · field unit</span>
+    <span>model 4000</span>
+    <span class="rt-hide-sm">ai detective game machine</span>
+    <span>2025</span>
+  </div>
+  <div class="rt-wrap">
+    <h1 class="rt-wordmark" id="rt-title" aria-label="roulettective"><span aria-hidden="true">r<svg class="rt-o" viewBox="-50 -50 100 100"><circle class="rt-o__rim" r="44.5"/><circle class="rt-o__hub" r="23"/><g class="rt-fins" data-count="28" data-r1="26" data-r2="42"></g></svg>ulettective</span></h1>
+  </div>
+  <figure class="rt-hero__figure">
+    <img src="/media/roulettective/rt-hero.webp" width="2800" height="1865" alt="Roulettective: a black box carrying a grey 3D-printed carousel tray, with a red reset button, an indicator bulb and back and forward buttons" fetchpriority="high" decoding="async">
+  </figure>
+  <div class="rt-wrap rt-hero__foot">
+    <p class="rt-hero__lede">a forgotten slide projector,<br>re-invented as an ai detective.</p>
+    <ul class="rt-hero__creds rt-mono">
+      <li><b>neurips 2025</b>creative ai track</li>
+      <li><b>uist 2025</b>adjunct · busan</li>
+      <li><b>mit 4.044</b>interaction intelligence</li>
+    </ul>
+    <a class="rt-hero__cta rt-mono" href="#play">play the simulator <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
 
-<br />
-<br />
-Team:<br />
-Jianuo Xuan
-</span>
-<br />
+<!-- ============================================================ overview -->
+<section class="rt-night rt-intro" aria-labelledby="rt-intro-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>01</span>overview</p>
+    <h2 class="rt-statement" id="rt-intro-h">roulettective is the mastermind of the <em>mystery analysis division</em>. you <mark>collect</mark> fragments of truth on slides. it <mark>associates</mark> them.</h2>
+    <div class="rt-cols">
+      <p>Insert a slide, press forward, and the carousel clicks one slot on. GPT-4o writes what that slide reveals and DALL·E 3 develops a film-noir still to go with it. When two clues turn out to be connected, a bulb lights. There is no screen to tap and no prompt to type: the slides are the prompts.</p>
+      <p>It is also a method. <b>AI repurposing</b> takes an object that computing left behind, studies what it once meant, and gives it a new use. The Kodak Carousel already had what a detective game needs: a sequence, a beam of light, and a click you can feel.</p>
+    </div>
+    <ol class="rt-timeline">
+      <li><b>1961</b><span>kodak launches the carousel slide projector.</span></li>
+      <li><b>2004</b><span>production ends. powerpoint takes the slideshow.</span></li>
+      <li><b>2007</b><span>mad men calls it “the carousel”, a machine for time.</span></li>
+      <li class="is-now"><b>2025</b><span>roulettective. the carousel learns to think.</span></li>
+    </ol>
+    <aside class="rt-record">
+      <span class="rt-stamp">prior record</span>
+      <p>The carousel already had a criminal past. In eyewitness studies, psychologists used carousel projectors to show simulated crime scenes, one slide at a time.</p>
+    </aside>
+  </div>
+</section>
 
-Publication:<br />
-<br />
-Yuhan Wang and Jianuo Xuan. 2025. Roulettective: Repurposing a Vintage Slide Projector into an AI-
-Driven Physical Detective Game. In NeurIPS‘25, Creative AI Track: Humanity.<br />
-<br />
-<a href="/files/121_Roulettective_Repurposing_.pdf">PDF</a><br />
-<br />
+<!-- ============================================================ anatomy -->
+<section class="rt-lab rt-anatomy" aria-labelledby="rt-anat-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>02</span>anatomy</p>
+    <h2 class="rt-h2" id="rt-anat-h">everything the projector had, rewired.</h2>
+    <p class="rt-sub">The original's three gestures stay: press a button, insert a slide, watch the light. What happens behind them is new.</p>
+    <div class="rt-anatomy__grid">
+      <figure class="rt-anatomy__fig">
+        <img src="/media/roulettective/rt-anatomy.webp" width="2200" height="1465" alt="Roulettective from above at three-quarters, with its archive box of slides beside it" loading="lazy" decoding="async">
+        <button type="button" class="rt-hot" style="--x: 43%; --y: 20.5%" data-part="1" aria-label="1: carousel">1</button>
+        <button type="button" class="rt-hot" style="--x: 30.7%; --y: 44.6%" data-part="2" aria-label="2: gate">2</button>
+        <button type="button" class="rt-hot" style="--x: 21.6%; --y: 40%" data-part="3" aria-label="3: reset">3</button>
+        <button type="button" class="rt-hot" style="--x: 32.7%; --y: 54.9%" data-part="4" aria-label="4: indicator bulb">4</button>
+        <button type="button" class="rt-hot" style="--x: 38.2%; --y: 61.4%" data-part="5" aria-label="5: back and forward">5</button>
+        <button type="button" class="rt-hot" style="--x: 67%; --y: 76%" data-part="6" aria-label="6: archive box">6</button>
+      </figure>
+      <ol class="rt-anatomy__list">
+        <li data-part="1"><b>carousel</b><span>A 3D-printed tray with a slot for every slide. A Geneva drive turns it exactly one slot per press.</span></li>
+        <li data-part="2"><b>gate ▲</b><span>The slot under the marker is the one in play. A servo lifts the slide, the tray turns, and the slide drops back so its RFID tag can be read.</span></li>
+        <li data-part="3"><b>reset</b><span>Red, on purpose. Winds the tray back to slot zero, counting every turn it made.</span></li>
+        <li data-part="4"><b>indicator bulb</b><span>Lights when the AI links a new clue to an old one. Go back, and the earlier slide has changed.</span></li>
+        <li data-part="5"><b>◀◀ back · forward ▶▶</b><span>The projector's own navigation, kept as it was. Forward plays the next slide; back revisits.</span></li>
+        <li data-part="6"><b>archive box</b><span>“TIKETA Roulettective 4000”. Holds 30 RFID-tagged slides, sorted by kind.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
 
-Yuhan Wang, Jianuo Xuan. 2025. Roulettective: AI Re-invention of a Vintage Slide Projector as a Tangible<br />Detective Game. The 38th Annual ACM Symposium on User Interface oftware and Technology (UIST Adjunct ’25),<br />September 28-October 1, 2025. Busan, Republic of Korea.
+<!-- ============================================================ simulator -->
+<section class="rt-night rt-play" id="play" aria-labelledby="rt-play-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>03</span>how to play</p>
+    <h2 class="rt-h2" id="rt-play-h">open a case. try it here.</h2>
+    <p class="rt-sub">A working model of the machine. Insert slides from the archive box, press forward, and watch the bulb. On the real machine GPT-4o writes a new case every game; this one is pre-written so it runs in your browser.</p>
 
-<br />
-<br />
-<a href="/files/Roulettective-AI-Re-invention-of-a-Vintage-Slide-Projector-as-a-Tangible-Detective-Game.pdf">PDF</a><br />
-<br />
+    <div class="rt-sim" tabindex="0" aria-label="Roulettective simulator. Keys: F forward, B back, R reset; M, E, C, L, A, V insert slides; 1 to 5 choose a theory.">
+      <div class="rt-sim__stage">
+        <div class="rt-sim__screen" data-mode="standby">
+          <div class="rt-sim__beam" aria-hidden="true"></div>
+          <div class="rt-sim__slide" aria-live="polite">
+            <div class="rt-proj rt-proj--standby">
+              <p class="rt-proj__title">mystery analysis division</p>
+              <p class="rt-proj__text">Insert a MYSTERY slide, then press forward ▶▶.</p>
+            </div>
+          </div>
+        </div>
+        <ol class="rt-sim__phases rt-mono" aria-label="game phase">
+          <li data-phase="standby" class="is-on">standby</li>
+          <li data-phase="case">case</li>
+          <li data-phase="explore">explore</li>
+          <li data-phase="associate">associate</li>
+          <li data-phase="reveal">reveal</li>
+          <li data-phase="closed">closed</li>
+        </ol>
+      </div>
 
-<br />
+      <div class="rt-sim__machine">
+        <svg class="rt-sim__carousel" viewBox="-112 -112 224 224" aria-hidden="true">
+          <circle class="rt-car__base" r="110"/>
+          <g class="rt-car__tray"></g>
+          <path class="rt-car__gate" d="M0 92 l-7 12 h14 z"/>
+          <circle class="rt-car__lamp" cy="78" r="6"/>
+        </svg>
+        <div class="rt-sim__panel">
+          <div class="rt-ctl"><button type="button" class="rt-key rt-key--reset" data-act="reset" aria-label="Reset (R)"></button><span>reset</span></div>
+          <div class="rt-ctl"><span class="rt-bulb" role="img" aria-label="indicator bulb: off"></span><span>bulb</span></div>
+          <div class="rt-ctl"><button type="button" class="rt-key" data-act="back" aria-label="Back (B)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6 4 12l7 6zM20 6l-7 6 7 6z"/></svg></button><span>back</span></div>
+          <div class="rt-ctl"><button type="button" class="rt-key" data-act="forward" aria-label="Forward (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 6l7 6-7 6zM4 6l7 6-7 6z"/></svg></button><span>forward</span></div>
+        </div>
+        <p class="rt-sim__status rt-mono" role="status">slot 00 · standby</p>
+      </div>
 
-</div><div class="column-unit" style="--span: 8">
+      <div class="rt-sim__archive">
+        <div class="rt-sim__archive-head rt-mono">
+          <span>archive box: click a slide to load it into the next free slot</span>
+          <button type="button" class="rt-sound" aria-pressed="false">sound off</button>
+        </div>
+        <div class="rt-sim__tokens">
+          <button type="button" class="rt-token" data-type="mystery" style="--c: var(--rt-mystery)"><i>M</i><b>mystery</b><small>1</small></button>
+          <button type="button" class="rt-token" data-type="evidence" style="--c: var(--rt-evidence)"><i>E</i><b>evidence</b><small>3</small></button>
+          <button type="button" class="rt-token" data-type="character" style="--c: var(--rt-character)"><i>C</i><b>character</b><small>3</small></button>
+          <button type="button" class="rt-token" data-type="location" style="--c: var(--rt-location)"><i>L</i><b>location</b><small>2</small></button>
+          <button type="button" class="rt-token" data-type="action" style="--c: var(--rt-action)"><i>A</i><b>action</b><small>2</small></button>
+          <button type="button" class="rt-token" data-type="reveal" style="--c: var(--rt-reveal)"><i>V</i><b>reveal</b><small>1</small></button>
+        </div>
+      </div>
+    </div>
+    <p class="rt-sim__keys rt-mono">keys: F forward · B back · R reset · M E C L A V insert · 1–5 choose. The same letters the machine's Arduino types into the game.</p>
 
-Roulettective is a physical detective AI game machine that transports you to a secret investigation scene. <br />
-<br />
-It serves as an external mastermind in the Mystery Analysis Division (MAD), helping you COLLECT and ASSOCIATE fragments of truth.
+    <ol class="rt-steps">
+      <li><b>standby</b><span>The agency logo, with noir jazz playing. Back reads the detective's guide.</span></li>
+      <li><b>case</b><span>A Mystery slide opens a case: four sentences, one scene, no suspects yet.</span></li>
+      <li><b>explore</b><span>Evidence, Character, Location and Action slides each ask the AI for one new fact.</span></li>
+      <li><b>associate</b><span>When a new fact connects to an old one, the bulb lights. Go back: that slide has been rewritten.</span></li>
+      <li><b>reveal</b><span>With four cards in play, a Reveal slide lists five theories. One is false.</span></li>
+      <li><b>reset</b><span>Expose the lie to close the case. Reset winds the tray home for the next one.</span></li>
+    </ol>
+  </div>
+</section>
 
-<br />
-<i>Roulettective</i> is a physical interactive detective game machine that immerses players in a narrative-driven investigation experience. TThe project blends tangible interaction with AI-driven storytelling to create a unique mystery-solving interface.<br />
+<!-- ============================================================ slides -->
+<section class="rt-lab rt-slides" aria-labelledby="rt-slides-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>04</span>the slides</p>
+    <h2 class="rt-h2" id="rt-slides-h">a slide is a prompt you can hold.</h2>
+    <p class="rt-sub">Each slide carries an RFID tag that names a <em>kind</em> of question, not a fixed picture. The same Evidence slide turns up a different clue in every case. Underneath each one is a rule the AI has to follow.</p>
+    <ul class="rt-mounts">
+      <li style="--c: var(--rt-mystery)">
+        <div class="rt-mount"><span class="rt-mount__tab"></span><span class="rt-mount__win">M</span><span class="rt-mount__code">mys · 01</span></div>
+        <h3>mystery</h3><p>“Exactly four sentences. One scene. Do not include any suspects.”</p><span class="rt-mono">opens a case</span>
+      </li>
+      <li style="--c: var(--rt-evidence)">
+        <div class="rt-mount"><span class="rt-mount__tab"></span><span class="rt-mount__win">E</span><span class="rt-mount__code">evd · 06</span></div>
+        <h3>evidence</h3><p>“One physical clue. Focus on what's observed, not what it means.”</p><span class="rt-mono">up to 6 per case</span>
+      </li>
+      <li style="--c: var(--rt-character)">
+        <div class="rt-mount"><span class="rt-mount__tab"></span><span class="rt-mount__win">C</span><span class="rt-mount__code">chr · 05</span></div>
+        <h3>character</h3><p>“Introduce one witness: name, role, background. No quotes.”</p><span class="rt-mono">up to 5 per case</span>
+      </li>
+      <li style="--c: var(--rt-location)">
+        <div class="rt-mount"><span class="rt-mount__tab"></span><span class="rt-mount__win">L</span><span class="rt-mount__code">loc · 04</span></div>
+        <h3>location</h3><p>“One place, one distinctive detail. It may jog a witness's memory.”</p><span class="rt-mono">up to 4 per case</span>
+      </li>
+      <li style="--c: var(--rt-action)">
+        <div class="rt-mount"><span class="rt-mount__tab"></span><span class="rt-mount__win">A</span><span class="rt-mount__code">act · 06</span></div>
+        <h3>action</h3><p>“One investigation step. It may upgrade a piece of evidence, or destroy it.”</p><span class="rt-mono">up to 6 per case</span>
+      </li>
+      <li style="--c: var(--rt-reveal)">
+        <div class="rt-mount"><span class="rt-mount__tab"></span><span class="rt-mount__win">V</span><span class="rt-mount__code">rev · 01</span></div>
+        <h3>reveal</h3><p>“Exactly five theories. Four true, one false. Plausible but wrong.”</p><span class="rt-mono">after 4 cards</span>
+      </li>
+    </ul>
+    <p class="rt-note rt-mono"><b>+ choice slides 1–5</b> point at the false theory. <b>+ 3 instruction slides</b> explain the game. 30 tagged slides in all.</p>
+  </div>
+</section>
 
-<br />
-At the heart of <i>Roulettective</i> is a vintage-inspired carousel mechanism that controls the progression of narrative slides. Players insert and rotate these physical slides to uncover clues, reveal characters, and unlock hidden associations. Acting as the external mastermind of the fictional &#x22;Mystery Analysis Division (MAD),&#x22; the system guides players through a layered detective narrative—generating and associating fragments of truth in real time.<br />
+<!-- ============================================================ association -->
+<section class="rt-crt rt-assoc" aria-labelledby="rt-assoc-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>05</span>association</p>
+    <h2 class="rt-h2" id="rt-assoc-h">the bulb is the ai thinking out loud.</h2>
+    <div class="rt-assoc__grid">
+      <div class="rt-assoc__copy">
+        <p>After every new card, GPT-4o compares it with up to three earlier ones and rates the connection from 0 to 1. At <b>0.75</b> or above, the earlier slide is rewritten and the bulb lights. There are at most three links per case, so the story stays solvable.</p>
+        <p class="rt-mono rt-assoc__try">pick a pair of clues ↓</p>
+        <ul class="rt-pairs">
+          <li><button type="button" data-score="0.86" data-kind="witness recants" data-note="Margot signs in green ink. She was in the booth after eleven."><span>character: the cashier</span><span>evidence: initials in green ink</span></button></li>
+          <li><button type="button" data-score="0.79" data-kind="evidence upgraded" data-note="The smaller hand on the gate fits through the roof hatch."><span>location: the roof hatch</span><span>action: dust the gate</span></button></li>
+          <li><button type="button" data-score="0.41" data-kind="no strong connection" data-note="Seat F7 has a view of the booth. It explains nothing yet."><span>character: the critic</span><span>location: row F</span></button></li>
+          <li><button type="button" data-score="0.77" data-kind="evidence destroyed" data-note="The splice erased the frame that slide 13 would have matched."><span>action: run the reel</span><span>evidence: slot 13 is empty</span></button></li>
+        </ul>
+        <ul class="rt-kinds rt-mono">
+          <li>witness recants</li><li>evidence upgraded</li><li>evidence destroyed</li><li>location triggers recall</li>
+        </ul>
+      </div>
+      <div class="rt-gauge" aria-live="polite">
+        <svg viewBox="-120 -112 240 132" aria-hidden="true">
+          <path class="rt-gauge__arc" d="M-100 0 A100 100 0 0 1 100 0"/>
+          <path class="rt-gauge__hot" d="M70.7 -70.7 A100 100 0 0 1 100 0"/>
+          <g class="rt-gauge__ticks"></g>
+          <text class="rt-gauge__lbl" x="-100" y="16">0.0</text>
+          <text class="rt-gauge__lbl" x="0" y="-104">0.5</text>
+          <text class="rt-gauge__lbl" x="100" y="16">1.0</text>
+          <text class="rt-gauge__lbl rt-gauge__lbl--hot" x="78" y="-80">.75</text>
+          <g class="rt-gauge__needle"><path d="M-3 0 L0 -88 L3 0 Z"/><circle r="7"/></g>
+        </svg>
+        <div class="rt-gauge__read">
+          <span class="rt-bulb rt-bulb--big" role="img" aria-label="bulb"></span>
+          <p><b class="rt-gauge__score">0.00</b><span class="rt-gauge__kind rt-mono">awaiting input</span></p>
+        </div>
+        <p class="rt-gauge__note">Choose a pair to see how the machine rates it.</p>
+        <p class="rt-gauge__foot rt-mono">example ratings, from the simulator's case</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<br />
-This fusion of hardware (carousel, bulbs, Geneva mechanism) and software (AI-generated content) produces a richly atmospheric experience where physicality and fiction converge. <i>Roulettective</i> is both a game and an object of storytelling, reimagining mystery-solving as a tactile and cinematic interaction.<br />
+<!-- ============================================================ system -->
+<section class="rt-night rt-system" aria-labelledby="rt-sys-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>06</span>system</p>
+    <h2 class="rt-h2" id="rt-sys-h">inside: a keyboard, a projector and two models.</h2>
+    <p class="rt-sub">The Arduino Pro Micro presents itself to the computer as a keyboard. Every button press and every slide read is typed into the game as a single letter. The game answers back over Web Serial to switch the bulb.</p>
+    <div class="rt-schematic">
+      <svg viewBox="0 0 1200 540" role="img" aria-labelledby="rt-sch-t">
+        <title id="rt-sch-t">System diagram: slide tokens, buttons and the limit switch feed an Arduino Pro Micro, which types keystrokes into the browser game; the game calls GPT-4o and DALL·E 3 and drives the projector, speaker and, via Web Serial, the indicator bulb.</title>
+        <defs>
+          <marker id="rt-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z"/></marker>
+        </defs>
+        <g class="rt-edges">
+          <path data-e="tok rfid" d="M220 62 H300" marker-end="url(#rt-arrow)"/>
+          <path data-e="rfid ard" d="M400 94 V150" marker-end="url(#rt-arrow)"/>
+          <path data-e="btn ard" d="M220 182 H300" marker-end="url(#rt-arrow)"/>
+          <path data-e="lim ard" d="M220 302 H300" marker-end="url(#rt-arrow)"/>
+          <path data-e="ard game" d="M500 212 H640" marker-end="url(#rt-arrow)"/>
+          <path data-e="game ard" d="M640 292 H500" marker-end="url(#rt-arrow)"/>
+          <path data-e="ard servo" d="M400 334 V380" marker-end="url(#rt-arrow)"/>
+          <path data-e="servo step" d="M400 440 V460" marker-end="url(#rt-arrow)"/>
+          <path data-e="ard bulb" d="M500 322 H560 V492 H940" marker-end="url(#rt-arrow)"/>
+          <path data-e="game gpt" d="M860 176 H890 V62 H940" marker-start="url(#rt-arrow)" marker-end="url(#rt-arrow)"/>
+          <path data-e="game dalle" d="M860 200 H915 V162 H940" marker-end="url(#rt-arrow)"/>
+          <path data-e="game proj" d="M860 282 H940" marker-end="url(#rt-arrow)"/>
+          <path data-e="game spk" d="M860 310 H900 V382 H940" marker-end="url(#rt-arrow)"/>
+        </g>
+        <g class="rt-edge-labels">
+          <text x="570" y="200">keystrokes</text>
+          <text x="570" y="282">web serial</text>
+          <text x="570" y="312">“1” / “0”</text>
+        </g>
+        <g class="rt-nodes">
+          <g data-node="tok"><rect x="20" y="30" width="200" height="64"/><text x="36" y="58">slide token</text><text class="s" x="36" y="80">rfid tag · ×30</text></g>
+          <g data-node="btn"><rect x="20" y="150" width="200" height="64"/><text x="36" y="178">buttons</text><text class="s" x="36" y="200">◀◀ · ▶▶ · reset</text></g>
+          <g data-node="lim"><rect x="20" y="270" width="200" height="64"/><text x="36" y="298">limit switch</text><text class="s" x="36" y="320">optical · 1 pulse / turn</text></g>
+          <g data-node="rfid"><rect x="300" y="30" width="200" height="64"/><text x="316" y="58">rc522 reader</text><text class="s" x="316" y="80">13.56 mhz rfid</text></g>
+          <g data-node="ard" class="is-core"><rect x="300" y="150" width="200" height="184"/><text x="316" y="180">arduino</text><text x="316" y="202">pro micro</text><text class="s" x="316" y="240">usb keyboard</text><text class="s" x="316" y="262">web serial</text><text class="s" x="316" y="284">step · dir · servo</text><text class="s" x="316" y="306">lamp pin 7</text></g>
+          <g data-node="servo"><rect x="300" y="380" width="200" height="60"/><text x="316" y="406">servo</text><text class="s" x="316" y="428">lifts the slide</text></g>
+          <g data-node="step"><rect x="300" y="460" width="200" height="60"/><text x="316" y="486">nema-17 + geneva</text><text class="s" x="316" y="508">one turn = one slot</text></g>
+          <g data-node="game" class="is-core"><rect x="640" y="150" width="220" height="184"/><text x="656" y="180">game</text><text x="656" y="202">p5.js · browser</text><text class="s" x="656" y="240">case memory</text><text class="s" x="656" y="262">association ≥ 0.75</text><text class="s" x="656" y="284">prompt filter</text><text class="s" x="656" y="306">prompt summary</text></g>
+          <g data-node="gpt"><rect x="940" y="30" width="240" height="64"/><text x="956" y="58">gpt-4o</text><text class="s" x="956" y="80">case · clues · links · theories</text></g>
+          <g data-node="dalle"><rect x="940" y="130" width="240" height="64"/><text x="956" y="158">dall·e 3</text><text class="s" x="956" y="180">1024² film-noir stills</text></g>
+          <g data-node="proj"><rect x="940" y="250" width="240" height="64"/><text x="956" y="278">projector</text><text class="s" x="956" y="300">image + text</text></g>
+          <g data-node="spk"><rect x="940" y="350" width="240" height="64"/><text x="956" y="378">speaker</text><text class="s" x="956" y="400">music while it thinks</text></g>
+          <g data-node="bulb"><rect x="940" y="460" width="240" height="64"/><text x="956" y="488">indicator bulb</text><text class="s" x="956" y="510">lit on a strong link</text></g>
+        </g>
+      </svg>
+    </div>
+    <div class="rt-system__foot">
+      <p class="rt-node-info" aria-live="polite"><b>hover a part</b> to trace what it talks to.</p>
+      <pre class="rt-serial rt-mono" aria-label="Example serial log"></pre>
+    </div>
+  </div>
+</section>
 
-</div></div><br /><br />
-<iframe class="media embed" src="https://www.youtube-nocookie.com/embed/Fsa7DZGGdZk?rel=0&playsinline=1" style="aspect-ratio: 200 / 113;" title="Roulettective" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe><br />
-<br />
-<div class="gallery-grid" style="--columns: 2; --gutter: 1rem; --mobile-gutter: 1rem">
-<img class="media" src="/media/roulettective/01.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/02.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/03.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/04.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/05.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/06.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/07.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/08.webp" width="2000" height="1332" alt="Roulettective" loading="lazy" decoding="async">
-</div><br />
-<br />
-<img class="media" src="/media/roulettective/09.webp" width="2000" height="728" alt="Roulettective" loading="lazy" decoding="async"><br />
-<br />
-<br />
-<video class="media" src="/media/roulettective/10.mp4" width="1138" height="640" autoplay loop muted playsinline></video><br />
-<br />
-<br />
-<div class="gallery-grid" style="--columns: 2; --gutter: 1rem; --mobile-gutter: 1rem">
-<img class="media" src="/media/roulettective/11.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/12.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/13.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/14.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/15.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/16.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/17.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/18.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/19.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/20.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/21.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/22.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/23.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/24.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/25.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/26.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/27.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/28.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/29.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/30.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async"><img class="media" src="/media/roulettective/31.webp" width="1333" height="750" alt="Roulettective" loading="lazy" decoding="async">
+<!-- ============================================================ mechanism -->
+<section class="rt-lab rt-mech" aria-labelledby="rt-mech-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>07</span>mechanism</p>
+    <h2 class="rt-h2" id="rt-mech-h">one press, one turn, one slot.</h2>
+    <p class="rt-sub">The original Kodak was a precise optical instrument, and the game depends on that precision: every slide has to stop exactly at the gate. A Geneva drive turns the stepper's continuous rotation into clean, indexed steps, and locks the tray in place between them.</p>
+    <div class="rt-mech__grid">
+      <div class="rt-geneva">
+        <svg class="rt-geneva__svg" viewBox="-108 -104 290 208" aria-hidden="true">
+          <defs>
+            <mask id="rt-gw-mask"><circle r="92" fill="#fff"/><g class="rt-gw-cuts" fill="#000"></g></mask>
+            <mask id="rt-gd-mask"><circle r="33" fill="#fff"/><circle class="rt-gd-notch" cx="36" r="17" fill="#000"/></mask>
+          </defs>
+          <g class="rt-gw"><circle r="92" mask="url(#rt-gw-mask)" class="rt-gw__body"/><circle r="9" class="rt-gw__hub"/><path class="rt-gw__mark" d="M-13 -13 L-41 -41"/></g>
+          <g transform="translate(100 0)">
+            <g class="rt-gd"><circle r="33" mask="url(#rt-gd-mask)" class="rt-gd__lock"/><path class="rt-gd__arm" d="M0 0 H50"/><circle class="rt-gd__pin" cx="50" r="5"/><circle r="6" class="rt-gd__hub"/></g>
+          </g>
+        </svg>
+        <div class="rt-geneva__ui">
+          <button type="button" class="rt-btn" data-geneva="step">advance one slot ▶</button>
+          <label class="rt-mono">crank<input type="range" min="0" max="720" value="0" step="1" aria-label="Drive crank angle"></label>
+          <dl class="rt-readout rt-mono">
+            <div><dt>crank</dt><dd class="g-crank">0°</dd></div>
+            <div><dt>tray</dt><dd class="g-tray">0.0°</dd></div>
+            <div><dt>state</dt><dd class="g-state">locked</dd></div>
+          </dl>
+          <svg class="rt-geneva__plot" viewBox="0 0 360 90" aria-hidden="true"><path class="rt-plot__axis" d="M0 85 H360"/><path class="rt-plot__line"/><line class="rt-plot__cursor" y1="0" y2="90"/></svg>
+          <p class="rt-mono rt-geneva__cap">tray angle against crank angle: it moves for 120° of every turn, then holds still. (diagram uses 6 slots for clarity.)</p>
+        </div>
+      </div>
+      <div class="rt-mech__side">
+        <video src="/media/roulettective/10.mp4" width="1138" height="640" autoplay loop muted playsinline aria-label="The loaded carousel turning in the dark"></video>
+        <ol class="rt-seq">
+          <li><b>lift</b><span>The servo raises the slide clear of the gate.</span></li>
+          <li><b>turn</b><span>The NEMA-17 stepper turns the crank one full revolution, at least 100 steps.</span></li>
+          <li><b>index</b><span>The Geneva wheel advances the tray exactly one slot, then locks.</span></li>
+          <li><b>confirm</b><span>The optical limit switch signals the end of the turn; the stepper moves 15 steps more to clear it.</span></li>
+          <li><b>read</b><span>The slide drops into the gate and the RC522 reads its tag.</span></li>
+        </ol>
+        <p class="rt-note">The slide channel keeps the original projector's guide-rail geometry, so slides go in smoothly and the tray keeps its tactile click.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ gallery -->
+<section class="rt-night rt-gallery" aria-label="Photographs">
+  <figure class="rt-shot rt-shot--full">
+    <img src="/media/roulettective/07.webp" width="2000" height="1332" alt="Roulettective in a dark room, projecting its title and the words Mystery Analysis Division onto the wall" loading="lazy" decoding="async">
+  </figure>
+  <div class="rt-wrap rt-gallery__pair">
+    <figure class="rt-shot"><img src="/media/roulettective/05.webp" width="2000" height="1332" alt="Close-up of the archive box, its slides sorted behind coloured tabs" loading="lazy" decoding="async"></figure>
+    <figure class="rt-shot"><img src="/media/roulettective/06.webp" width="2000" height="1332" alt="The archive box lid, printed TIKETA Roulettective 4000" loading="lazy" decoding="async"></figure>
+  </div>
+  <figure class="rt-shot rt-shot--full">
+    <img src="/media/roulettective/08.webp" width="2000" height="1332" alt="Roulettective from above with its archive box, a newspaper and a pencil on a dark desk" loading="lazy" decoding="async">
+  </figure>
+  <div class="rt-wrap rt-film">
+    <p class="rt-kicker"><span>08</span>film</p>
+    <div class="rt-film__frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/Fsa7DZGGdZk?rel=0&amp;playsinline=1" title="Roulettective film" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ design notes -->
+<section class="rt-lab rt-notes" aria-labelledby="rt-notes-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>09</span>design notes</p>
+    <h2 class="rt-h2" id="rt-notes-h">six decisions.</h2>
+    <ol class="rt-notes__grid">
+      <li><b>keep the ritual.</b><span>Button navigation, slide insertion and the projected image are the projector's whole interaction model. All three stay, so people already know how to play.</span></li>
+      <li><b>prompts you can hold.</b><span>Text-only AI limits physical interaction. A slide that stands for a category lets your hands ask the question.</span></li>
+      <li><b>choose, don't type.</b><span>Cluedo breaks a case into kinds of fact; Ace Attorney settles it by choice. The ending is five theories and one lie.</span></li>
+      <li><b>start with only the riddle.</b><span>Early openings had too many characters. Now a case starts as a scene, and every witness has to be found.</span></li>
+      <li><b>keep the click.</b><span>Geneva indexing and the original slot geometry preserve the sound and feel that make the machine read as a machine.</span></li>
+      <li><b>make waiting part of the show.</b><span>Image generation is slow. A loading animation and period jazz turn the wait into suspense.</span></li>
+    </ol>
+    <div class="rt-method">
+      <p class="rt-kicker rt-kicker--inline"><span>→</span>the method: ai repurposing</p>
+      <ol>
+        <li><b>select</b><span>an object from before today's computing paradigm</span></li>
+        <li><b>research</b><span>its history, its interaction design, its culture</span></li>
+        <li><b>repurpose</b><span>cross its cultural meaning with what AI can do</span></li>
+        <li><b>integrate</b><span>build it, test it with people, iterate</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ case file -->
+<section class="rt-file-section" aria-labelledby="rt-file-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>10</span>process</p>
+    <h2 class="rt-h2" id="rt-file-h">case file r-4000: how it was made.</h2>
+    <p class="rt-sub">Reconstructed from the project's Miro board. Hover or tap the black bars to declassify.</p>
+
+    <div class="rt-file">
+      <div class="rt-file__tabs" role="tablist" aria-label="Exhibits">
+        <button type="button" role="tab" id="rt-tab-a" aria-controls="rt-ex-a" aria-selected="true"><span>a</span>which object</button>
+        <button type="button" role="tab" id="rt-tab-b" aria-controls="rt-ex-b" aria-selected="false" tabindex="-1"><span>b</span>prototype zero</button>
+        <button type="button" role="tab" id="rt-tab-c" aria-controls="rt-ex-c" aria-selected="false" tabindex="-1"><span>c</span>review 04.16</button>
+        <button type="button" role="tab" id="rt-tab-d" aria-controls="rt-ex-d" aria-selected="false" tabindex="-1"><span>d</span>roadmap 04.30</button>
+        <button type="button" role="tab" id="rt-tab-e" aria-controls="rt-ex-e" aria-selected="false" tabindex="-1"><span>e</span>the look</button>
+        <button type="button" role="tab" id="rt-tab-f" aria-controls="rt-ex-f" aria-selected="false" tabindex="-1"><span>f</span>debug log</button>
+        <button type="button" role="tab" id="rt-tab-g" aria-controls="rt-ex-g" aria-selected="false" tabindex="-1"><span>g</span>field test</button>
+      </div>
+
+      <!-- A -->
+      <article class="rt-sheet" role="tabpanel" id="rt-ex-a" aria-labelledby="rt-tab-a" tabindex="0">
+        <header class="rt-sheet__head rt-mono"><span>mad · file r-4000</span><span>exhibit a</span><span>precedents</span><span class="rt-stamp rt-stamp--sm">declassified</span></header>
+        <h3>which forgotten object should learn to think?</h3>
+        <p class="rt-sheet__lede">The search began with obsolete objects people still know how to use, and what an AI could add to each.</p>
+        <ul class="rt-index-cards">
+          <li><span class="rt-mono">ref · 01</span><b>ghostwriter</b>A GPT-3 typewriter that co-writes with you through its keys.</li>
+          <li><span class="rt-mono">ref · 02</span><b>transferscope</b>A one-button handheld that re-synthesises what it sees.</li>
+          <li><span class="rt-mono">ref · 03</span><b>walkcast</b>An endless, AI-generated podcast that follows where you walk.</li>
+          <li><span class="rt-mono">idea · 04</span><b>dialogue</b>Our sketch: a vintage payphone you talk your thoughts through.</li>
+          <li><span class="rt-mono">idea · 05</span><b>radio</b>Our sketch: a radio for mood music, emotional replies and shared stories.</li>
+          <li class="is-chosen"><span class="rt-mono">selected</span><b>kodak carousel</b>A sequence, a beam, a click, and a past in crime-scene research.</li>
+        </ul>
+      </article>
+
+      <!-- B -->
+      <article class="rt-sheet" role="tabpanel" id="rt-ex-b" aria-labelledby="rt-tab-b" tabindex="0" hidden>
+        <header class="rt-sheet__head rt-mono"><span>mad · file r-4000</span><span>exhibit b</span><span>early prototypes</span><span class="rt-stamp rt-stamp--sm">declassified</span></header>
+        <h3>prototype zero: riddles and a white box.</h3>
+        <div class="rt-two">
+          <figure class="rt-diorama">
+            <svg viewBox="0 0 320 220" role="img" aria-label="Line drawing of a white card box used as a stage, with a red miniature chair and a grey one">
+              <g class="ln">
+                <path d="M40 60 L190 30 L290 70 L140 100 Z"/>
+                <path d="M40 60 V160 L140 200 V100"/>
+                <path d="M140 200 L290 170 V70"/>
+                <path d="M140 100 L140 200" class="dim"/>
+                <path d="M190 30 V130 L40 160" class="dim"/>
+                <path d="M190 130 L290 170" class="dim"/>
+              </g>
+              <g class="chair red" transform="translate(120 150)"><path d="M0 0 l14 -5 l12 5 l-14 5 z M0 0 v14 M26 0 v14 M12 5 v14 M14 -5 v10 M0 0 v-20 l14 -5 v20"/></g>
+              <g class="chair" transform="translate(205 138)"><path d="M0 0 l12 -4 l10 4 l-12 4 z M0 0 v12 M22 0 v12 M10 4 v12 M12 -4 v8 M22 0 v-17 l-10 -4 v17"/></g>
+            </svg>
+            <figcaption class="rt-mono">physical prompting: two chairs staged in a card box. the ai paints the scene.</figcaption>
+          </figure>
+          <div class="rt-term" aria-label="Early riddle prototype">
+            <p class="rt-term__head">prompt ▌</p>
+            <p><b>PUZZLE:</b> A cat leaps out of a window. Why isn't it in danger of drowning?</p>
+            <p><b>PUZZLE:</b> A man lies in his own backyard. No forced entry. The only thing in the yard is an unopened package. What happened?</p>
+          </div>
+        </div>
+        <p class="rt-sheet__lede">The first build was a lateral-thinking riddle machine: typed puzzles, plus scenes staged with miniature furniture. It was fun but had no structure: nothing to collect, and no ending to argue about. The fix came from detective games: break a case into <span class="rt-redact" tabindex="0">kinds of fact</span>, then settle it by <span class="rt-redact" tabindex="0">choice</span>.</p>
+      </article>
+
+      <!-- C -->
+      <article class="rt-sheet" role="tabpanel" id="rt-ex-c" aria-labelledby="rt-tab-c" tabindex="0" hidden>
+        <header class="rt-sheet__head rt-mono"><span>mad · file r-4000</span><span>exhibit c</span><span>review · wed 2025.04.16</span><span class="rt-stamp rt-stamp--sm">declassified</span></header>
+        <h3>review notes.</h3>
+        <div class="rt-two">
+          <ol class="rt-memo">
+            <li>Story: what's the difference between an API and a chatbox?</li>
+            <li>The end of the game: how do players <span class="rt-redact" tabindex="0">guess</span>?</li>
+            <li>Toolbox: a set of slides with different details. A diversity of tokens.</li>
+            <li>Voice can be a back-up plan.</li>
+            <li>The carousel should be <span class="rt-redact" tabindex="0">built by yourself</span>.</li>
+            <li>The beginning is weird. Rethink how a game begins.</li>
+            <li>Final demo in the photobooth: dark, with seats and coffee.</li>
+            <li>Lumens are not the main issue.</li>
+          </ol>
+          <div>
+            <p class="rt-mono rt-label">deliverables · friday</p>
+            <ul class="rt-checks"><li>software showing the different slide options</li><li>a cardboard prototype</li></ul>
+            <p class="rt-mono rt-label">build plan</p>
+            <div class="rt-gantt">
+              <div style="--from: 0; --to: 1"><span>wk 1</span>electronics</div>
+              <div style="--from: 1; --to: 2"><span>wk 2</span>metal + mechanics</div>
+              <div style="--from: 2; --to: 3"><span>wk 3</span>everything else</div>
+            </div>
+            <p class="rt-hand">carousel ↔ game system: phases, levels, locked / unlocked. more slots for instruction, gameplay, ending. framework is important. minimum viable product.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- D -->
+      <article class="rt-sheet" role="tabpanel" id="rt-ex-d" aria-labelledby="rt-tab-d" tabindex="0" hidden>
+        <header class="rt-sheet__head rt-mono"><span>mad · file r-4000</span><span>exhibit d</span><span>update · 2025.04.30</span><span class="rt-stamp rt-stamp--sm">declassified</span></header>
+        <h3>the game roadmap.</h3>
+        <div class="rt-flow-wrap">
+          <svg class="rt-flowchart" viewBox="0 0 1500 270" role="img" aria-label="Game roadmap flowchart: intro, process and ending">
+            <defs><marker id="rt-arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z"/></marker></defs>
+            <g class="lanes">
+              <rect x="4" y="8" width="380" height="30"/><text x="16" y="28">intro</text>
+              <rect x="388" y="8" width="660" height="30"/><text x="400" y="28">process</text>
+              <rect x="1052" y="8" width="444" height="30"/><text x="1064" y="28">ending</text>
+            </g>
+            <g class="edges">
+              <path d="M140 122 H180" marker-start="url(#rt-arr2)" marker-end="url(#rt-arr2)"/>
+              <path d="M290 122 H310 V122 H330" marker-end="url(#rt-arr2)"/>
+              <path d="M460 122 H500" marker-end="url(#rt-arr2)"/>
+              <path d="M660 122 H690" marker-end="url(#rt-arr2)"/>
+              <path d="M770 166 V215 H580 V146" marker-end="url(#rt-arr2)"/>
+              <path d="M850 122 H880" marker-end="url(#rt-arr2)"/>
+              <path d="M950 98 V66 H580 V98" marker-end="url(#rt-arr2)"/>
+              <path d="M1020 122 H1080" marker-end="url(#rt-arr2)"/>
+              <path d="M1190 122 H1220" marker-end="url(#rt-arr2)"/>
+              <path d="M1270 162 V200 H950 V146" class="dim" marker-end="url(#rt-arr2)"/>
+              <path d="M1320 122 H1340" marker-end="url(#rt-arr2)"/>
+              <path d="M1440 108 V80 H1460" marker-end="url(#rt-arr2)"/>
+              <path d="M1440 136 V170 H1460" marker-end="url(#rt-arr2)"/>
+            </g>
+            <g class="nodes">
+              <rect x="20" y="98" width="120" height="48"/><text x="80" y="127">read the guide</text>
+              <rect x="180" y="98" width="110" height="48"/><text x="235" y="127">standby</text>
+              <rect x="330" y="98" width="130" height="48"/><text x="395" y="127">pull: new riddle</text>
+              <rect x="500" y="98" width="160" height="48"/><text x="580" y="120">insert scene ·</text><text x="580" y="137">evidence · character</text>
+              <path d="M770 78 L850 122 L770 166 L690 122 Z"/><text x="770" y="119">related to a</text><text x="770" y="134">past slide?</text>
+              <rect x="880" y="98" width="140" height="48"/><text x="950" y="120">keep collecting</text><text x="950" y="137">insert action</text>
+              <rect x="1080" y="98" width="110" height="48"/><text x="1135" y="127">insert reveal</text>
+              <path d="M1270 82 L1320 122 L1270 162 L1220 122 Z"/><text x="1270" y="119">enough</text><text x="1270" y="134">clues?</text>
+              <rect x="1340" y="98" width="100" height="48"/><text x="1390" y="120">5 statements</text><text x="1390" y="137">1 false</text>
+              <rect x="1460" y="62" width="34" height="36" class="good"/><text x="1477" y="85">✓</text>
+              <rect x="1460" y="152" width="34" height="36" class="bad"/><text x="1477" y="175">✗</text>
+            </g>
+            <g class="notes">
+              <text x="680" y="232">yes → rewrite that slide, light the bulb</text>
+              <text x="600" y="58">loop</text>
+              <text x="1000" y="216">no</text>
+              <text x="1380" y="72">true story</text>
+              <text x="1380" y="198">fake story</text>
+            </g>
+          </svg>
+        </div>
+        <div class="rt-three">
+          <div><p class="rt-mono rt-label">from marcelo</p><ul class="rt-dash"><li>Design for many players and the dynamic between them.</li><li>Music matters; the speaker should play from the beginning.</li><li>A link should light the bulb, then players go back themselves.</li><li>Prototype slides must not be translucent.</li><li>The opening can't be complex. Only the riddle, no crowd of characters.</li></ul></div>
+          <div><p class="rt-mono rt-label">from kevin</p><ul class="rt-dash"><li>Should the story have a controlled outline?</li><li>While images generate: show the text first, then a transition.</li><li>Highlight the single wrong statement at the end.</li><li>A detective map UI, zoomed with a focus knob?</li><li>Dramatic inputs: a scanner, emergency-style buttons.</li></ul></div>
+          <div><p class="rt-mono rt-label">to do · hardware</p><ul class="rt-checks"><li>redesign the shell</li><li>get the carousel turning</li><li>buttons and bulb on the outside</li><li>fix the steel plates, spray-paint</li></ul></div>
+        </div>
+      </article>
+
+      <!-- E -->
+      <article class="rt-sheet" role="tabpanel" id="rt-ex-e" aria-labelledby="rt-tab-e" tabindex="0" hidden>
+        <header class="rt-sheet__head rt-mono"><span>mad · file r-4000</span><span>exhibit e</span><span>interface + media</span><span class="rt-stamp rt-stamp--sm">declassified</span></header>
+        <h3>the look: an agency that never existed.</h3>
+        <div class="rt-look">
+          <div class="rt-doc rt-doc--report">
+            <p class="rt-mono">police report · file 61-04</p>
+            <div class="rt-doc__photo" aria-hidden="true"><svg viewBox="0 0 60 70"><circle cx="30" cy="26" r="13"/><path d="M8 70 C10 48 50 48 52 70"/><path d="M14 18 H46 L40 10 H20 Z" class="fill"/></svg></div>
+            <div class="rt-doc__lines" aria-hidden="true"><i></i><i></i><i class="short"></i><i></i></div>
+            <div class="rt-prints" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="rt-doc rt-doc--stamp" aria-hidden="true"><span class="rt-stamp rt-stamp--big">top secret</span></div>
+          <div class="rt-doc rt-doc--paper">
+            <p class="rt-paper__mast">the daily carousel</p>
+            <p class="rt-paper__head">the fiction, it's true.</p>
+            <div class="rt-doc__lines" aria-hidden="true"><i></i><i></i><i class="short"></i><i></i><i></i><i class="short"></i></div>
+          </div>
+          <ol class="rt-media-plan">
+            <li><b>agency logo</b><span>standby</span></li>
+            <li><b>case material</b><span>new mystery</span></li>
+            <li><b>archive file</b><span>characters + evidence</span></li>
+            <li><b>newspaper</b><span>the reveal</span></li>
+          </ol>
+        </div>
+        <p class="rt-quote rt-mono">dall·e style string: “vintage film noir style, black and white, criminal scene, dramatic lighting, high contrast, grainy texture, cinematic composition.”</p>
+      </article>
+
+      <!-- F -->
+      <article class="rt-sheet" role="tabpanel" id="rt-ex-f" aria-labelledby="rt-tab-f" tabindex="0" hidden>
+        <header class="rt-sheet__head rt-mono"><span>mad · file r-4000</span><span>exhibit f</span><span>debug log</span><span class="rt-stamp rt-stamp--sm">declassified</span></header>
+        <h3>what broke, and what fixed it.</h3>
+        <table class="rt-log">
+          <thead><tr><th scope="col">#</th><th scope="col">problem</th><th scope="col">fix</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td>Image prompts hit restricted words.</td><td>A filter strips sensitive terms before DALL·E sees them.</td></tr>
+            <tr><td>02</td><td>Case text overflowed the image prompt's word limit.</td><td>GPT-4o summarises the scene into a short image prompt.</td></tr>
+            <tr><td>03</td><td>The story lost track of itself.</td><td>A memory system sends the whole case history with every request.</td></tr>
+            <tr><td>04</td><td>Clues connected at random.</td><td>A linking system: rated 0–1, linked at ≥ 0.75, three per case.</td></tr>
+            <tr><td>05</td><td>Cases repeated the same narratives.</td><td>Each new mystery is told to avoid previous themes.</td></tr>
+            <tr><td>06</td><td>Players waited on image generation.</td><td>A loading animation and music cover the gap.</td></tr>
+            <tr><td>07</td><td>The tray drifted off the gate.</td><td>The Geneva drive indexes; the limit switch checks every turn.</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- G -->
+      <article class="rt-sheet" role="tabpanel" id="rt-ex-g" aria-labelledby="rt-tab-g" tabindex="0" hidden>
+        <header class="rt-sheet__head rt-mono"><span>mad · file r-4000</span><span>exhibit g</span><span>field test</span><span class="rt-stamp rt-stamp--sm">declassified</span></header>
+        <h3>23 agents played a full case.</h3>
+        <div class="rt-two">
+          <div><p class="rt-mono rt-label">what worked</p><ul class="rt-dash"><li>Familiar form: people played with almost no instruction.</li><li>The click and the moving slides built immersion and a strong sense of presence.</li><li>AI-written clues felt co-created. The machine felt “alive”.</li></ul></div>
+          <div><p class="rt-mono rt-label">what didn't</p><ul class="rt-dash"><li>Some expected each slide to show a fixed image, not a category. It clicked after the guide.</li><li>Image generation was slow, so loading animation and music were added.</li></ul></div>
+        </div>
+        <div class="rt-lessons">
+          <p class="rt-mono rt-label">lessons learned</p>
+          <ol><li>weirdness is a virtue.</li><li>implementation is worth as much as the idea.</li><li>build the minimum viable product first.</li></ol>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ specs -->
+<section class="rt-lab rt-specs" aria-labelledby="rt-specs-h">
+  <div class="rt-wrap">
+    <p class="rt-kicker"><span>11</span>specifications</p>
+    <h2 class="rt-h2" id="rt-specs-h">roulettective 4000.</h2>
+    <div class="rt-specs__grid">
+      <dl class="rt-spec">
+        <div><dt>type</dt><dd>AI detective game machine · large language object</dd></div>
+        <div><dt>controller</dt><dd>Arduino Pro Micro, as USB keyboard + Web Serial</dd></div>
+        <div><dt>reader</dt><dd>MFRC522 RFID, 13.56 MHz</dd></div>
+        <div><dt>drive</dt><dd>NEMA-17 stepper · Geneva mechanism · servo slide lift</dd></div>
+        <div><dt>homing</dt><dd>optical limit switch</dd></div>
+        <div><dt>controls</dt><dd>back · forward · reset</dd></div>
+        <div><dt>feedback</dt><dd>projected image · embedded speaker · indicator bulb</dd></div>
+        <div><dt>slides</dt><dd>30 RFID tokens: mystery, evidence, character, location, action, reveal, choice, instruction</dd></div>
+        <div><dt>language</dt><dd>GPT-4o: cases, clues, associations, theories</dd></div>
+        <div><dt>image</dt><dd>DALL·E 3: 1024 × 1024 film-noir stills</dd></div>
+        <div><dt>software</dt><dd>p5.js + Vite · <a href="https://github.com/Rabourackee/Roulettective" target="_blank" rel="noopener">github.com/Rabourackee/Roulettective</a></dd></div>
+        <div><dt>tested with</dt><dd>23 participants</dd></div>
+      </dl>
+      <div class="rt-credits">
+        <dl class="rt-spec">
+          <div><dt>year</dt><dd>2025</dd></div>
+          <div><dt>program</dt><dd>MIT 4.044 Interaction Intelligence</dd></div>
+          <div><dt>instructor</dt><dd>Marcelo Coelho</dd></div>
+          <div><dt>team</dt><dd>Yuhan Wang, Jianuo Xuan</dd></div>
+        </dl>
+        <ul class="rt-pubs">
+          <li><span class="rt-mono">neurips 2025 · creative ai track</span><b>Roulettective: Repurposing a Vintage Slide Projector into an AI-Driven Physical Detective Game.</b><span>Yuhan Wang and Jianuo Xuan.</span><a class="rt-mono" href="/files/121_Roulettective_Repurposing_.pdf">pdf ↗</a></li>
+          <li><span class="rt-mono">uist 2025 adjunct · busan</span><b>Roulettective: AI Re-invention of a Vintage Slide Projector as a Tangible Detective Game.</b><span>Yuhan Wang and Jianuo Xuan.</span><a class="rt-mono" href="/files/Roulettective-AI-Re-invention-of-a-Vintage-Slide-Projector-as-a-Tangible-Detective-Game.pdf">pdf ↗</a> <a class="rt-mono" href="https://doi.org/10.1145/3746058.3758375" target="_blank" rel="noopener">doi ↗</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />

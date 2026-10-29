@@ -65,13 +65,24 @@ These building blocks reproduce Cargo's layout tools:
 - `class="caption"`: the grey monospace text style.
 - `style="--font-scale: 2"`: makes text 2× its normal size.
 
+### Custom-designed pages
+
+A project can opt out of the standard layout and design its own sections edge to edge. Roulettective works this way: `src/projects/roulettective.html` with `src/assets/css/roulettective.css` and `src/assets/js/roulettective.js`. Its front matter adds:
+
+```yaml
+fullBleed: true                                  # no standard page frame; sections span the window
+bodyClass: "rt-page"
+styles: ["/assets/css/roulettective.css"]        # extra stylesheets for this page only
+scripts: ["/assets/js/roulettective.js"]         # extra scripts for this page only
+```
+
 ### Adding images
 
 ```sh
 python scripts/optimize_media.py ~/Desktop/photo.jpg src/media/roulettective/06
 ```
 
-This writes a web-sized WebP (or an MP4 loop if the source is an animated GIF) and prints the `<img>` tag to paste. It needs Pillow (`pip install pillow`), plus ffmpeg for GIFs.
+This writes a web-sized WebP (or an MP4 loop if the source is an animated GIF) and prints the `<img>` tag to paste. Add `--whiten` for product shots on a light studio backdrop: it pushes the backdrop to pure white, so on a light section with `mix-blend-mode: darken` the object sits directly on the page. It needs Pillow (`pip install pillow`), plus ffmpeg for GIFs.
 
 ## Deploying
 

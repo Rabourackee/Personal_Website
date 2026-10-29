@@ -25,11 +25,24 @@ def is_animated(path):
         return getattr(im, "is_animated", False) and im.n_frames > 1
 
 
-def to_webp(src, out_base, max_width=MAX_WIDTH, quality=QUALITY):
+def whiten(im, knee=170, white=212):
+    """Push a light studio backdrop to pure white, leaving darker tones as they are.
+
+    Values above `knee` are stretched so `white` and brighter become 255. Shown
+    with CSS `mix-blend-mode: darken` on a light section, the backdrop then
+    disappears into the page while the product and its soft shadow remain.
+    """
+    lut = [v if v <= knee else min(255, round(knee + (v - knee) * (255 - knee) / (white - knee))) for v in range(256)]
+    return im.point(lut * len(im.getbands()))
+
+
+def to_webp(src, out_base, max_width=MAX_WIDTH, quality=QUALITY, whiten_bg=False):
     """Save src as <out_base>.webp; returns (path, width, height)."""
     out = out_base + ".webp"
     with Image.open(src) as im:
         im = ImageOps.exif_transpose(im)
+        if whiten_bg:
+            im = whiten(im.convert("RGB"))
         has_alpha = im.mode in ("RGBA", "LA") or (im.mode == "P" and "transparency" in im.info)
         im = im.convert("RGBA" if has_alpha else "RGB")
         if im.width > max_width:
@@ -57,10 +70,10 @@ def to_mp4(src, out_base, max_width=1600):
     return out, w2, h2
 
 
-def optimize(src, out_base, max_width=MAX_WIDTH):
+def optimize(src, out_base, max_width=MAX_WIDTH, whiten_bg=False):
     if src.lower().endswith(".gif") and is_animated(src):
         return to_mp4(src, out_base, min(max_width, 1600))
-    return to_webp(src, out_base, max_width)
+    return to_webp(src, out_base, max_width, whiten_bg=whiten_bg)
 
 
 if __name__ == "__main__":
@@ -68,9 +81,10 @@ if __name__ == "__main__":
     ap.add_argument("src")
     ap.add_argument("out_base", help="output path without extension, e.g. src/media/my-project/05")
     ap.add_argument("--max-width", type=int, default=MAX_WIDTH)
+    ap.add_argument("--whiten", action="store_true", help="push a light studio backdrop to pure white")
     a = ap.parse_args()
     os.makedirs(os.path.dirname(a.out_base) or ".", exist_ok=True)
-    path, w, h = optimize(a.src, a.out_base, a.max_width)
+    path, w, h = optimize(a.src, a.out_base, a.max_width, whiten_bg=a.whiten)
     url = "/" + os.path.relpath(path, "src").replace(os.sep, "/")
     if path.endswith(".mp4"):
         print(f'<video class="media" src="{url}" width="{w}" height="{h}" autoplay loop muted playsinline></video>')

@@ -35,6 +35,9 @@
   <link rel="stylesheet" href="/assets/fonts/geist/wght-italic.css">
   <link rel="stylesheet" href="/assets/fonts/geist-mono/wght.css">
   <link rel="stylesheet" href="/assets/css/site.css">
+  {%- for href in styles %}
+  <link rel="stylesheet" href="{{ href }}">
+  {%- endfor %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
   <header class="page site-header">
@@ -50,11 +53,18 @@
     </div></div>
   </header>
 
+  {%- if fullBleed %}
+  {#- Custom-designed pages (e.g. Roulettective) lay out their own sections edge to edge. #}
+  <main class="full-bleed">
+{{ content | safe }}
+  </main>
+  {%- else %}
   <main class="page">
     <div class="page-layout"><div class="page-content bodycopy">
 {{ content | safe }}
     </div></div>
   </main>
+  {%- endif %}
 
   <footer class="page site-footer">
     <div class="page-layout"><div class="page-content bodycopy">
@@ -71,5 +81,8 @@
       </div>
     </div></div>
   </footer>
+  {%- for src in scripts %}
+  <script src="{{ src }}" defer></script>
+  {%- endfor %}
 </body>
 </html>
