@@ -260,12 +260,14 @@
 /* ---------------------------------------------------------------- hero */
 
 .ci > .ci-hero {
-  --w: min(92vw, 1240px); /* hero photo width */
+  --w: min(100vw, 1600px); /* hero photo width */
   padding: calc(5.5rem + 3vh) 0 clamp(48px, 8vh, 96px);
   overflow: hidden;
 }
 
 .ci-wordmark {
+  position: relative;
+  z-index: 2; /* above the photo's empty backdrop, which tucks underneath */
   display: grid;
   /* sized so the longer line, "across time.", spans the content width */
   font-size: clamp(40px, calc((min(100vw, 1360px) - 2 * var(--ci-gutter)) / 5.2), 280px);
@@ -288,14 +290,16 @@
   background: var(--ci-signal);
 }
 
-/* The objects start 10.3% of the photo's width below its top edge: only the
-   empty backdrop above them tucks under the wordmark. */
+/* The photo's backdrop was flat-fielded to the page grey, so it needs no
+   blending; the edges just fade out. The objects start 20.83% of the photo's
+   width below its top edge: only empty backdrop tucks under the wordmark. */
 .ci-hero__figure {
   width: var(--w);
-  margin: calc(var(--w) * -0.103 + max(1.5vw, 14px)) auto 0;
-  mix-blend-mode: darken;
+  margin: calc(var(--w) * -0.2083 + max(1.5vw, 14px)) auto 0;
   position: relative;
   z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 72%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 72%, transparent 100%);
 }
 
 .ci-hero__figure img {
@@ -307,7 +311,7 @@
   grid-template-columns: 1.3fr 1fr auto;
   align-items: end;
   gap: 2rem;
-  margin-top: calc(var(--w) * -0.11); /* up into the white below the objects */
+  margin-top: calc(var(--w) * -0.05); /* up into the floor below the table */
   position: relative;
   z-index: 2;
 }
@@ -440,16 +444,17 @@
 
 /* ---------------------------------------------------------------- the set */
 
+/* Flat-fielded to the page grey like the hero. The arms run off the sides, so
+   only the top and bottom fade. */
 .ci-set__photo {
-  width: min(94%, 1240px);
-  margin: 2rem auto -2rem;
-  mix-blend-mode: darken;
+  width: min(100vw, 1600px);
+  margin: 1rem auto 0;
 }
 
 .ci-set__photo img {
   width: 100%;
-  -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 52%, #000 66%, transparent 100%);
-  mask-image: radial-gradient(ellipse 72% 78% at 50% 52%, #000 66%, transparent 100%);
+  -webkit-mask-image: linear-gradient(transparent, #000 8%, #000 88%, transparent);
+  mask-image: linear-gradient(transparent, #000 8%, #000 88%, transparent);
 }
 
 .ci-set__list {
@@ -1197,6 +1202,7 @@
 }
 
 .ci-light__photo {
+  max-width: 340px;
   margin-top: 2.5rem;
 }
 
@@ -2222,6 +2228,10 @@
     gap: 1rem;
   }
 
+  .ci-light__photo {
+    display: none;
+  }
+
   .ci-protocol b {
     font-size: 0.7rem;
   }
@@ -2229,11 +2239,7 @@
 
 @media (max-width: 560px) {
   .ci > .ci-hero {
-    --w: 116vw;
-  }
-
-  .ci-hero__figure {
-    margin-left: -8vw;
+    --w: 100vw;
   }
 
   .ci-hero__creds li {
