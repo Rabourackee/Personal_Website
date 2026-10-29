@@ -49,6 +49,7 @@
 }
 
 .rt {
+  text-wrap: pretty; /* avoid a lone word on the last line of paragraphs */
   font-family: var(--rt-sans);
   font-size: 1.15rem;
   line-height: 1.45;
@@ -142,8 +143,10 @@
   opacity: 0.6;
 }
 
+/* One line where it fits; when a title must wrap, the lines are balanced
+   so no word is left on its own. */
 .rt-h2 {
-  max-width: 18ch;
+  text-wrap: balance;
   font-size: clamp(30px, 4.6vw, 76px);
   font-weight: 520;
   line-height: 1;
