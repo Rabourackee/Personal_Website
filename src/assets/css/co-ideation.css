@@ -260,7 +260,7 @@
 /* ---------------------------------------------------------------- hero */
 
 .ci > .ci-hero {
-  --w: min(100vw, 1600px); /* hero photo width */
+  --w: 100vw; /* hero photo width: edge to edge */
   padding: calc(5.5rem + 3vh) 0 clamp(48px, 8vh, 96px);
   overflow: hidden;
 }
@@ -290,16 +290,18 @@
   background: var(--ci-signal);
 }
 
-/* The photo's backdrop was flat-fielded to the page grey, so it needs no
-   blending; the edges just fade out. The objects start 20.83% of the photo's
-   width below its top edge: only empty backdrop tucks under the wordmark. */
+/* Edge to edge, so there are no side edges to see. The backdrop was
+   flat-fielded to the page grey, and the top and bottom fade into the page.
+   The objects start 20.83% of the photo's width below its top edge (a
+   percentage margin is relative to the section's width, the photo's width),
+   so only empty backdrop tucks under the wordmark. */
 .ci-hero__figure {
-  width: var(--w);
-  margin: calc(var(--w) * -0.2083 + max(1.5vw, 14px)) auto 0;
+  width: 100%;
+  margin: calc(-20.83% + max(1.5vw, 14px)) 0 0;
   position: relative;
   z-index: 1;
-  -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 72%, transparent 100%);
-  mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 72%, transparent 100%);
+  -webkit-mask-image: linear-gradient(transparent, #000 16%, #000 90%, transparent);
+  mask-image: linear-gradient(transparent, #000 16%, #000 90%, transparent);
 }
 
 .ci-hero__figure img {
@@ -444,11 +446,11 @@
 
 /* ---------------------------------------------------------------- the set */
 
-/* Flat-fielded to the page grey like the hero. The arms run off the sides, so
-   only the top and bottom fade. */
+/* Edge to edge and flat-fielded to the page grey like the hero; the arms run
+   off the sides of the screen, and only the top and bottom fade. */
 .ci-set__photo {
-  width: min(100vw, 1600px);
-  margin: 1rem auto 0;
+  width: 100%;
+  margin: 1rem 0 0;
 }
 
 .ci-set__photo img {
