@@ -8,46 +8,408 @@ featured: 4
 summary: "An AI-powered mechanical duck that listens to your code — then fixes it, pecking at the keyboard."
 highlight: "Anthropic Prize Winner · MIT AI Hardware Hackathon 2026"
 hero: "/media/rubber-ducky/hero.webp"
+description: "Rubber Ducky: an AI-powered mechanical duck that listens to your code and pecks the fix onto the keyboard. Anthropic Prize Winner, HARD MODE 2026 MIT AI Hardware Hackathon."
+fullBleed: true
+bodyClass: "rd-page"
+styles: ["/assets/css/rubber-ducky.css"]
+scripts: ["/assets/js/rubber-ducky.js"]
 ---
+<!--
+  Custom product page. Styles: src/assets/css/rubber-ducky.css
+  Interactive parts (peck simulator, IK model, system loop, counters):
+  src/assets/js/rubber-ducky.js. Everything reads fine without JavaScript.
+-->
+<div class="rd">
 
-<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4">Rubber Ducky<span class="caption"><br />
-Time</span><span class="caption">2026<br />
-<br /></span><span class="caption">Program<br />
-<span style="color: rgba(255, 255, 255, 0.82);"></span>MIT Media Lab Tangible Media Group<br />
-<br />
+<!-- ============================================================ hero -->
+<section class="rd-hero rd-lab" aria-labelledby="rd-title">
+  <div class="rd-wrap">
+    <h1 class="rd-wordmark" id="rd-title"><span class="rd-wordmark__word">rubber ducky</span><span class="rd-sticker" aria-label="model 86"><small>no.</small>86</span></h1>
+    <div class="rd-hero__grid">
+      <figure class="rd-win rd-hero__shot">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>SPECIMEN_001.IMG</span><span class="rd-win__meta">quack.exe running</span></figcaption>
+        <img src="/media/rubber-ducky/rd-photo.webp" width="2000" height="1334" alt="A yellow rubber duck on a blue base, its head mounted on a 3D-printed four-bar neck, poised over a white mechanical keyboard" fetchpriority="high" decoding="async">
+      </figure>
+      <div class="rd-hero__info">
+        <p class="rd-hero__lede">an ai-powered mechanical duck that listens to your code, then pecks the fix onto the keyboard.</p>
+        <dl class="rd-facts">
+          <div><dt>program</dt><dd>MIT Media Lab · Tangible Media Group</dd></div>
+          <div><dt>team</dt><dd>Q. Kuang · Y. Wang · L. Huang · K. Zhang · H. Tang</dd></div>
+          <div><dt>prize</dt><dd>HARD MODE 2026, MIT AI Hardware Hackathon: <b>Anthropic Prize Winner</b></dd></div>
+          <div><dt>year</dt><dd>A.D. 2026</dd></div>
+        </dl>
+        <div class="rd-hero__cta">
+          <a class="rd-btn rd-btn--yellow" href="#peck">make it peck <span aria-hidden="true">↓</span></a>
+          <a class="rd-btn" href="#field">watch the duck <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rd-ticker" aria-hidden="true">
+    <div class="rd-ticker__track">
+      <span>★ rubber ducky 86</span><span>quack :: quack :: quack</span><span>mit media lab · tangible media</span><span>anthropic prize winner</span><span>hard mode / a.d. 2026</span><span>vibe coding irl</span>
+      <span>★ rubber ducky 86</span><span>quack :: quack :: quack</span><span>mit media lab · tangible media</span><span>anthropic prize winner</span><span>hard mode / a.d. 2026</span><span>vibe coding irl</span>
+    </div>
+  </div>
+</section>
 
-Team:<br />
-Lingdong Huang, Haoheng Tang, Kai Zhang
+<!-- ============================================================ briefing -->
+<section class="rd-crt rd-brief" aria-labelledby="rd-brief-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>01</span>mission briefing</p>
+    <div class="rd-win rd-win--crt">
+      <div class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>ABOUT.TXT</span><span class="rd-win__meta">42 lines · 1.4 kb</span></div>
+      <div class="rd-win__body rd-brief__body">
+        <h2 class="rd-statement" id="rd-brief-h">programmers talk to rubber ducks to reason about code. <mark>this one listens</mark>, and then fixes your code itself, pecking at the keyboard with its oversized bill.</h2>
+        <div class="rd-brief__cols">
+          <div>
+            <p class="rd-prompt">&gt; hypothesis</p>
+            <p>We built it to stress-test LLMs in the physical world. The bill can't hit single keys precisely, so the duck constantly makes and corrects errors while replanning its movements. We gave it a grumpy personality: it quacks, complains, and begrudgingly types through its Sisyphean task.</p>
+          </div>
+          <div>
+            <p class="rd-prompt">&gt; question</p>
+            <p>It pulls “vibe coding” into the physical world, and asks: if humans can continuously adapt, re-plan and correct their actions in real time, can AI do the same?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</span><br />Prize<br />HARD MODE 2026<br />
-MIT AI Hardware Hackathon<br />
-Anthropic Prize Winner
+<!-- ============================================================ simulator -->
+<section class="rd-lab rd-play" id="peck" aria-labelledby="rd-peck-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>02</span>peck simulator</p>
+    <h2 class="rd-h2" id="rd-peck-h">it misses. that's the point.</h2>
+    <p class="rd-sub">A working model of the duck's motion: the same three servos, the same circle-intersection kinematics, the same clumsy bill. Give it something to type and watch it aim, miss, complain, backspace, and slowly get better as the camera calibrates its aim.</p>
 
-</div><div class="column-unit" style="--span: 8">
+    <div class="rd-sim">
+      <figure class="rd-win rd-sim__top">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>KEYBOARD.TOP</span><span class="rd-win__meta">top view · click a key to peck it</span></figcaption>
+        <svg class="rd-kb" viewBox="-0.6 -0.9 16.2 10.6" role="img" aria-label="Top view of the keyboard with the duck in front of it"></svg>
+      </figure>
+      <figure class="rd-win rd-sim__side">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>NECK.SIDE</span><span class="rd-win__meta">ik · circle intersection</span></figcaption>
+        <svg class="rd-neck" viewBox="-2.6 -12.4 14.8 13.4" aria-hidden="true"></svg>
+        <dl class="rd-servos">
+          <div><dt>base</dt><dd data-servo="base">0°</dd></div>
+          <div><dt>left</dt><dd data-servo="left">0°</dd></div>
+          <div><dt>right</dt><dd data-servo="right">0°</dd></div>
+        </dl>
+      </figure>
+      <div class="rd-win rd-win--crt rd-sim__term">
+        <div class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>QUACK.EXE</span><span class="rd-win__meta">editor + log</span></div>
+        <div class="rd-win__body">
+          <p class="rd-term__buf" aria-live="polite"><span class="rd-term__ps">~/duck $</span> <span class="rd-term__text"></span><span class="rd-term__caret"></span></p>
+          <ol class="rd-term__log" aria-live="polite"><li class="sys">duck&gt; ready. what do you want typed. quack.</li></ol>
+        </div>
+      </div>
+      <div class="rd-sim__ctl">
+        <label class="rd-field"><span>type this</span><input type="text" value="fix the bug" maxlength="22" spellcheck="false" autocomplete="off"></label>
+        <div class="rd-chips" aria-label="presets">
+          <button type="button" data-preset="fix the bug">fix the bug</button>
+          <button type="button" data-preset="hello world">hello world</button>
+          <button type="button" data-preset="import duck">import duck</button>
+          <button type="button" data-preset="vibe coding irl">vibe coding irl</button>
+        </div>
+        <div class="rd-sim__buttons">
+          <button type="button" class="rd-btn rd-btn--yellow" data-sim="run">peck it ▶</button>
+          <button type="button" class="rd-btn" data-sim="stop" disabled>stop ■</button>
+        </div>
+        <div class="rd-toggles">
+          <label><input type="checkbox" data-sim="calibrate" checked><span>camera calibration</span></label>
+          <label><input type="checkbox" data-sim="fast"><span>3× speed</span></label>
+          <label><input type="checkbox" data-sim="sound"><span>quacks (sound)</span></label>
+        </div>
+        <dl class="rd-stats">
+          <div><dt>pecks</dt><dd data-stat="pecks">0</dd></div>
+          <div><dt>misses</dt><dd data-stat="misses">0</dd></div>
+          <div><dt>fixes</dt><dd data-stat="fixes">0</dd></div>
+          <div><dt>accuracy</dt><dd data-stat="acc">–</dd></div>
+          <div class="wide"><dt>aim offset</dt><dd data-stat="offset">8.2 mm</dd></div>
+        </dl>
+      </div>
+    </div>
+    <p class="rd-note rd-mono">model, not footage: miss rates and offsets are simulated. Keys are drawn at the standard 19 mm pitch.</p>
+  </div>
+</section>
 
-Programmers talk to rubber ducks to reason about code. Our AI-powered mechanical duck listens—and then fixes your code itself, pecking at the keyboard with its oversized bill.<br />
+<!-- ============================================================ kinematics -->
+<section class="rd-lab rd-lab--2 rd-ik" aria-labelledby="rd-ik-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>03</span>kinematics</p>
+    <h2 class="rd-h2" id="rd-ik-h">two circles, one neck.</h2>
+    <p class="rd-sub">The neck is a four-bar linkage with two degrees of freedom, extension and pecking, driven by two servos. To put the bill on a key, the microcontroller solves inverse kinematics with a compact circle-intersection method. Drag the yellow target.</p>
+    <div class="rd-ik__grid">
+      <div class="rd-win rd-ik__fig">
+        <div class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>IK_SOLVER.SIM</span><span class="rd-win__meta">drag the target</span></div>
+        <svg class="rd-iksvg" viewBox="-3.2 -9.4 17 12.4" role="img" aria-label="Interactive inverse kinematics diagram: two links meet where a circle around the shoulder crosses a circle around the target"></svg>
+      </div>
+      <div class="rd-ik__side">
+        <ol class="rd-ik__steps">
+          <li><b>the shoulder circle.</b>The upper arm pivots at the shoulder, so the elbow must sit somewhere on a circle of radius L₁ around it.</li>
+          <li><b>the target circle.</b>The forearm has to end at the target, so the elbow must also sit on a circle of radius L₂ around the target.</li>
+          <li><b>where they cross.</b>The two circles meet at two points. Each is a valid elbow, and each is a different pose.</li>
+          <li><b>never flip.</b>Always keep the upper one. The neck never jumps between solutions, so motion stays stable, and the maths is light enough to run on the microcontroller.</li>
+        </ol>
+        <dl class="rd-readout">
+          <div><dt>reach</dt><dd data-ik="d">–</dd></div>
+          <div><dt>left servo</dt><dd data-ik="t1">–</dd></div>
+          <div><dt>right servo</dt><dd data-ik="t2">–</dd></div>
+          <div><dt>solutions</dt><dd data-ik="n">2 · keep upper</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
 
-<br />
-We built it to stress-test LLMs in the physical world. Because the bill can’t hit single keys precisely, the duck constantly makes and corrects errors while replanning its movements. We gave it a grumpy personality—it quacks, complains, and begrudgingly types through its Sisyphean task.<br />
+<!-- ============================================================ hardware -->
+<section class="rd-lab rd-hw" aria-labelledby="rd-hw-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>04</span>hardware</p>
+    <h2 class="rd-h2" id="rd-hw-h">three servos and a bill.</h2>
+    <p class="rd-sub">One servo in the base swings the whole neck across the keyboard. Two more drive the four-bar neck: one reaches, one pecks. Everything else is 3D-printed, in several colours.</p>
+    <div class="rd-hw__grid">
+      <figure class="rd-win rd-hw__fig">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>DWG_RD-01</span><span class="rd-win__meta">exploded view</span></figcaption>
+        <div class="rd-hw__drawing"><div class="rd-hw__inner">
+          <img src="/media/rubber-ducky/rd-exploded.webp" width="1057" height="1531" alt="Exploded line drawing of the duck's mechanism, from the head frame at the top down to the base servo" loading="lazy" decoding="async">
+          <button type="button" class="rd-hot" style="--x: 40.1%; --y: 3%" data-part="1" aria-label="1: head frame">1</button>
+          <button type="button" class="rd-hot" style="--x: 54.4%; --y: 10.5%" data-part="2" aria-label="2: four-bar linkage">2</button>
+          <button type="button" class="rd-hot" style="--x: 47.1%; --y: 17.9%" data-part="3" aria-label="3: left and right servos">3</button>
+          <button type="button" class="rd-hot" style="--x: 68.1%; --y: 46.2%" data-part="4" aria-label="4: custom connectors">4</button>
+          <button type="button" class="rd-hot" style="--x: 68.3%; --y: 59.3%" data-part="5" aria-label="5: stop pin and gear">5</button>
+          <button type="button" class="rd-hot" style="--x: 61.7%; --y: 76%" data-part="6" aria-label="6: ball bearings">6</button>
+          <button type="button" class="rd-hot" style="--x: 61.9%; --y: 90.1%" data-part="7" aria-label="7: base and base servo">7</button>
+        </div></div>
+      </figure>
+      <div class="rd-hw__side">
+        <ol class="rd-parts">
+          <li data-part="1"><b>head frame</b><span>Carries the duck's head and its oversized bill, the part that actually strikes the keys.</span></li>
+          <li data-part="2"><b>4-bar linkage</b><span>Turns two servo rotations into the neck's two motions: extension and pecking.</span></li>
+          <li data-part="3"><b>left + right servos</b><span>The neck's two drivers, mounted side by side at the foot of the linkage.</span></li>
+          <li data-part="4"><b>custom connectors</b><span>Printed brackets that lock the neck assembly onto the turntable.</span></li>
+          <li data-part="5"><b>stop pin + gear</b><span>The gear carries the base servo's rotation up to the neck; the stop pin keeps the swing within range.</span></li>
+          <li data-part="6"><b>ball bearings</b><span>A ring of bearings lets the turntable spin smoothly under the weight of the neck.</span></li>
+          <li data-part="7"><b>base + base servo</b><span>Swings the whole neck left and right across the keyboard.</span></li>
+        </ol>
+        <dl class="rd-dof">
+          <div><dt>yaw</dt><dd>base servo</dd></div>
+          <div><dt>reach</dt><dd>four-bar neck</dd></div>
+          <div><dt>peck</dt><dd>four-bar neck</dd></div>
+        </dl>
+        <p class="rd-note">Multi-colour printing with kind help from Richard Zhang.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<br />
-This project pulls “vibe coding” into the physical world, asking: if humans can continuously adapt, re-plan, and correct actions in real time, can AI do the same?<br />
+<!-- ============================================================ system loop -->
+<section class="rd-crt rd-loop" aria-labelledby="rd-loop-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>05</span>system</p>
+    <h2 class="rd-h2" id="rd-loop-h">a duck with a master mind.</h2>
+    <p class="rd-sub">Mechanics, audio, sensing and AI run as separate modules that talk over HTTP. A central server hands out tasks and the modules report back. Claude is the master mind, and the loop only closes when the code on screen is right.</p>
+    <div class="rd-loop__diagram">
+      <svg viewBox="0 0 1200 590" role="img" aria-labelledby="rd-loop-t">
+        <title id="rd-loop-t">System loop: you talk to a text editor; the main server passes your prompt and the text diff to Claude, which returns a tool path, intended keys and quips; ElevenLabs voices the quips; the duck firmware drives the servos and four-bar neck so the bill pecks the keyboard; an ESP32 camera and Gemini check where the bill landed and suggest a calibration; the keystrokes land back in the editor.</title>
+        <defs>
+          <marker id="rd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 z"/></marker>
+        </defs>
+        <g class="rd-edges">
+          <path data-e="you" d="M600 68 V104" marker-end="url(#rd-arrow)"/>
+          <path data-e="ed-srv" d="M600 168 V232" marker-end="url(#rd-arrow)"/>
+          <path data-e="srv-cl" d="M470 252 H340" marker-end="url(#rd-arrow)"/>
+          <path data-e="cl-srv" d="M340 290 H470" marker-end="url(#rd-arrow)"/>
+          <path data-e="srv-voice" d="M600 308 V380" marker-end="url(#rd-arrow)"/>
+          <path data-e="srv-fw" d="M730 250 H765 V136 H800" marker-start="url(#rd-arrow)" marker-end="url(#rd-arrow)"/>
+          <path data-e="fw-base" d="M970 132 H990 V52 H1010" marker-end="url(#rd-arrow)"/>
+          <path data-e="fw-lr" d="M970 132 H1010" marker-end="url(#rd-arrow)"/>
+          <path data-e="lr-link" d="M1095 164 V196" marker-end="url(#rd-arrow)"/>
+          <path data-e="link-head" d="M1095 248 V290" marker-end="url(#rd-arrow)"/>
+          <path data-e="base-head" d="M1180 52 H1194 V320 H1180" marker-end="url(#rd-arrow)"/>
+          <path data-e="head-keys" d="M1095 350 V420" marker-end="url(#rd-arrow)"/>
+          <path data-e="srv-cam" d="M730 290 H760 V328 H780" marker-end="url(#rd-arrow)"/>
+          <path data-e="cam-head" d="M960 320 H1010" marker-end="url(#rd-arrow)"/>
+          <path data-e="cam-gem" d="M870 356 V390" marker-end="url(#rd-arrow)"/>
+          <path data-e="gem-srv" d="M780 422 H748 V300 H730" marker-end="url(#rd-arrow)"/>
+          <path data-e="loop" d="M1095 476 V556 H440 V136 H470" marker-end="url(#rd-arrow)"/>
+        </g>
+        <g class="rd-edge-labels">
+          <text x="612" y="205">spoken prompt · diff</text>
+          <text x="405" y="243" text-anchor="middle">prompt · diff</text>
+          <text x="405" y="309" text-anchor="middle">tool path · quips</text>
+          <text x="612" y="349">quips + quacks</text>
+          <text x="772" y="96">tool path / ok</text>
+          <text x="1107" y="390">peck</text>
+          <text x="985" y="311" text-anchor="middle">watches</text>
+          <text x="756" y="470" text-anchor="middle">calibration</text>
+          <text x="770" y="548" text-anchor="middle">keystrokes land in the editor</text>
+        </g>
+        <g class="rd-nodes">
+          <g data-node="you"><rect x="500" y="16" width="200" height="52"/><text x="516" y="40">you</text><text class="s" x="516" y="58">talking through the bug</text></g>
+          <g data-node="editor"><rect x="470" y="104" width="260" height="64"/><text x="486" y="130">text editor</text><text class="s" x="486" y="152">with speech-to-text</text></g>
+          <g data-node="server" class="is-core"><rect x="470" y="232" width="260" height="76"/><text x="486" y="262">main server</text><text class="s" x="486" y="286">the bridge</text></g>
+          <g data-node="claude" class="is-core is-big"><rect x="40" y="210" width="300" height="120"/><text class="l" x="60" y="262">claude</text><text class="s" x="60" y="292">the master mind</text></g>
+          <g data-node="voice"><rect x="470" y="380" width="260" height="64"/><text x="486" y="406">elevenlabs</text><text class="s" x="486" y="428">the duck's voice</text></g>
+          <g data-node="firmware"><rect x="800" y="104" width="170" height="64"/><text x="814" y="130">duck firmware</text><text class="s" x="814" y="152">runs the tool path</text></g>
+          <g data-node="base"><rect x="1010" y="30" width="170" height="44"/><text x="1024" y="57">base servo</text></g>
+          <g data-node="lr"><rect x="1010" y="100" width="170" height="64"/><text x="1024" y="126">left + right servos</text><text class="s" x="1024" y="148">reach + peck</text></g>
+          <g data-node="link"><rect x="1010" y="196" width="170" height="52"/><text x="1024" y="227">4-bar linkage</text></g>
+          <g data-node="head"><rect x="1010" y="290" width="170" height="60"/><text x="1024" y="316">duck head</text><text class="s" x="1024" y="337">the bill</text></g>
+          <g data-node="keys"><rect x="1010" y="420" width="170" height="56"/><text x="1024" y="453">keyboard</text></g>
+          <g data-node="cam"><rect x="780" y="300" width="180" height="56"/><text x="794" y="333">esp32 camera</text></g>
+          <g data-node="gem"><rect x="780" y="390" width="180" height="64"/><text x="794" y="416">gemini</text><text class="s" x="794" y="438">image analysis</text></g>
+        </g>
+      </svg>
+    </div>
+    <div class="rd-loop__steps">
+      <div class="rd-loop__ctl">
+        <button type="button" class="rd-btn rd-btn--crt" data-loop="prev" aria-label="Previous step">◀</button>
+        <button type="button" class="rd-btn rd-btn--crt" data-loop="play" aria-label="Pause the walkthrough">❚❚</button>
+        <button type="button" class="rd-btn rd-btn--crt" data-loop="next" aria-label="Next step">▶</button>
+        <span class="rd-loop__count rd-mono">01 / 08</span>
+      </div>
+      <ol class="rd-loop__list">
+        <li data-nodes="you editor" data-edges="you">You talk through the bug. The editor turns your voice into a prompt.</li>
+        <li data-nodes="editor server" data-edges="ed-srv">The spoken prompt and the current text diff go to the main server: the bridge.</li>
+        <li data-nodes="server claude" data-edges="srv-cl">Claude, the master mind, reads the prompt, the diff and any calibration advice.</li>
+        <li data-nodes="claude server" data-edges="cl-srv">It answers with a tool path, the keys it means to hit, and a few quips and quacks.</li>
+        <li data-nodes="server voice" data-edges="srv-voice">ElevenLabs turns the quips into the duck's grumpy voice.</li>
+        <li data-nodes="server firmware base lr link head keys" data-edges="srv-fw fw-base fw-lr lr-link link-head base-head head-keys">The firmware runs the tool path. The base swings, the neck reaches, the bill pecks.</li>
+        <li data-nodes="server cam gem head" data-edges="srv-cam cam-head cam-gem gem-srv">An ESP32 camera watches the bill. Gemini compares where it landed with the keys it meant to hit, and suggests a calibration.</li>
+        <li data-nodes="keys editor" data-edges="loop">The keystrokes land in the editor. The new diff goes back to Claude, and the loop runs again until the code is right.</li>
+      </ol>
+    </div>
+  </div>
+</section>
 
-<br />
-Mechanically, the duck’s neck uses a four-bar linkage with two degrees of freedom—extension and pecking—driven by two servos. To cover the keyboard, we optimized servo ranges through simulation and solved inverse kinematics using a compact circle-intersection method, ensuring stable, non-flipping motion. The result is a dexterous neck controlled entirely on a microcontroller.<br />
+<!-- ============================================================ viral + reels -->
+<section class="rd-crt rd-crt--2 rd-viral" id="field" aria-labelledby="rd-field-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>06</span>transmission log</p>
+    <h2 class="rd-h2" id="rd-field-h">the duck went viral.</h2>
+    <p class="rd-sub">Within days of posting, clips of Rubber Ducky pecking through code spread across YouTube, Instagram and X, and were picked up by tech, design and AI communities.</p>
+    <dl class="rd-counters">
+      <div><dt>views</dt><dd data-count="280">280<small>K+</small></dd></div>
+      <div><dt>likes</dt><dd data-count="10">10<small>K+</small></dd></div>
+      <div><dt>trending channels</dt><dd data-count="3" data-pad="2">03</dd></div>
+    </dl>
+    <div class="rd-reels">
+      <figure class="rd-win rd-win--crt">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>REEL_01.YT</span><span class="rd-win__meta">9:16</span></figcaption>
+        <div class="rd-reel"><iframe src="https://www.youtube-nocookie.com/embed/09ZuUp--xF8?rel=0&amp;playsinline=1" title="Rubber Ducky on YouTube" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        <p class="rd-reel__cap rd-mono">&gt; the film.</p>
+      </figure>
+      <figure class="rd-win rd-win--crt">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>REEL_02.IG</span><span class="rd-win__meta">9:16</span></figcaption>
+        <div class="rd-reel rd-reel--ig"><iframe src="https://www.instagram.com/reel/DWQJ0RcAP2_/embed" title="Instagram reel: the duck meets its keyboard" loading="lazy" scrolling="no"></iframe></div>
+        <p class="rd-reel__cap rd-mono">&gt; the duck meets its keyboard for the first time.</p>
+      </figure>
+      <figure class="rd-win rd-win--crt">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>REEL_03.IG</span><span class="rd-win__meta">9:16</span></figcaption>
+        <div class="rd-reel rd-reel--ig"><iframe src="https://www.instagram.com/reel/DWWe9WEjuEI/embed" title="Instagram reel: pecking through a stubborn bug" loading="lazy" scrolling="no"></iframe></div>
+        <p class="rd-reel__cap rd-mono">&gt; pecking through a stubborn bug, complaining the whole time.</p>
+      </figure>
+    </div>
+  </div>
+</section>
 
-<br />
-On the software side, we coordinated multiple components (mechanics, audio, sensing, AI) through an HTTP-based system: a central server assigns tasks, and distributed modules execute and report back—bringing the duck to life as a quacking, pecking, collaborative machine.<br />
+<!-- ============================================================ build log -->
+<section class="rd-lab rd-build" aria-labelledby="rd-build-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>07</span>build log</p>
+    <h2 class="rd-h2" id="rd-build-h">from bench to bill.</h2>
+    <ol class="rd-photos">
+      <li><figure class="rd-win"><figcaption class="rd-win__bar"><span>IMG_01</span></figcaption><img src="/media/rubber-ducky/process-1.webp" width="416" height="555" alt="The first assembled duck pecking at a white keyboard" loading="lazy" decoding="async"></figure><p><b>first pecks.</b>The neck meets a real keyboard.</p></li>
+      <li><figure class="rd-win"><figcaption class="rd-win__bar"><span>IMG_02</span></figcaption><img src="/media/rubber-ducky/process-2.webp" width="416" height="555" alt="A printed base gearbox held in front of its CAD model on a laptop" loading="lazy" decoding="async"></figure><p><b>the geared base.</b>From CAD to print.</p></li>
+      <li><figure class="rd-win"><figcaption class="rd-win__bar"><span>IMG_03</span></figcaption><img src="/media/rubber-ducky/process-3.webp" width="416" height="555" alt="A laptop running a simulation of the neck's motion" loading="lazy" decoding="async"></figure><p><b>simulation.</b>Servo ranges tuned in software first.</p></li>
+      <li><figure class="rd-win"><figcaption class="rd-win__bar"><span>IMG_04</span></figcaption><img src="/media/rubber-ducky/process-4.webp" width="416" height="555" alt="Measuring the duck's neck with a steel ruler" loading="lazy" decoding="async"></figure><p><b>measuring reach.</b>The neck against a ruler.</p></li>
+      <li><figure class="rd-win"><figcaption class="rd-win__bar"><span>IMG_05</span></figcaption><img src="/media/rubber-ducky/process-5.webp" width="417" height="555" alt="A blue multi-colour 3D print of the duck's wave-patterned base on the printer bed" loading="lazy" decoding="async"></figure><p><b>multi-colour print.</b>The wave base, layer by layer.</p></li>
+    </ol>
+    <ol class="rd-notes">
+      <li><b>make the error the point.</b><span>A bill can't hit single keys precisely. Instead of hiding that, the duck lives in constant correction. That's the experiment.</span></li>
+      <li><b>give it a personality.</b><span>Grumpy quips turn every miss into something you watch, not something you wait for.</span></li>
+      <li><b>close the loop with eyes.</b><span>The editor's text diff says what went wrong; the camera says where the bill actually landed.</span></li>
+      <li><b>keep the brain off the duck.</b><span>A central server dispatches tasks to separate modules over HTTP, so each part can fail, retry and report on its own.</span></li>
+      <li><b>solve it on the chip.</b><span>Simulated servo ranges plus a compact IK keep every peck stable and computable on a microcontroller.</span></li>
+    </ol>
+  </div>
+</section>
 
-<br />
+<!-- ============================================================ crew + studio -->
+<section class="rd-crt rd-crew" aria-labelledby="rd-crew-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>08</span>crew manifest</p>
+    <h2 class="rd-h2" id="rd-crew-h">the humans behind the duck.</h2>
+    <p class="rd-sub">Five designers, makers and engineers from the MIT Media Lab and Harvard GSD.</p>
+    <ul class="rd-ids">
+      <li class="rd-id"><span class="rd-id__no rd-mono">crew_01.id</span><span class="rd-id__mono" aria-hidden="true">QK</span><b>Quincy Kuang</b><span class="rd-id__role">hardware + business</span><span class="rd-id__links"><a href="https://www.quincykuang.com/" target="_blank" rel="noopener">portfolio ↗</a><a href="https://www.linkedin.com/in/quincy-kuang-5bb03b139/" target="_blank" rel="noopener">linkedin ↗</a></span></li>
+      <li class="rd-id is-me"><span class="rd-id__no rd-mono">crew_02.id</span><span class="rd-id__mono" aria-hidden="true">YW</span><b>Yuhan Wang</b><span class="rd-id__role">hardware design + research</span><span class="rd-id__links"><a href="https://www.linkedin.com/in/yuhan-wang-095874264/" target="_blank" rel="noopener">linkedin ↗</a><span class="rd-id__here">you are here</span></span></li>
+      <li class="rd-id"><span class="rd-id__no rd-mono">crew_03.id</span><span class="rd-id__mono" aria-hidden="true">LH</span><b>Lingdong Huang</b><span class="rd-id__role">software development</span><span class="rd-id__links"><a href="https://lingdong.works/" target="_blank" rel="noopener">portfolio ↗</a></span></li>
+      <li class="rd-id"><span class="rd-id__no rd-mono">crew_04.id</span><span class="rd-id__mono" aria-hidden="true">KZ</span><b>Kai Zhang</b><span class="rd-id__role">design · branding · graphics</span><span class="rd-id__links"><a href="https://kaizhang.io/work" target="_blank" rel="noopener">portfolio ↗</a><a href="https://www.linkedin.com/in/kai-zhang-653411223/" target="_blank" rel="noopener">linkedin ↗</a></span></li>
+      <li class="rd-id"><span class="rd-id__no rd-mono">crew_05.id</span><span class="rd-id__mono" aria-hidden="true">HT</span><b>Haoheng Tang</b><span class="rd-id__role">ai applications</span><span class="rd-id__links"><a href="https://haohengt.com/" target="_blank" rel="noopener">portfolio ↗</a><a href="https://www.linkedin.com/in/haoheng-tang-38b4131a3/" target="_blank" rel="noopener">linkedin ↗</a></span></li>
+    </ul>
 
-</div></div><br />
-<br />
-<br />
+    <div class="rd-studio">
+      <div class="rd-studio__badge">
+        <svg viewBox="0 0 420 180" role="img" aria-label="Tangible Interface">
+          <rect x="62" y="12" width="34" height="34"/>
+          <rect x="10" y="64" width="138" height="34"/>
+          <rect x="62" y="64" width="34" height="104"/>
+          <text x="172" y="86">tangible</text>
+          <text x="172" y="150">interface</text>
+        </svg>
+      </div>
+      <div class="rd-studio__copy">
+        <p class="rd-kicker rd-kicker--inline"><span>09</span>origin studio</p>
+        <h3>we design the future of ai hardware.</h3>
+        <p>Tangible Interface is a research and design studio building a new generation of physical objects in which artificial intelligence can think, move and live. Rubber Ducky is its first transmission, and more AI hardware experiments are already on the bench.</p>
+        <ul class="rd-studio__list rd-mono">
+          <li>tangible objects + ai behaviour</li>
+          <li>hardware research × industrial design</li>
+          <li>boston, ma</li>
+        </ul>
+        <a class="rd-btn rd-btn--yellow" href="https://www.instagram.com/tangible_interface" target="_blank" rel="noopener">follow @tangible_interface ↗</a>
+      </div>
+      <figure class="rd-win rd-win--crt rd-studio__shot">
+        <figcaption class="rd-win__bar"><span class="rd-win__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>SPECIMEN_002.IMG</span><span class="rd-win__meta">rubber ducky 86</span></figcaption>
+        <img src="/media/rubber-ducky/rd-render.webp" width="1024" height="571" alt="Rubber Ducky 86: the duck on a beige desktop base with a small screen and a ring of keys" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </div>
+</section>
 
-<div style="text-align: center"><iframe class="media embed" src="https://www.youtube-nocookie.com/embed/09ZuUp--xF8?rel=0&playsinline=1" style="aspect-ratio: 113 / 200; width: 34.8%;" title="Rubber Ducky" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><br />
-<br />
-<br />
-<br />
-<br />
-<img class="media" src="/media/rubber-ducky/01.webp" width="2000" height="1122" alt="Rubber Ducky" loading="lazy" decoding="async">
+<!-- ============================================================ specs -->
+<section class="rd-lab rd-specs" aria-labelledby="rd-specs-h">
+  <div class="rd-wrap">
+    <p class="rd-kicker"><span>10</span>specifications</p>
+    <h2 class="rd-h2" id="rd-specs-h">rubber ducky 86.</h2>
+    <div class="rd-specs__grid">
+      <dl class="rd-spec">
+        <div><dt>type</dt><dd>AI-powered mechanical rubber duck</dd></div>
+        <div><dt>motion</dt><dd>3 servos: base yaw on a geared, ball-bearing turntable; left + right servos on a four-bar neck (reach, peck)</dd></div>
+        <div><dt>kinematics</dt><dd>inverse kinematics on the microcontroller, circle-intersection method, non-flipping</dd></div>
+        <div><dt>mind</dt><dd>Claude: tool paths, intended keys, quips</dd></div>
+        <div><dt>voice</dt><dd>ElevenLabs</dd></div>
+        <div><dt>eyes</dt><dd>ESP32 camera + Gemini image analysis, for calibration</dd></div>
+        <div><dt>interface</dt><dd>custom text editor with speech-to-text</dd></div>
+        <div><dt>system</dt><dd>HTTP: a central server assigns tasks; distributed modules execute and report back</dd></div>
+        <div><dt>fabrication</dt><dd>multi-colour 3D printing</dd></div>
+      </dl>
+      <div class="rd-credits">
+        <dl class="rd-spec">
+          <div><dt>year</dt><dd>2026</dd></div>
+          <div><dt>program</dt><dd>MIT Media Lab · Tangible Media Group</dd></div>
+          <div><dt>prize</dt><dd>HARD MODE 2026, MIT AI Hardware Hackathon · Anthropic Prize Winner</dd></div>
+          <div><dt>team</dt><dd>Quincy Kuang, Yuhan Wang, Lingdong Huang, Kai Zhang, Haoheng Tang</dd></div>
+          <div><dt>my role</dt><dd>hardware design + research</dd></div>
+          <div><dt>studio</dt><dd>Tangible Interface</dd></div>
+        </dl>
+        <a class="rd-badge" href="https://www.rabourackey.com/" target="_blank" rel="noopener"><span class="rd-mono">project site</span><b>rabourackey.com ↗</b></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
