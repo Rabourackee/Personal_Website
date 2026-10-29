@@ -34,9 +34,9 @@
   <link rel="stylesheet" href="/assets/fonts/geist/wght.css">
   <link rel="stylesheet" href="/assets/fonts/geist/wght-italic.css">
   <link rel="stylesheet" href="/assets/fonts/geist-mono/wght.css">
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/site.css?v={{ build.version }}">
   {%- for href in styles %}
-  <link rel="stylesheet" href="{{ href }}">
+  <link rel="stylesheet" href="{{ href }}?v={{ build.version }}">
   {%- endfor %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
@@ -82,7 +82,7 @@
     </div></div>
   </footer>
   {%- for src in scripts %}
-  <script src="{{ src }}" defer></script>
+  <script src="{{ src }}?v={{ build.version }}" defer></script>
   {%- endfor %}
 </body>
 </html>
