@@ -204,15 +204,6 @@
   overflow: hidden;
 }
 
-.rt-hero__meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 1.2rem;
-  color: var(--rt-ink-2);
-  border-bottom: 1px solid var(--rt-line);
-}
-
 .rt-wordmark {
   position: relative;
   z-index: 0;
@@ -2782,10 +2773,6 @@
 }
 
 @media (max-width: 560px) {
-  .rt-hide-sm {
-    display: none;
-  }
-
   .rt-hero__figure {
     --w: 130vw;
     margin-left: -15vw;
