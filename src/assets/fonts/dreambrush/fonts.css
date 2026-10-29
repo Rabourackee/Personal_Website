@@ -1,0 +1,21 @@
+/* Subsets of two OFL-licensed Google Fonts, cut to the 30 Chinese characters the
+   DreamBrush page uses: 山日月水云雨松鸟舟夜书画同体梦笔生花夢筆序写器理法卷时思影记
+   Using a new character on that page? Re-fetch the subsets with it included
+   (fonts.googleapis.com/css2?family=...&text=...). */
+@font-face {
+  font-family: "Ma Shan Zheng";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./mashanzheng-subset.woff2) format("woff2");
+  unicode-range: U+4e66, U+4e91, U+4f53, U+5199, U+5377, U+540c, U+5668, U+591c, U+5922, U+5c71, U+5e8f, U+5f71, U+601d, U+65e5, U+65f6, U+6708, U+677e, U+68a6, U+6c34, U+6cd5, U+7406, U+751f, U+753b, U+7b14, U+7b46, U+821f, U+82b1, U+8bb0, U+96e8, U+9e1f;
+}
+
+@font-face {
+  font-family: "Noto Serif SC";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(./notoserifsc-subset.woff2) format("woff2");
+  unicode-range: U+4e66, U+4e91, U+4f53, U+5199, U+5377, U+540c, U+5668, U+591c, U+5922, U+5c71, U+5e8f, U+5f71, U+601d, U+65e5, U+65f6, U+6708, U+677e, U+68a6, U+6c34, U+6cd5, U+7406, U+751f, U+753b, U+7b14, U+7b46, U+821f, U+82b1, U+8bb0, U+96e8, U+9e1f;
+}

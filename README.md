@@ -67,7 +67,7 @@ These building blocks reproduce Cargo's layout tools:
 
 ### Custom-designed pages
 
-A project can opt out of the standard layout and design its own sections edge to edge. Roulettective, Rubber Ducky and Co-Ideation Across Time work this way: each has `src/projects/<name>.html` plus its own `src/assets/css/<name>.css` and `src/assets/js/<name>.js`. The front matter adds:
+A project can opt out of the standard layout and design its own sections edge to edge. Roulettective, Rubber Ducky, Co-Ideation Across Time and Dream Brush work this way: each has `src/projects/<name>.html` plus its own `src/assets/css/<name>.css` and `src/assets/js/<name>.js`. The front matter adds:
 
 ```yaml
 fullBleed: true                                  # no standard page frame; sections span the window
@@ -75,6 +75,8 @@ bodyClass: "rt-page"
 styles: ["/assets/css/roulettective.css"]        # extra stylesheets for this page only
 scripts: ["/assets/js/roulettective.js"]         # extra scripts for this page only
 ```
+
+Dream Brush also self-hosts two Chinese fonts in `src/assets/fonts/dreambrush/`, cut down to just the characters the page uses. If you add a new Chinese character to that page, re-fetch the subsets (the steps are in the comment at the top of `fonts.css`), or the new character falls back to a system font.
 
 ### Adding images
 
