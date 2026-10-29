@@ -845,8 +845,26 @@
         ] },
       },
     };
+    var photo = document.querySelector(".ci-shelf__photo");
+    var img = photo && photo.querySelector("img");
+    var PHOTOS = {
+      books: { src: "/media/co-ideation-across-time/shelf-books.webp", w: 1100, h: 787, alt: "The bookshelf: a black shelf of red and white books on three legs" },
+      market: { src: "/media/co-ideation-across-time/shelf-market.webp", w: 1100, h: 681, alt: "The supermarket shelf: black pegboard shelves stocked with blue products" },
+    };
     var shelf = "books", tipped = false;
+    function showPhoto() {
+      if (!img) return;
+      var ph = PHOTOS[shelf];
+      if (img.getAttribute("src") !== ph.src) {
+        img.src = ph.src;
+        img.width = ph.w;
+        img.height = ph.h;
+        img.alt = ph.alt;
+      }
+      photo.classList.toggle("is-tipped", tipped);
+    }
     function render() {
+      showPhoto();
       var r = R[shelf][tipped ? "down" : "up"];
       var doc = html("article", "ci-doc" + (shelf === "market" ? " ci-doc--receipt" : ""));
       doc.style.setProperty("--c", r.color);
