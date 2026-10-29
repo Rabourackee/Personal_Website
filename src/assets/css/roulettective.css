@@ -248,11 +248,14 @@
 }
 
 .rt-hero__figure {
+  /* The photo's empty top runs up behind the wordmark; the machine itself
+     starts 19.36% down the image (12.9% of its width), so this pull-up
+     always stops it just below the title. */
+  --w: min(94vw, 1320px);
   position: relative;
   z-index: 1;
-  /* pulled up so the carousel rises into the wordmark */
-  width: min(94%, 1320px);
-  margin: -19vw auto 0;
+  width: var(--w);
+  margin: calc(var(--w) * -0.129 + max(1.5vw, 12px)) auto 0;
   mix-blend-mode: darken;
   -webkit-mask-image: radial-gradient(ellipse 68% 72% at 50% 50%, #000 62%, transparent 100%);
   mask-image: radial-gradient(ellipse 68% 72% at 50% 50%, #000 62%, transparent 100%);
@@ -2784,9 +2787,8 @@
   }
 
   .rt-hero__figure {
-    margin-top: -4vw;
-    width: 130%;
-    margin-left: -15%;
+    --w: 130vw;
+    margin-left: -15vw;
   }
 
   .rt-proj__body {
