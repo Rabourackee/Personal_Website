@@ -1323,11 +1323,18 @@
 
 /* ---------------------------------------------------------------- viral + reels */
 
+/* Numbers on the left, the two reels on the right. */
+.rd-viral__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(28px, 5vw, 80px);
+  align-items: center;
+}
+
 .rd-counters {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(12px, 2vw, 28px);
-  margin-top: 3.5rem;
+  gap: clamp(10px, 1.4vw, 18px);
+  margin-top: 3rem;
 }
 
 .rd-counters div {
@@ -1349,7 +1356,7 @@
   margin-top: 0.4rem;
   color: var(--rd-yellow);
   font-family: var(--rd-mono-f);
-  font-size: clamp(48px, 7vw, 112px);
+  font-size: clamp(44px, 5.2vw, 88px);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.05em;
@@ -1364,9 +1371,8 @@
 
 .rd-reels {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(12px, 2vw, 28px);
-  margin-top: clamp(28px, 4vw, 56px);
 }
 
 .rd-reel {
@@ -1690,6 +1696,7 @@
 }
 
 @media (max-width: 860px) {
+  .rd-viral__grid,
   .rd-hero__grid,
   .rd-brief__cols,
   .rd-ik__grid,
