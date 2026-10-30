@@ -122,6 +122,18 @@
   font-size: 12px;
 }
 
+.mt-btn--light {
+  color: var(--ink);
+  background: #f2f2ef;
+  border-color: #f2f2ef;
+}
+
+.mt-film .mt-btn--light {
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 2rem;
+}
+
 .mt-btn--ghost {
   color: var(--ink);
   background: none;
@@ -735,6 +747,10 @@
 @media (max-width: 700px) {
   .mt-head {
     grid-template-columns: 1fr;
+  }
+
+  .mt-film .mt-btn--light {
+    grid-column: 1;
   }
 
   .mt-num {
