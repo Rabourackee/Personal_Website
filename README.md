@@ -67,7 +67,7 @@ These building blocks reproduce Cargo's layout tools:
 
 ### Custom-designed pages
 
-A project can opt out of the standard layout and design its own sections edge to edge. Roulettective, Rubber Ducky, Co-Ideation Across Time, Dream Brush, Mini TRANSFORM and CODEX & SYNTH work this way: each has `src/projects/<name>.html` plus its own `src/assets/css/<name>.css` and `src/assets/js/<name>.js`. The front matter adds:
+A project can opt out of the standard layout and design its own sections edge to edge. Roulettective, Rubber Ducky, Co-Ideation Across Time, Dream Brush, Mini TRANSFORM, CODEX & SYNTH and Robotecture work this way: each has `src/projects/<name>.html` plus its own `src/assets/css/<name>.css` and `src/assets/js/<name>.js`. The front matter adds:
 
 ```yaml
 fullBleed: true                                  # no standard page frame; sections span the window

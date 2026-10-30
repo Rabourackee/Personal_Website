@@ -8,72 +8,396 @@ featured: 5
 summary: "A cost-efficient, scalable shape-changing interface built from modular self-lifting robots."
 highlight: "TEI 2025 · NYU Future Reality Lab"
 hero: "/media/robotecture/hero.webp"
+description: "Robotecture: a modular, self-lifting shape-changing surface built from robots that actuate support beams. TEI 2025, NYU Future Reality Lab. Drive a virtual one."
+fullBleed: true
+bodyClass: "rb-page"
+styles: ["/assets/css/robotecture.css"]
+scripts: ["/assets/js/robotecture.js"]
 ---
+<!--
+  Custom product page. Styles: src/assets/css/robotecture.css
+  The drawn parts (the kinetic grid, the 3x3 you can drive, the section you
+  can drag, the exploded unit): src/assets/js/robotecture.js.
+  The paper: /files/3689050.3704925.pdf
+-->
+<div class="rb">
 
-<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4"><b>RoboTecture</b><br />
-<br />
-<span class="caption"><br />
-Time</span><span class="caption">2023-2024<br />
-<br />
-Affiliation<br />
-NYU Future Reality Lab<br />
-<br />
-Team<br />
-Keru Wang, Zhu Wang, Ken Perlin
-</span><br />
-<i>Publication<br />
-<br />
+<!-- ============================================================ hero -->
+<section class="rb-hero" aria-labelledby="rb-title">
+  <div class="rb-wrap rb-hero__top">
+    <p class="rb-label">nyu future reality lab · tei ’25 · bordeaux</p>
+    <h1 class="rb-wordmark" id="rb-title">robotecture</h1>
+  </div>
+  <figure class="rb-hero__photo">
+    <img src="/media/robotecture/rb-hero.webp" width="2448" height="1880" alt="A 3x3 Robotecture prototype raised on wooden legs as a model building: a white fabric roof over a grid of robots and beams, with small figures standing underneath" fetchpriority="high" decoding="async">
+  </figure>
+  <div class="rb-wrap rb-hero__foot">
+    <p class="rb-hero__lede">a surface that lifts itself. a grid of small robots, joined by beams, under one continuous skin.</p>
+    <dl class="rb-hero__facts">
+      <div><dt>units</dt><dd>3 × 3</dd></div>
+      <div><dt>motors</dt><dd>18</dd></div>
+      <div><dt>cost</dt><dd>≈ $300</dd></div>
+    </dl>
+    <a class="rb-btn" href="#drive">drive it <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
 
-Robotecture: A Modular Shape-changing Interface Using Actuated Support Beams. In Proceedings of the Nineteenth International Conference on Tangible, Embedded, and Embodied Interaction (TEI &#x27;25)
+<!-- ============================================================ film -->
+<section class="rb-sec rb-film" aria-labelledby="rb-film-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">01</p>
+      <h2 id="rb-film-h">see it move</h2>
+      <p class="rb-sub">the prototypes as a table, a bed, a roof, a storage box and a vr terrain.</p>
+    </header>
+    <div class="rb-film__frame">
+      <a class="rb-film__play" href="https://www.youtube.com/watch?v=znaXMMZj1Hc" data-video="znaXMMZj1Hc">
+        <img src="/media/robotecture/rb-film.webp" width="1280" height="720" alt="" decoding="async">
+        <span class="rb-film__btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span>
+        <span class="rb-film__label">play the film</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-<br />
-<br />
-</i><span style="text-decoration-line: underline; letter-spacing: 0em;"> </span>doi: <a href="https://urldefense.proofpoint.com/v2/url?u=https-3A__doi.org_10.1145_3689050.3704925&d=DwMCAA&c=slrrB7dE8n7gBJbeO0g-IQ&r=fkFCM_CzrUFlgL5lOGtVVQ&m=ICi0ERs7V9xjzNjHz-N9a7ROV7tamccUkJtUCr8HfApsQKJFUZ-CNDrpUcryxSpT&s=RtNa7jYIrQ7ogvTX3DBr5-HUmY3qcZkLlEnhSz767kM&e=" style="letter-spacing: 0em;" target="_blank">https://doi.org/10.1145/3689050.3704925</a><br />
+<!-- ============================================================ idea -->
+<section class="rb-sec rb-idea" aria-labelledby="rb-idea-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">02</p>
+      <h2 id="rb-idea-h">a reshaping surface</h2>
+      <p class="rb-sub">a surface is the simplest thing in a building. what if it could reshape itself into whatever the room needs?</p>
+    </header>
+    <div class="rb-idea__grid">
+      <figure class="rb-idea__fig"><canvas class="rb-kinetic" role="img" aria-label="A surface drawn four ways: flat, shaped into a hill, divided into a grid, and as a moving grid whose nodes are the robotic units"></canvas></figure>
+      <ol class="rb-steps">
+        <li><button type="button" aria-pressed="true"><span>a</span><b>elementary surface</b><em>A floor, a roof, a table top.</em></button></li>
+        <li><button type="button" aria-pressed="false"><span>b</span><b>self-shaping surface</b><em>The same surface, rising and sinking where it is needed.</em></button></li>
+        <li><button type="button" aria-pressed="false"><span>c</span><b>grid structure</b><em>Divide it into a grid of cells.</em></button></li>
+        <li><button type="button" aria-pressed="false"><span>d</span><b>kinetic grid</b><em>Put a small robot at every node, with four beams to its neighbours. Move the nodes, and the grid approximates any smooth surface.</em></button></li>
+      </ol>
+    </div>
 
-<br />
-<a href="/files/3689050.3704925.pdf">PDF link</a><br /><br />
+    <div class="rb-versus">
+      <figure>
+        <svg viewBox="0 0 520 300" role="img" aria-label="Section of a pin-based shape display: pins rise from a deep base full of actuators, so the space under the surface is taken">
+          <g class="rb-vs__pins"><rect x="70" y="92" width="26" height="58"/><rect x="100" y="76" width="26" height="74"/><rect x="130" y="60" width="26" height="90"/><rect x="160" y="52" width="26" height="98"/><rect x="190" y="62" width="26" height="88"/><rect x="220" y="84" width="26" height="66"/><rect x="250" y="104" width="26" height="46"/><rect x="280" y="112" width="26" height="38"/><rect x="310" y="96" width="26" height="54"/><rect x="340" y="80" width="26" height="70"/><rect x="370" y="92" width="26" height="58"/><rect x="400" y="110" width="26" height="40"/></g>
+          <rect class="rb-vs__base" x="60" y="150" width="376" height="120"/>
+          <g class="rb-vs__acts"><line x1="83" y1="160" x2="83" y2="258"/><line x1="113" y1="160" x2="113" y2="258"/><line x1="143" y1="160" x2="143" y2="258"/><line x1="173" y1="160" x2="173" y2="258"/><line x1="203" y1="160" x2="203" y2="258"/><line x1="233" y1="160" x2="233" y2="258"/><line x1="263" y1="160" x2="263" y2="258"/><line x1="293" y1="160" x2="293" y2="258"/><line x1="323" y1="160" x2="323" y2="258"/><line x1="353" y1="160" x2="353" y2="258"/><line x1="383" y1="160" x2="383" y2="258"/><line x1="413" y1="160" x2="413" y2="258"/></g>
+          <text x="448" y="214" class="rb-vs__t">actuators,</text><text x="448" y="230" class="rb-vs__t">beneath</text>
+        </svg>
+        <figcaption><p class="rb-kicker">pin-based displays</p><p>Each pin is pushed from below, so the actuators fill a base under the surface. Dense and precise, but the space underneath is taken.</p></figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 520 300" role="img" aria-label="Section of Robotecture: one thin layer of units and beams on a frame lifts itself into a curve, leaving the space underneath open; a ball passes up through the surface">
+          <line class="rb-vs__leg" x1="60" y1="150" x2="60" y2="270"/><line class="rb-vs__leg" x1="440" y1="150" x2="440" y2="270"/>
+          <path class="rb-vs__skin" d="M60 150C120 150 150 86 190 86S250 132 300 104 380 120 440 150"/>
+          <polyline class="rb-vs__beam" points="60,150 156,96 250,108 346,110 440,150"/>
+          <g class="rb-vs__unit"><rect x="148" y="96" width="16" height="30" rx="2"/><rect x="242" y="108" width="16" height="30" rx="2"/><rect x="338" y="110" width="16" height="30" rx="2"/></g>
+          <circle class="rb-vs__ball" cx="300" cy="86" r="10"/>
+          <path class="rb-vs__arrow" d="M300 200V112M292 122l8-12 8 12"/>
+          <text x="140" y="230" class="rb-vs__t">open space under the surface</text>
+          <line class="rb-vs__ground" x1="30" y1="270" x2="490" y2="270"/>
+        </svg>
+        <figcaption><p class="rb-kicker">robotecture</p><p>The units lift themselves by turning the beams between them, so the whole mechanism is one flat layer. The space on both sides is free, and objects can pass through the gaps.</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-</div><div class="column-unit" style="--span: 8"><br />
-RoboTecture is a cost-efficient and scalable shape-changing user interface powered by modular robotics.<br />
-<br />
-RoboTecture features a modular design of self-lifting robotic units that can be assembled in various layouts, incorporating actuated support beams for spatial connection and division.<br />
-<br />
-This system generates continuous, dynamic surfaces, making it ideal for applications such as smart furniture, providing users with customizable and responsive physical environments. For instance, when an alarm goes off, RoboTecture can transform from a bed into a chair, helping to wake the user.<br />
-<br />
- It also serves as an excellent platform for terrain simulations in Augmented Reality and as a tangible interface for Virtual Reality, enhancing immersion in XR experiences.<br />
-<br />
- RoboTecture maximizes the use of space beneath its surface, enabling enclosure simulations and smart building designs that prioritize user convenience and environmental adaptability.<br />
-<br />
- RoboTecture can be used for smart architectural design, enabling dynamic and adaptive structures. For example, imagine an opera house where   the roof transforms into a semi-sphere for optimal acoustics.<br />
-<br />
- A house could invert its roof to collect rainwater, contributing to sustainable living. Solar panel roofs could adjust their angles to track sunlight throughout the day for maximum efficiency.<br />
-<br />
- It can even lower roof segments to provide easy access to overhead fixtures, such as for changing a lightbulb.<br />
-<br />
- RoboTecture is also versatile in dynamic space division. For example, a RoboTecture wall can recede to create more space in an occupied room.<br />
-<br />
- Its hollow beam design allows objects to pass through its surface, enabling innovative functionalities. RoboTecture can conceal or reveal objects and even tilt its surface to move items. This opens up possibilities for intelligent storage systems that retrieve and provide objects as needed.<br />
-<br />
- Beyond these uses, RoboTecture has potential applications in gaming and telepresence, introducing new dimensions to user engagement.<br />
-<br />
- In conclusion, RoboTecture redefines shape-changing interfaces, unlocking a world of possibilities for future exploration and development in this field.<br />
-</div></div><br /><br />
-<div style="text-align: center"><iframe class="media embed" src="https://www.youtube-nocookie.com/embed/znaXMMZj1Hc?rel=0&playsinline=1" style="aspect-ratio: 200 / 113;" title="RoboTecture" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><br /><br />
-<br />
-<img class="media" src="/media/robotecture/01.webp" width="2000" height="1415" alt="RoboTecture" loading="lazy" decoding="async"><br />
-<br />
-<img class="media" src="/media/robotecture/02.webp" width="2000" height="1415" alt="RoboTecture" loading="lazy" decoding="async"><br />
-<br />
-<img class="media" src="/media/robotecture/03.webp" width="2000" height="1415" alt="RoboTecture" loading="lazy" decoding="async"><br />
-<br />
-<img class="media" src="/media/robotecture/04.webp" width="2000" height="1415" alt="RoboTecture" loading="lazy" decoding="async"><br />
-<br />
-<br />
-<br />
-<br />
+<!-- ============================================================ drive -->
+<section class="rb-sec rb-drive" id="drive" aria-labelledby="rb-drive-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">03</p>
+      <h2 id="rb-drive-h">drive it</h2>
+      <p class="rb-sub">the 3 × 3 prototype, at its real proportions: 20 cm cells, two motors in every unit, a fabric skin on top. pick a scenario, or grab a unit.</p>
+    </header>
+    <div class="rb-console">
+      <div class="rb-stage">
+        <canvas class="rb-view" tabindex="0" role="application" aria-label="A virtual 3x3 Robotecture. Drag a unit up or down to reshape the surface, or drag empty space to walk around it. With the canvas focused, keys 1 to 9 pick a unit and the arrow keys lift or lower it." aria-describedby="rb-hint"></canvas>
+        <div class="rb-skin" role="group" aria-label="What to show">
+          <button type="button" data-skin="skin" aria-pressed="true">skin</button><button type="button" data-skin="xray" aria-pressed="false">x-ray</button><button type="button" data-skin="bones" aria-pressed="false">skeleton</button>
+        </div>
+      </div>
+      <div class="rb-panel">
+        <div class="rb-lcd" aria-hidden="true">
+          <div class="rb-lcd__row"><span class="rb-lcd__mode">flat</span><span class="rb-lcd__stat">18 motors · holding</span></div>
+          <div class="rb-lcd__grid"></div>
+          <div class="rb-lcd__row rb-lcd__legend"><span>height, cm · α per motor</span><span>rb·3×3</span></div>
+        </div>
+        <div class="rb-keys" role="radiogroup" aria-label="Scenario">
+          <button type="button" class="rb-key" role="radio" data-mode="flat"><span>01</span>flat</button>
+          <button type="button" class="rb-key" role="radio" data-mode="wave"><span>02</span>wave</button>
+          <button type="button" class="rb-key" role="radio" data-mode="opera"><span>03</span>opera</button>
+          <button type="button" class="rb-key" role="radio" data-mode="ceiling"><span>04</span>ceiling</button>
+          <button type="button" class="rb-key" role="radio" data-mode="solar"><span>05</span>solar</button>
+          <button type="button" class="rb-key" role="radio" data-mode="rain"><span>06</span>rain</button>
+          <button type="button" class="rb-key" role="radio" data-mode="table"><span>07</span>table</button>
+          <button type="button" class="rb-key" role="radio" data-mode="bed"><span>08</span>bed</button>
+          <button type="button" class="rb-key" role="radio" data-mode="terrain"><span>09</span>terrain</button>
+          <button type="button" class="rb-key" role="radio" data-mode="ball"><span>10</span>ball</button>
+        </div>
+        <label class="rb-sun" hidden><span>time of day</span><input type="range" min="6.5" max="17.5" step="0.5" value="13"><output>13:00</output></label>
+        <p class="rb-hint" id="rb-hint" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="rb-drive__under">
+      <figure class="rb-skeleton">
+        <video src="/media/robotecture/rb-skeleton.mp4" width="674" height="450" autoplay muted loop playsinline preload="metadata" aria-label="The real 3x3 skeleton, without its skin, changing shape"></video>
+        <figcaption>the real 3 × 3, without its skin</figcaption>
+      </figure>
+      <p class="rb-note">a model of the prototype: heights move at the servos’ pace (any shape in about 1.3 s, as measured), and no unit can rise more than one cell above a neighbour, because the beams stop at 45°. The angles come from the paper’s equation. Where a beam reaches that limit it turns orange.</p>
+    </div>
+  </div>
+</section>
 
-<span class="heading-3"><div class="column-set" style="--columns: 2; --gutter: 1rem"><div class="column-unit">As the first author, I presented a paper at the 2025 International Conference on Tangible, Embedded and Embodied Interaction in Bordeaux, France. <br /><br />
-TEI is a leading international conference in the field of human-computer interaction focusing on &#x22;embodied
- interaction&#x22; and &#x22;tangible interaction.&#x22; It brings together the latest research findings from academia and industry on novel interaction design, hardware prototyping, and immersive experiences, and has a high international academic influence.</div><div class="column-unit">
+<!-- ============================================================ mechanism -->
+<section class="rb-sec rb-mech" aria-labelledby="rb-mech-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">04</p>
+      <h2 id="rb-mech-h">how a unit lifts itself</h2>
+      <p class="rb-sub">one line of the grid, in section. a motor turns the joint between its two beams; the beams push against the neighbours, and the unit rises. drag a unit.</p>
+    </header>
+    <div class="rb-section">
+      <svg viewBox="0 0 760 520" role="group" aria-label="One line of three units between two frame posts. Drag a unit, or focus it and use the arrow keys, to change its height."></svg>
+      <div class="rb-math">
+        <p class="rb-kicker">for the selected unit</p>
+        <dl class="rb-math__in"><div><dt>a</dt><dd data-o="a"></dd></div><div><dt>b</dt><dd data-o="b"></dd></div><div><dt>c</dt><dd data-o="c"></dd></div><div><dt>l</dt><dd>20.0</dd></div></dl>
+        <p class="rb-math__eq">α₁ = atan( l ⁄ (b − a) ) <b data-o="a1"></b></p>
+        <p class="rb-math__eq">α₂ = atan( l ⁄ (b − c) ) <b data-o="a2"></b></p>
+        <p class="rb-math__eq rb-math__eq--out">α = α₁ + α₂ <b data-o="al"></b></p>
+        <p class="rb-math__note" data-o="turn"></p>
+        <p class="rb-math__fine">heights in cm. The motor turns its joint to α. 180° is level; the mechanism allows 90° to 270°, so a unit can never be more than one cell (20 cm) above or below a neighbour, and its full range equals its distance to the frame. The beams telescope as the angle changes: watch their lengths.</p>
+      </div>
+    </div>
 
-<img class="media" src="/media/robotecture/05.webp" width="1536" height="1536" alt="RoboTecture" loading="lazy" decoding="async"></div></div></span>
+    <div class="rb-anat" data-anat>
+      <figure class="rb-anat__fig">
+        <img src="/media/robotecture/rb-unit.webp" width="2400" height="937" alt="Rendering of a Robotecture unit: assembled at rest and lifting, and exploded into its parts, lettered a to h" loading="lazy" decoding="async">
+        <span class="rb-anat__box" aria-hidden="true"></span>
+      </figure>
+      <ol class="rb-anat__list">
+        <li><button type="button" data-box="1.4 2.8 19.6 94"><span>·</span><b>one unit, two states</b><em>At rest, and lifting: the beams fold down from the joint and push the unit up.</em></button></li>
+        <li><button type="button" data-box="62.7 36.2 9.1 19.2"><span>a</span><b>MG996R servo</b><em>Two per unit, one for each axis. 1.47 N·m at 6 V.</em></button></li>
+        <li><button type="button" data-box="59.1 51.7 4.3 7.4"><span>b</span><b>motor horn</b><em>Carries the turn to the beam.</em></button></li>
+        <li><button type="button" data-box="54.1 61 31.3 35.8"><span>c</span><b>external tube</b><em>A printed tube fixed to the horn: the outer half of the beam.</em></button></li>
+        <li><button type="button" data-box="66.1 17.7 11.5 18.5"><span>d</span><b>internal pole base</b><em>Also the motor’s housing.</em></button></li>
+        <li><button type="button" data-box="77.9 34 20.5 23.3"><span>e</span><b>wooden rod</b><em>A 0.95 cm square dowel, 16 cm long, sliding in the tube, so the beam can telescope.</em></button></li>
+        <li><button type="button" data-box="50.1 72.1 6.1 13.3"><span>f</span><b>spinning axis</b><em>Joins the motor and the beams to the chassis.</em></button></li>
+        <li><button type="button" data-box="52.7 82.8 5 8.7"><span>g</span><b>plug</b><em>Fixes the axis to the chassis.</em></button></li>
+        <li><button type="button" data-box="41.5 7.4 12.6 58.2"><span>h</span><b>chassis</b><em>15 × 10 × 10 cm. Beams from the two directions run in separate layers, which left room for stronger motors.</em></button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ prototypes -->
+<section class="rb-sec rb-protos" aria-labelledby="rb-proto-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">05</p>
+      <h2 id="rb-proto-h">three units, one design</h2>
+      <p class="rb-sub">simple, efficient, robust: each round removed something.</p>
+    </header>
+    <ol class="rb-protos__list">
+      <li>
+        <img src="/media/robotecture/rb-proto1.webp" width="439" height="380" alt="The first prototype: a white printed sphere with four beams" loading="lazy" decoding="async">
+        <p class="rb-kicker">v1 · overlapping joints</p>
+        <h3>a sphere</h3>
+        <p>Four beams met at the centre of a sphere, guided by a ring gear inside it. Elegant from outside, but the printed PLA sphere deformed within days, and the crowded inside left no room for strong motors.</p>
+      </li>
+      <li>
+        <img src="/media/robotecture/rb-proto2.webp" width="439" height="385" alt="The second prototype: a boxy printed unit with beams staggered in two layers" loading="lazy" decoding="async">
+        <p class="rb-kicker">v2 · independent layers</p>
+        <h3>beams in layers</h3>
+        <p>Beams from the two directions stacked in different layers, with no ring gear. It worked, but it was fragile. One version put a camera on every unit, so people could “grab” a unit in the air and pull it up or down.</p>
+      </li>
+      <li>
+        <img src="/media/robotecture/rb-proto3.webp" width="439" height="386" alt="The third prototype: a stronger frame-like chassis on a grid" loading="lazy" decoding="async">
+        <p class="rb-kicker">v3 · the final unit</p>
+        <h3>stronger, simpler</h3>
+        <p>A stiffer chassis, larger MG996R motors, lighter and stronger beams, and upgraded power and frames: stable enough to grow into larger grids.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================ modular -->
+<section class="rb-sec rb-mod" aria-labelledby="rb-mod-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">06</p>
+      <h2 id="rb-mod-h">like lego, at room scale</h2>
+      <p class="rb-sub">every unit is identical. add one by joining its beams to the grid; the frame is built from modular parts too.</p>
+    </header>
+    <figure class="rb-mod__fig">
+      <img src="/media/robotecture/rb-grid.webp" width="2400" height="1480" alt="Drawings of a 2x2 and a 3x3 grid on their frames, and the 2x2 exploded into units, beams, rods and printed joints, with a detail of a corner joint being assembled" loading="lazy" decoding="async">
+    </figure>
+    <div class="rb-mod__photos">
+      <figure><img src="/media/robotecture/rb-layout-3x3.webp" width="1800" height="1120" alt="The 3x3 prototype on its wooden frame and legs, without fabric" loading="lazy" decoding="async"><figcaption><b>3 × 3</b>85 × 85 cm, on legs</figcaption></figure>
+      <figure><img src="/media/robotecture/rb-layout-walls.webp" width="1800" height="1144" alt="A 2x2 and a 1x2 standing on their sides at an angle, like two walls" loading="lazy" decoding="async"><figcaption><b>2 × 2 and 1 × 2</b>standing, as walls</figcaption></figure>
+    </div>
+    <div class="rb-wiring">
+      <div>
+        <p class="rb-kicker">control</p>
+        <p class="rb-big">a laptop computes the shape and the angles; an arduino sends them to eighteen servos.</p>
+        <p>Applications run in Unity and WebXR. Over serial, an Arduino UNO receives each unit’s height and drives the motors through two 16-channel PCA9685 boards. A 12 V, 50 A supply feeds two 6 V, 25 A converters and the distribution boards.</p>
+      </div>
+      <div class="rb-wiring__fig" tabindex="0" aria-label="Wiring diagram, scrolls sideways on small screens">
+      <svg viewBox="0 0 640 330" role="img" aria-label="Wiring: laptop to Arduino UNO over serial, to two PCA9685 boards, to eighteen MG996R servos; power from a 12 volt supply through two 6 volt converters and distribution boards to the servos">
+        <g class="rb-w__box"><rect x="10" y="40" width="130" height="64" rx="8"/><rect x="186" y="40" width="130" height="64" rx="8"/><rect x="362" y="40" width="130" height="64" rx="8"/><rect x="512" y="120" width="118" height="110" rx="8" class="is-out"/><rect x="10" y="226" width="130" height="64" rx="8"/><rect x="186" y="226" width="130" height="64" rx="8"/><rect x="362" y="226" width="130" height="64" rx="8"/></g>
+        <g class="rb-w__line"><path d="M140 72h46M316 72h46M492 72h40v48"/><path d="M140 258h46M316 258h46M492 258h40v-28" class="is-pwr"/></g>
+        <g class="rb-w__t">
+          <text x="75" y="68" text-anchor="middle">laptop</text><text x="75" y="86" text-anchor="middle" class="s">unity · webxr</text>
+          <text x="251" y="68" text-anchor="middle">arduino uno</text><text x="251" y="86" text-anchor="middle" class="s">heights → angles</text>
+          <text x="427" y="68" text-anchor="middle">pca9685 × 2</text><text x="427" y="86" text-anchor="middle" class="s">16-channel pwm</text>
+          <text x="571" y="168" text-anchor="middle">mg996r</text><text x="571" y="192" text-anchor="middle" class="big">× 18</text><text x="571" y="214" text-anchor="middle" class="s">2 per unit</text>
+          <text x="75" y="254" text-anchor="middle">12 V · 50 A</text><text x="75" y="272" text-anchor="middle" class="s">supply</text>
+          <text x="251" y="254" text-anchor="middle">6 V · 25 A × 2</text><text x="251" y="272" text-anchor="middle" class="s">converters</text>
+          <text x="427" y="254" text-anchor="middle">distribution</text><text x="427" y="272" text-anchor="middle" class="s">boards</text>
+          <text x="163" y="62" text-anchor="middle" class="s">serial</text><text x="339" y="62" text-anchor="middle" class="s">i²c</text><text x="512" y="62" text-anchor="middle" class="s">pwm</text>
+          <text x="10" y="24" class="k">signal</text><text x="10" y="210" class="k">power</text>
+        </g>
+      </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ numbers -->
+<section class="rb-sec rb-nums" aria-labelledby="rb-nums-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">07</p>
+      <h2 id="rb-nums-h">by the numbers</h2>
+      <p class="rb-sub">measured on the prototypes.</p>
+    </header>
+    <dl class="rb-specs">
+      <div><dt>one unit weighs</dt><dd>218<small>g</small></dd></div>
+      <div><dt>one unit lifts</dt><dd>1<small>kg</small></dd></div>
+      <div><dt>height range</dt><dd>±20<small>cm</small></dd></div>
+      <div><dt>any shape in</dt><dd>1.3<small>s</small></dd></div>
+      <div><dt>motor torque</dt><dd>1.47<small>N·m</small></dd></div>
+      <div><dt>cell</dt><dd>20<small>cm</small></dd></div>
+      <div><dt>per unit</dt><dd>&lt;$25</dd></div>
+      <div><dt>3 × 3, all in</dt><dd>≈$300</dd></div>
+    </dl>
+    <div class="rb-nums__grid">
+      <div class="rb-receipt">
+        <p class="rb-kicker">what a unit costs</p>
+        <dl>
+          <div><dt>printed chassis, bases, tubes</dt><dd>$10</dd></div>
+          <div><dt>2 × MG996R servo</dt><dd>$9</dd></div>
+          <div><dt>wooden beams</dt><dd>$1</dd></div>
+          <div class="is-sum"><dt>one unit</dt><dd>under $25</dd></div>
+          <div><dt>Arduino, power, wiring</dt><dd>$60</dd></div>
+          <div><dt>outer frame</dt><dd>$30</dd></div>
+          <div class="is-total"><dt>3 × 3 system, 85 × 85 cm</dt><dd>≈ $300</dd></div>
+        </dl>
+      </div>
+      <figure class="rb-load">
+        <p class="rb-kicker">how much each unit can carry</p>
+        <div class="rb-load__body">
+          <div class="rb-load__grid" role="img" aria-label="Maximum load per unit of the 3x3 prototype, in kilograms: 0.8 at each corner, 0.6 at each edge, 0.4 at the centre">
+            <span class="c8">0.8</span><span class="c6">0.6</span><span class="c8">0.8</span><span class="c6">0.6</span><span class="c4">0.4</span><span class="c6">0.6</span><span class="c8">0.8</span><span class="c6">0.6</span><span class="c8">0.8</span>
+          </div>
+          <figcaption>
+            <p>Max load in kg, measured on the 3 × 3. Every unit lifts itself, so the outer units also carry the inner ones: the centre bears least.</p>
+            <p class="rb-load__key"><i class="c4"></i>0.4 <i class="c6"></i>0.6 <i class="c8"></i>0.8 kg</p>
+            <p>Estimated for larger grids, from the torque balance: about 0.4 kg at the centre of a 4 × 4, 0.26 kg for a 5 × 5.</p>
+          </figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ applications -->
+<section class="rb-sec rb-apps" aria-labelledby="rb-apps-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">08</p>
+      <h2 id="rb-apps-h">what it becomes</h2>
+      <p class="rb-sub">enclosures, surfaces you touch, and objects it handles: the scenarios built with the 1 × 2, 2 × 2 and 3 × 3 prototypes. most can run on the model above.</p>
+    </header>
+
+    <div class="rb-apps__group">
+      <h3 class="rb-apps__h"><span>a</span>architecture: enclosures that adapt</h3>
+      <ol class="rb-cards">
+        <li><img src="/media/robotecture/rb-app-opera.webp" width="1400" height="977" alt="The roof shaped into a dome over a small stage, with sound arcs drawn on" loading="lazy" decoding="async"><h4>opera house</h4><p>The ceiling rises into a dome to reflect the singer’s voice to the audience.</p><button type="button" class="rb-run" data-run="opera">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-bulb.webp" width="1400" height="929" alt="A ceiling node lowering toward a figure, with arrows" loading="lazy" decoding="async"><h4>a ceiling within reach</h4><p>The node holding a broken light bulb comes down to be changed; the same for paintings or anything stored overhead.</p><button type="button" class="rb-run" data-run="ceiling">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-solar.webp" width="1400" height="986" alt="A roof with black solar panels tilting toward a drawn sun" loading="lazy" decoding="async"><h4>solar roof</h4><p>The roof follows the sun’s direction, so its panels collect more energy.</p><button type="button" class="rb-run" data-run="solar">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-rain.webp" width="1400" height="984" alt="Blue beads gathered in a dip in the middle of the roof, with arrows toward it" loading="lazy" decoding="async"><h4>rain collection</h4><p>When it rains, the roof dips in the middle and gathers the water. Beads stood in for rain.</p><button type="button" class="rb-run" data-run="rain">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-wall.webp" width="1400" height="849" alt="A fabric wall in a model room bending away from a wooden figure to give it more space" loading="lazy" decoding="async"><h4>a wall that moves</h4><p>A 1 × 2 standing as a wall between two rooms: it recedes from the occupied room to give it more space.</p></li>
+      </ol>
+    </div>
+
+    <div class="rb-apps__group">
+      <h3 class="rb-apps__h"><span>b</span>surfaces you touch: furniture and haptics</h3>
+      <ol class="rb-cards">
+        <li><img src="/media/robotecture/rb-app-table.webp" width="1400" height="936" alt="A person sitting at the fabric-covered table, the surface raised under an open book" loading="lazy" decoding="async"><h4>reading table</h4><p>Put a book on it, and the table lifts a slope under it for easier reading.</p><button type="button" class="rb-run" data-run="table">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-bed.webp" width="1400" height="1030" alt="A teddy bear and an alarm clock on the fabric surface, raised behind the bear like a chair back" loading="lazy" decoding="async"><h4>a bed that wakes you</h4><p>When the alarm rings, the bed folds into a chair and sits you up. With pressure sensing, it could fit the body it holds.</p><button type="button" class="rb-run" data-run="bed">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-terrain.webp" width="1400" height="779" alt="A toy car on a mountain road projected onto the shaped fabric" loading="lazy" decoding="async"><h4>terrain, projected</h4><p>A mountain road for a toy car: the surface makes the hills, projection mapping paints them.</p><button type="button" class="rb-run" data-run="terrain">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-vr.webp" width="1400" height="907" alt="A person in a VR headset touching the shaped surface, with a rocky landscape projected on it" loading="lazy" decoding="async"><h4>touch in vr</h4><p>A rocky landscape in VR, shaped in the room: the hand finds the rocks where the eyes see them.</p><button type="button" class="rb-run" data-run="terrain">run on the model →</button></li>
+      </ol>
+    </div>
+
+    <div class="rb-apps__group">
+      <h3 class="rb-apps__h"><span>c</span>objects it handles</h3>
+      <ol class="rb-cards">
+        <li><img src="/media/robotecture/rb-app-hand.webp" width="1400" height="856" alt="A ball rolling down the tilted fabric toward an open hand" loading="lazy" decoding="async"><h4>to your hand</h4><p>The surface tilts and the ball slides toward the hand that waits for it.</p><button type="button" class="rb-run" data-run="ball">run on the model →</button></li>
+        <li><img src="/media/robotecture/rb-app-storage.webp" width="1400" height="1040" alt="A ball pushing up through a slit in translucent fabric over the grid" loading="lazy" decoding="async"><h4>storage that hides and reveals</h4><p>A 7 cm ball rests below the surface. When the beams lower, the slit in the fabric opens and the ball comes up through it; push it back down to hide it.</p></li>
+        <li><img src="/media/robotecture/rb-app-maze.webp" width="1400" height="778" alt="A marble maze on the grid with a blue ball, and a phone used as a remote control" loading="lazy" decoding="async"><h4>a maze, from far away</h4><p>Over a network, a phone tilts the surface to roll a ball: tangible telepresence.</p><button type="button" class="rb-run" data-run="ball">run on the model →</button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ limits -->
+<section class="rb-sec rb-limits" aria-labelledby="rb-lim-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">09</p>
+      <h2 id="rb-lim-h">limits, and what’s next</h2>
+      <p class="rb-sub">what the prototypes taught, from the paper’s discussion.</p>
+    </header>
+    <ol class="rb-limits__list">
+      <li><h3>height</h3><p>The range is bound by the grid, and neighbours can never meet at a right angle. An origami-like unit could fold a floor up into a wall.</p></li>
+      <li><h3>weight and sag</h3><p>Self-lifting puts the most load on the outer units, and small play in every joint adds up as a sag at the centre. Smaller grids joined by rigid frames keep their strength; standing a grid upright puts the weight on the beams instead.</p></li>
+      <li><h3>resolution</h3><p>The MG996R sets the size of a unit. Smaller servos would make a denser grid, but a weaker one: Robotecture is meant for tables and rooms, not hand-held displays.</p></li>
+      <li><h3>sensing</h3><p>It shapes, but does not yet feel. Torque sensors on the motor shafts could let it read a push, or the shape of an object pressed into it.</p></li>
+    </ol>
+    <p class="rb-next"><span class="rb-kicker">the upgrade</span>RDS5180 servos with aluminium or carbon-fibre beams: by the paper’s estimate, 1.2 kg at the centre of a 10 × 10 grid, for about $80 a unit.</p>
+  </div>
+</section>
+
+<!-- ============================================================ tei -->
+<section class="rb-sec rb-tei" aria-labelledby="rb-tei-h">
+  <div class="rb-wrap">
+    <header class="rb-head">
+      <p class="rb-num">10</p>
+      <h2 id="rb-tei-h">tei ’25, bordeaux</h2>
+    </header>
+    <div class="rb-tei__grid">
+      <figure class="rb-tei__photo"><img src="/media/robotecture/rb-tei.webp" width="1200" height="1200" alt="Yuhan Wang presenting Robotecture at a lectern on the TEI 2025 stage, a slide about the sparse grid design behind" loading="lazy" decoding="async"></figure>
+      <div class="rb-tei__text">
+        <p class="rb-big">As first author, I presented the paper at TEI 2025, the International Conference on Tangible, Embedded and Embodied Interaction, in Bordeaux.</p>
+        <p>TEI is a leading conference in human-computer interaction for tangible and embodied interaction. It brings together new research from academia and industry on interaction design, hardware prototyping and immersive experience.</p>
+        <blockquote class="rb-cite">
+          <p>Yuhan Wang, Keru Wang, Zhu Wang and Ken Perlin. 2025. Robotecture: A Modular Shape-changing Interface Using Actuated Support Beams. In <i>Nineteenth International Conference on Tangible, Embedded, and Embodied Interaction (TEI ’25)</i>, March 4–7, 2025, Bordeaux / Talence, France. ACM.</p>
+        </blockquote>
+        <p class="rb-tei__links"><a class="rb-btn" href="/files/3689050.3704925.pdf">read the paper (pdf)</a><a class="rb-btn rb-btn--ghost" href="https://doi.org/10.1145/3689050.3704925">doi.org/10.1145/3689050.3704925 ↗</a></p>
+      </div>
+    </div>
+    <dl class="rb-spec rb-record">
+      <div><dt>time</dt><dd>2023–2024</dd></div>
+      <div><dt>lab</dt><dd>Future Reality Lab, Courant Institute, NYU</dd></div>
+      <div><dt>team</dt><dd>Yuhan Wang, Keru Wang, Zhu Wang*, Ken Perlin* <small>* equal advising</small></dd></div>
+      <div><dt>published</dt><dd>TEI ’25, ACM</dd></div>
+    </dl>
+  </div>
+</section>
+
+</div>
