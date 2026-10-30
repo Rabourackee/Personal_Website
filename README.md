@@ -76,7 +76,7 @@ styles: ["/assets/css/roulettective.css"]        # extra stylesheets for this pa
 scripts: ["/assets/js/roulettective.js"]         # extra scripts for this page only
 ```
 
-Dream Brush self-hosts its fonts in `src/assets/fonts/dreambrush/`: Cormorant Garamond, plus three Chinese faces cut down to just the characters the page uses (two brush scripts and a serif). If you add a new Chinese character to that page, re-fetch the face it appears in (the steps and the character lists are in the comment at the top of `fonts.css`), or the new character falls back to a system font. Its ink paintings are drawn live by the page script, not stored as images.
+Dream Brush self-hosts its fonts in `src/assets/fonts/dreambrush/`: Cormorant Garamond, plus three Chinese faces cut down to just the characters the page uses: two brush scripts, and AR PL UKai, a carved regular script under the Arphic Public License (its text ships beside it as `ARPHICPL.TXT`). If you add a new Chinese character to that page, re-fetch the face it appears in (the steps and the character lists are in the comment at the top of `fonts.css`), or the new character falls back to a system font. Its ink paintings are drawn live by the page script, not stored as images.
 
 ### Adding images
 

@@ -1,11 +1,15 @@
-/* Fonts for the Dream Brush page. All are OFL-licensed Google Fonts, hosted here.
-   The three Chinese faces are cut down to the characters the page uses:
-     Zhi Mang Xing (large brush characters)  梦笔序写法卷器时思记生花一二三
-     Ma Shan Zheng (the writing canvas)      山日月水云雨松鸟舟夜梦笔
-     Noto Serif SC (quotations, labels)      书画异名而同体大小位置语境语义梦笔生花山日张彦远历代名记《》
-   Using a new Chinese character? Re-fetch that face with it included:
-   fonts.googleapis.com/css2?family=<Family>&text=<all the characters>, and save
-   the woff2 its CSS points to over the file below. */
+/* Fonts for the Dream Brush page, hosted here. The Chinese faces are cut down
+   to the characters the page uses:
+     Zhi Mang Xing (large brush characters)   梦笔序写法卷器时思记生花一二三影
+     Ma Shan Zheng (the writing canvas)       山日月水云雨松鸟舟夜梦笔
+     AR PL UKai CN (printed text: a carved regular script)
+                                              《》一三与为义书二代以位体先光写化卷历同名后器四境墨大字小山干序异张彦影思成所日时梦水法生画笔置者而花落观记语远
+   Zhi Mang Xing, Ma Shan Zheng and Cormorant Garamond are OFL Google Fonts. To add a
+   character, fetch fonts.googleapis.com/css2?family=<Family>&text=<all the characters>
+   and save the woff2 its CSS points to over the file below.
+   AR PL UKai is under the Arphic Public License (ARPHICPL.TXT, alongside). It is not on
+   Google Fonts: take ukai.ttc from Debian's fonts-arphic-ukai package and subset its
+   "AR PL UKai CN" face with fontTools (pyftsubset, --flavor=woff2 --text=...). */
 @font-face {
   font-family: "Zhi Mang Xing";
   font-weight: 400;
@@ -21,17 +25,10 @@
 }
 
 @font-face {
-  font-family: "Noto Serif SC";
-  font-weight: 300;
-  font-display: swap;
-  src: url(./notoserifsc-300.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: "Noto Serif SC";
+  font-family: "AR PL UKai CN";
   font-weight: 400;
   font-display: swap;
-  src: url(./notoserifsc-400.woff2) format("woff2");
+  src: url(./ukai.woff2) format("woff2");
 }
 
 @font-face {

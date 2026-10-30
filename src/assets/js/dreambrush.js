@@ -826,6 +826,63 @@
     return { Painter: Painter, paper: paper, render: render, rng: rng, mk: mk, INK: INK, PAPER: PAPER, CINNABAR: CINNABAR };
   })();
 
+  // ------------------------------------------------------------ hero: a far range under the inscription
+
+  (function () {
+    var cv = root.querySelector(".db-land");
+    if (!cv) return;
+    function paint() {
+      var w = cv.clientWidth, h = cv.clientHeight;
+      if (!w || !h) return;
+      cv.width = Math.min(2400, Math.round(w * Math.min(devicePixelRatio || 1, 2)));
+      cv.height = Math.round((cv.width * h) / w);
+      // ranges rising toward the right, under the brush characters (hidden on phones)
+      var H = (600 * h) / w, motifs = [
+        { c: "山", r: { x: 190, y: H * 0.45, w: 230, h: H * 0.55 }, seed: 12 },
+        { c: "山", r: { x: 340, y: H * 0.12, w: 280, h: H * 0.88 }, seed: 9 },
+      ];
+      Ink.render(new Ink.Painter(cv), { motifs: motifs });
+    }
+    paint();
+    var t = 0;
+    addEventListener("resize", function () {
+      clearTimeout(t);
+      t = setTimeout(paint, 250);
+    });
+  })();
+
+  // ------------------------------------------------------------ the chapter index follows the reading
+
+  (function () {
+    var nav = root.querySelector(".db-index");
+    if (!nav || !("IntersectionObserver" in window)) return;
+    var links = {}, mid = { rootMargin: "-50% 0px -50% 0px" };
+    nav.querySelectorAll("a").forEach(function (a) {
+      links[a.getAttribute("href").slice(1)] = a;
+    });
+    var chapters = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Object.keys(links).forEach(function (id) {
+          links[id].classList.toggle("is-on", id === e.target.id);
+        });
+      });
+    }, mid);
+    Object.keys(links).forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) chapters.observe(sec);
+    });
+    // light over the film and the photograph; out of the way over the hero
+    var bands = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        nav.classList.toggle(e.target.classList.contains("db-hero") ? "is-away" : "on-dark", e.isIntersecting);
+      });
+    }, mid);
+    root.querySelectorAll(".db-hero, .db-film, .db-photo").forEach(function (n) {
+      bands.observe(n);
+    });
+  })();
+
   // a character written in water: dark while wet, on a transparent layer
   var WET = "rgb(46, 52, 60)";
   function glyph(c, ch, r, a, k) {
@@ -1320,7 +1377,7 @@
     if (!panels.length) return;
     // logical 600 x 900; the written character is shown dried to a ghost, its region marked
     var SCENES = {
-      size: { motifs: [{ c: "山", r: { x: 20, y: 380, w: 560, h: 500 }, seed: 11 }, { c: "山", r: { x: 330, y: 150, w: 210, h: 140 }, seed: 5 }], ghosts: [0, 1] },
+      size: { motifs: [{ c: "山", r: { x: 20, y: 380, w: 560, h: 500 }, seed: 11 }, { c: "山", r: { x: 60, y: 150, w: 210, h: 140 }, seed: 5 }], ghosts: [0, 1] },
       place: { motifs: [{ c: "山", r: { x: 30, y: 370, w: 540, h: 500 }, seed: 21 }, { c: "日", r: { x: 60, y: 110, w: 120, h: 120 }, seed: 2 }], ghosts: [1] },
       context: { motifs: [{ c: "山", r: { x: 20, y: 250, w: 560, h: 600 }, seed: 31 }, { c: "云", r: { x: 40, y: 500, w: 520, h: 150 }, seed: 4 }], ghosts: [1] },
       meaning: { motifs: [{ c: "山", r: { x: 50, y: 300, w: 500, h: 440 }, seed: 5 }, { c: "水", r: { x: 10, y: 720, w: 580, h: 170 }, seed: 3 }, { c: "舟", r: { x: 330, y: 760, w: 190, h: 100 }, seed: 6 }], rain: 1, ghost: { c: "雨", r: { x: 245, y: 110, w: 110, h: 110 } } },

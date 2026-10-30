@@ -23,20 +23,46 @@ scripts: ["/assets/js/dreambrush.js"]
 -->
 <div class="db">
 
+<svg class="db-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <!-- a carved edge: the outline wanders a little, as if cut into stone -->
+  <filter id="db-stone" x="-2%" y="-2%" width="104%" height="104%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<nav class="db-index" aria-label="Chapters">
+  <a href="#prelude" aria-label="Prelude" lang="zh">序</a>
+  <a href="#write" aria-label="Try it" lang="zh">写</a>
+  <a href="#rules" aria-label="Four rules" lang="zh">法</a>
+  <a href="#session" aria-label="A session" lang="zh">卷</a>
+  <a href="#instrument" aria-label="The instrument" lang="zh">器</a>
+  <a href="#time" aria-label="Ten seconds" lang="zh">时</a>
+  <a href="#reflections" aria-label="Reflections" lang="zh">思</a>
+  <a href="#name" aria-label="The name" lang="zh">记</a>
+</nav>
+
 <!-- ============================================================ hero -->
 <section class="db-hero" aria-labelledby="db-title">
+  <canvas class="db-land" aria-hidden="true"></canvas>
   <canvas class="db-trace" aria-hidden="true"></canvas>
   <div class="db-hero__text">
     <p class="db-meta">MIT Media Lab · Tangible Media Group · 2026</p>
     <h1 class="db-title" id="db-title">Dream Brush</h1>
     <p class="db-lede">Write a character in water.<br><em>Watch it become a painting.</em></p>
   </div>
-  <p class="db-hero__brush db-brush" lang="zh" aria-hidden="true" data-reveal><span>梦</span><span>笔</span></p>
-  <span class="db-seal db-hero__seal" lang="zh" aria-hidden="true"><span>梦</span><span>笔</span></span>
+  <div class="db-hero__mark" aria-hidden="true">
+    <p class="db-hero__brush db-brush" lang="zh" data-reveal><span>梦</span><span>笔</span></p>
+    <div class="db-hero__inscr">
+      <p class="db-tate" lang="zh">以水书字　字化为画</p>
+      <span class="db-seal" lang="zh"><span>梦</span><span>笔</span></span>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================================ film -->
 <section class="db-film" aria-label="Film">
+  <span class="db-film__ghost db-brush" lang="zh" aria-hidden="true">影</span>
   <div class="db-film__frame">
     <a class="db-film__play" href="https://www.youtube.com/watch?v=gdwcuiL3GAE" data-video="gdwcuiL3GAE">
       <img src="/media/dreambrush/db-film.webp" width="960" height="720" alt="" decoding="async">
@@ -47,8 +73,11 @@ scripts: ["/assets/js/dreambrush.js"]
 </section>
 
 <!-- ============================================================ prelude -->
-<section class="db-ch db-prelude" aria-labelledby="db-pre-h">
-  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>序</p>
+<section class="db-ch db-prelude" id="prelude" aria-labelledby="db-pre-h">
+  <div class="db-ch__mark" aria-hidden="true">
+    <span class="db-brush" lang="zh" data-reveal>序</span>
+    <span class="db-tate" lang="zh">书画同体</span>
+  </div>
   <div class="db-ch__body">
     <p class="db-kicker">Prelude</p>
     <h2 class="db-statement" id="db-pre-h" data-reveal>What if a brushstroke were a word, and the word the gesture that brings a picture into being?</h2>
@@ -68,11 +97,15 @@ scripts: ["/assets/js/dreambrush.js"]
 
 <figure class="db-photo" data-reveal>
   <img src="/media/dreambrush/db-hero.webp" width="1920" height="851" alt="A person writes with a calligraphy brush on a tall back-lit canvas on an aluminium easel; a projector sits on the floor behind it" loading="lazy" decoding="async">
+  <p class="db-photo__tate" lang="zh" aria-hidden="true">以水为墨</p>
 </figure>
 
 <!-- ============================================================ write -->
 <section class="db-ch db-write" id="write" aria-labelledby="db-write-h">
-  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>写</p>
+  <div class="db-ch__mark" aria-hidden="true">
+    <span class="db-brush" lang="zh" data-reveal>写</span>
+    <span class="db-tate" lang="zh">落笔成画</span>
+  </div>
   <div class="db-ch__body">
     <p class="db-kicker">Try it</p>
     <h2 class="db-h2" id="db-write-h">Write, then wait.</h2>
@@ -96,8 +129,11 @@ scripts: ["/assets/js/dreambrush.js"]
 </section>
 
 <!-- ============================================================ rules -->
-<section class="db-ch db-rules" aria-labelledby="db-rules-h">
-  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>法</p>
+<section class="db-ch db-rules" id="rules" aria-labelledby="db-rules-h">
+  <div class="db-ch__mark" aria-hidden="true">
+    <span class="db-brush" lang="zh" data-reveal>法</span>
+    <span class="db-tate" lang="zh">一字四法</span>
+  </div>
   <div class="db-ch__body">
     <p class="db-kicker">Four rules</p>
     <h2 class="db-h2" id="db-rules-h">One character, four decisions.</h2>
@@ -105,31 +141,46 @@ scripts: ["/assets/js/dreambrush.js"]
   </div>
   <ol class="db-screen">
     <li data-reveal>
-      <canvas class="db-panel" data-panel="size" role="img" aria-label="A great mountain written large in front, and a small far mountain written small"></canvas>
-      <p class="db-screen__t"><span lang="zh">大小</span>Size</p>
+      <div class="db-screen__art">
+        <canvas class="db-panel" data-panel="size" role="img" aria-label="A great mountain written large in front, and a small far mountain written small"></canvas>
+        <span class="db-screen__tate db-tate" lang="zh" aria-hidden="true">大小</span>
+      </div>
+      <p class="db-screen__t">Size</p>
       <p>How large you write is how much of the painting changes.</p>
     </li>
     <li data-reveal>
-      <canvas class="db-panel" data-panel="place" role="img" aria-label="The character for sun written small in the top corner becomes a red sun there, above the mountains"></canvas>
-      <p class="db-screen__t"><span lang="zh">位置</span>Location</p>
+      <div class="db-screen__art">
+        <canvas class="db-panel" data-panel="place" role="img" aria-label="The character for sun written small in the top corner becomes a red sun there, above the mountains"></canvas>
+        <span class="db-screen__tate db-tate" lang="zh" aria-hidden="true">位置</span>
+      </div>
+      <p class="db-screen__t">Location</p>
       <p>Where you write is where the change happens.</p>
     </li>
     <li data-reveal>
-      <canvas class="db-panel" data-panel="context" role="img" aria-label="The character for cloud written across a mountain lays a band of mist over it"></canvas>
-      <p class="db-screen__t"><span lang="zh">语境</span>Context</p>
+      <div class="db-screen__art">
+        <canvas class="db-panel" data-panel="context" role="img" aria-label="The character for cloud written across a mountain lays a band of mist over it"></canvas>
+        <span class="db-screen__tate db-tate" lang="zh" aria-hidden="true">语境</span>
+      </div>
+      <p class="db-screen__t">Context</p>
       <p>What is already there decides whether a character replaces, modifies or adds.</p>
     </li>
     <li data-reveal>
-      <canvas class="db-panel" data-panel="meaning" role="img" aria-label="The character for rain, written small, brings rain across the whole painting"></canvas>
-      <p class="db-screen__t"><span lang="zh">语义</span>Semantics</p>
+      <div class="db-screen__art">
+        <canvas class="db-panel" data-panel="meaning" role="img" aria-label="The character for rain, written small, brings rain across the whole painting"></canvas>
+        <span class="db-screen__tate db-tate" lang="zh" aria-hidden="true">语义</span>
+      </div>
+      <p class="db-screen__t">Semantics</p>
       <p>Some characters are pictures. Others change the weather, or the hour.</p>
     </li>
   </ol>
 </section>
 
 <!-- ============================================================ storyboard -->
-<section class="db-ch db-story" aria-labelledby="db-story-h">
-  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>卷</p>
+<section class="db-ch db-story" id="session" aria-labelledby="db-story-h">
+  <div class="db-ch__mark" aria-hidden="true">
+    <span class="db-brush" lang="zh" data-reveal>卷</span>
+    <span class="db-tate" lang="zh">先山后日</span>
+  </div>
   <div class="db-ch__body">
     <p class="db-kicker">A session</p>
     <h2 class="db-h2" id="db-story-h">First a mountain. Then the sun.</h2>
@@ -148,8 +199,11 @@ scripts: ["/assets/js/dreambrush.js"]
 </section>
 
 <!-- ============================================================ instrument -->
-<section class="db-ch db-tool" aria-labelledby="db-tool-h">
-  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>器</p>
+<section class="db-ch db-tool" id="instrument" aria-labelledby="db-tool-h">
+  <div class="db-ch__mark" aria-hidden="true">
+    <span class="db-brush" lang="zh" data-reveal>器</span>
+    <span class="db-tate" lang="zh">笔水与光</span>
+  </div>
   <div class="db-ch__body">
     <p class="db-kicker">The instrument</p>
     <h2 class="db-h2" id="db-tool-h">A brush, a cup of water, an easel of light.</h2>
@@ -178,8 +232,11 @@ scripts: ["/assets/js/dreambrush.js"]
 </section>
 
 <!-- ============================================================ time -->
-<section class="db-ch db-time" aria-labelledby="db-time-h">
-  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>时</p>
+<section class="db-ch db-time" id="time" aria-labelledby="db-time-h">
+  <div class="db-ch__mark" aria-hidden="true">
+    <span class="db-brush" lang="zh" data-reveal>时</span>
+    <span class="db-tate" lang="zh">水干画成</span>
+  </div>
   <div class="db-ch__body">
     <p class="db-kicker">Ten seconds</p>
     <h2 class="db-h2" id="db-time-h">The waiting is the drying.</h2>
@@ -198,8 +255,11 @@ scripts: ["/assets/js/dreambrush.js"]
 </section>
 
 <!-- ============================================================ reflections -->
-<section class="db-ch db-notes" aria-labelledby="db-notes-h">
-  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>思</p>
+<section class="db-ch db-notes" id="reflections" aria-labelledby="db-notes-h">
+  <div class="db-ch__mark" aria-hidden="true">
+    <span class="db-brush" lang="zh" data-reveal>思</span>
+    <span class="db-tate" lang="zh">观者所为</span>
+  </div>
   <div class="db-ch__body">
     <p class="db-kicker">Reflections</p>
     <h2 class="db-h2" id="db-notes-h">What people did with it.</h2>
@@ -224,7 +284,7 @@ scripts: ["/assets/js/dreambrush.js"]
 </section>
 
 <!-- ============================================================ close -->
-<section class="db-close" aria-labelledby="db-close-h">
+<section class="db-close" id="name" aria-labelledby="db-close-h">
   <p class="db-close__brush db-brush" lang="zh" aria-hidden="true" data-reveal><span>梦</span><span>笔</span><span>生</span><span>花</span></p>
   <div class="db-close__body">
     <p class="db-kicker">The name</p>

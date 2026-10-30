@@ -13,9 +13,9 @@
   --ink-3: #8b8479;
   --line: rgba(28, 26, 23, 0.14);
   --seal: #a8322a;
-  --night: #131210;
+  --night: #11151d;
   --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-  --zh: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --zh: "AR PL UKai CN", "Kaiti SC", "STKaiti", "KaiTi", serif;
   --brush: "Zhi Mang Xing", "Ma Shan Zheng", "Kaiti SC", "STKaiti", "KaiTi", serif;
   --hand: "Ma Shan Zheng", "Kaiti SC", "STKaiti", "KaiTi", serif;
   --sans: "Geist Variable", "Helvetica Neue", Arial, sans-serif;
@@ -72,7 +72,36 @@
 
 .db :where([lang="zh"]) {
   font-family: var(--zh);
-  font-weight: 300;
+  font-weight: 400;
+}
+
+.db-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* vertical writing, in the carved face, hung from a hairline */
+.db-tate {
+  position: relative;
+  padding-top: 2.6rem;
+  writing-mode: vertical-rl;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.6;
+  letter-spacing: 0.5em;
+  color: var(--ink-2);
+}
+
+.db-tate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 1.7rem;
+  background: currentColor;
+  opacity: 0.5;
 }
 
 .db .db-brush {
@@ -107,7 +136,7 @@
 }
 
 .db-h2 {
-  font-size: clamp(40px, 4.6vw, 78px);
+  font-size: clamp(38px, 4.1vw, 66px);
   line-height: 1.02;
   letter-spacing: -0.015em;
 }
@@ -146,6 +175,15 @@
 
 .db-ch__mark {
   grid-column: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: start;
+  gap: 2.2rem;
+}
+
+.db-ch__mark .db-brush {
+  display: block;
   margin-top: -0.06em;
   font-size: clamp(84px, 9.6vw, 168px);
 }
@@ -165,6 +203,18 @@
   min-height: min(92svh, 1000px);
   padding: calc(5.5rem + 6vh) var(--gutter) clamp(48px, 9vh, 110px);
   overflow: hidden;
+}
+
+.db-land {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 34%;
+  opacity: 0.55;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000 62%);
+  mask-image: linear-gradient(90deg, transparent 30%, #000 62%);
 }
 
 .db-trace {
@@ -194,33 +244,73 @@
   color: var(--ink-2);
 }
 
-.db-hero__brush {
+.db-hero__mark {
   position: relative;
-  grid-column: 10 / 13;
+  grid-column: 9 / 13;
   grid-row: 1;
   justify-self: end;
   align-self: center;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: clamp(14px, 1.6vw, 28px);
+}
+
+.db-hero__brush {
   writing-mode: vertical-rl;
   font-size: min(17vw, 36svh);
   letter-spacing: -0.04em;
 }
 
-.db-hero__seal {
-  position: absolute;
-  right: calc(var(--gutter) + min(15vw, 31svh));
-  bottom: clamp(48px, 9vh, 110px);
-  font-size: clamp(16px, 1.3vw, 21px);
+.db-hero__inscr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: min(9vw, 18svh);
+}
+
+.db-hero__inscr .db-tate {
+  color: var(--ink);
+}
+
+.db-hero__inscr .db-seal {
+  font-size: clamp(15px, 1.2vw, 20px);
 }
 
 /* ---------------------------------------------------------------- film */
 
 .db-film {
+  position: relative;
   padding: clamp(36px, 6vh, 80px) var(--gutter) clamp(40px, 7vh, 90px);
+  overflow: hidden;
   background: var(--night);
+}
+
+.db-film__ghost {
+  position: absolute;
+  left: -6vw;
+  top: 50%;
+  translate: 0 -56%;
+  font-size: min(160svh, 120vw);
+  line-height: 0.8;
+  color: #000;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.db-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.09;
+  pointer-events: none;
 }
 
 .db-film__frame {
   position: relative;
+  z-index: 1;
   width: min(100%, calc((100svh - 12vh) * 4 / 3), 1500px);
   aspect-ratio: 4 / 3;
   margin: 0 auto;
@@ -327,6 +417,7 @@
 }
 
 .db-quote blockquote {
+  filter: url(#db-stone);
   writing-mode: vertical-rl;
   font-size: clamp(40px, 4.4vw, 74px);
   line-height: 1.2;
@@ -357,7 +448,19 @@
 /* ---------------------------------------------------------------- photo */
 
 .db-photo {
+  position: relative;
   margin-top: clamp(110px, 17vh, 220px);
+}
+
+.db-photo__tate {
+  position: absolute;
+  top: 14%;
+  right: calc(var(--gutter) + 2vw);
+  writing-mode: vertical-rl;
+  font-size: clamp(20px, 1.9vw, 32px);
+  letter-spacing: 0.6em;
+  color: #f4efe6;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
 }
 
 .db-photo img {
@@ -555,6 +658,20 @@
   border-right: 1px solid var(--line);
 }
 
+.db-screen__art {
+  position: relative;
+}
+
+.db .db-screen__tate {
+  position: absolute;
+  top: 5%;
+  right: 8%;
+  font-size: clamp(16px, 1.45vw, 23px);
+  letter-spacing: 0.3em;
+  color: var(--ink);
+  pointer-events: none;
+}
+
 .db-panel {
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -566,12 +683,6 @@
   margin: 1.6rem 0 0.5rem;
   font-size: clamp(24px, 1.9vw, 30px);
   line-height: 1.1;
-}
-
-.db-screen__t [lang="zh"] {
-  margin-right: 0.6em;
-  font-size: 0.82em;
-  letter-spacing: 0.12em;
 }
 
 .db-screen li > p:last-child {
@@ -843,6 +954,69 @@
   font-size: 22px;
 }
 
+/* ---------------------------------------------------------------- chapter index */
+
+.db-index {
+  position: fixed;
+  top: 50%;
+  right: clamp(10px, 1.3vw, 22px);
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  translate: 0 -50%;
+  font-family: var(--zh);
+  transition: opacity 0.6s;
+}
+
+.db-index a {
+  position: relative;
+  padding: 0.25rem 0.3rem;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+.db-index a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 4px);
+  width: 0;
+  height: 1px;
+  background: var(--seal);
+  transition: width 0.4s var(--ease);
+}
+
+.db-index a:hover,
+.db-index a:focus-visible {
+  color: var(--ink);
+}
+
+.db-index a.is-on {
+  color: var(--seal);
+}
+
+.db-index a.is-on::before {
+  width: 14px;
+}
+
+.db-index.on-dark a {
+  color: rgba(244, 239, 230, 0.45);
+}
+
+.db-index.on-dark a.is-on {
+  color: #e2675a;
+}
+
+.db-index.is-away {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ---------------------------------------------------------------- arrival */
 
 .db-js [data-reveal] {
@@ -902,9 +1076,19 @@
 }
 
 @media (max-width: 900px) {
+  .db-index {
+    display: none;
+  }
+
   .db-ch__mark {
     grid-column: 1 / -1;
-    margin-bottom: 0.25em;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.4rem;
+    margin-bottom: 1.2em;
+  }
+
+  .db-ch__mark .db-brush {
     font-size: clamp(72px, 16vw, 120px);
   }
 
@@ -975,14 +1159,17 @@
     grid-row: 2;
   }
 
-  .db-hero__brush {
+  .db-hero__mark {
     grid-column: 1 / -1;
     grid-row: 1;
     justify-self: start;
+  }
+
+  .db-hero__brush {
     font-size: min(30vw, 24svh);
   }
 
-  .db-hero__seal {
+  .db-land {
     display: none;
   }
 
