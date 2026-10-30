@@ -16,243 +16,229 @@ scripts: ["/assets/js/dreambrush.js"]
 ---
 <!--
   Custom product page. Styles: src/assets/css/dreambrush.css
-  Interactive parts (drying ink in the hero, the writing canvas):
-  src/assets/js/dreambrush.js. The two Chinese fonts are subsets: see
-  src/assets/fonts/dreambrush/fonts.css before using a new character.
+  Script (the drying trace in the hero, the film, the ink painter behind the
+  writing canvas and the four-panel screen): src/assets/js/dreambrush.js
+  The Chinese fonts are subsets: read src/assets/fonts/dreambrush/fonts.css
+  before using a new Chinese character.
 -->
 <div class="db">
 
 <!-- ============================================================ hero -->
 <section class="db-hero" aria-labelledby="db-title">
   <canvas class="db-trace" aria-hidden="true"></canvas>
-  <div class="db-wrap db-hero__grid">
-    <div class="db-hero__main">
-      <p class="db-mono db-hero__meta">mit media lab · tangible media group · 2026</p>
-      <h1 class="db-wordmark" id="db-title">dream brush<span class="db-seal db-seal--title" aria-hidden="true"><span>夢</span><span>筆</span></span></h1>
-      <p class="db-hero__lede">write a character with water.<br>watch it become a painting.</p>
-    </div>
-    <p class="db-vertical" lang="zh">书画同体<span class="db-mono">writing and painting <br>share one body</span></p>
+  <div class="db-hero__text">
+    <p class="db-meta">MIT Media Lab · Tangible Media Group · 2026</p>
+    <h1 class="db-title" id="db-title">Dream Brush</h1>
+    <p class="db-lede">Write a character in water.<br><em>Watch it become a painting.</em></p>
   </div>
-  <figure class="db-wrap db-mount db-hero__photo">
-    <img src="/media/dreambrush/db-hero.webp" width="1920" height="851" alt="A person writes with a calligraphy brush on a tall, back-lit canvas on an aluminium easel; a projector sits on the floor behind it" fetchpriority="high" decoding="async">
-    <figcaption class="db-mono"><span>fig. 01</span>writing with water on the canvas. the trace fades as it dries.</figcaption>
-  </figure>
-  <p class="db-wrap db-hint db-mono" aria-hidden="true">move across the paper</p>
+  <p class="db-hero__brush db-brush" lang="zh" aria-hidden="true" data-reveal><span>梦</span><span>笔</span></p>
+  <span class="db-seal db-hero__seal" lang="zh" aria-hidden="true"><span>梦</span><span>笔</span></span>
+</section>
+
+<!-- ============================================================ film -->
+<section class="db-film" aria-label="Film">
+  <div class="db-film__frame">
+    <a class="db-film__play" href="https://www.youtube.com/watch?v=gdwcuiL3GAE" data-video="gdwcuiL3GAE">
+      <img src="/media/dreambrush/db-film.webp" width="960" height="720" alt="" decoding="async">
+      <span class="db-film__btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span>
+      <span class="db-film__label">Play the film</span>
+    </a>
+  </div>
 </section>
 
 <!-- ============================================================ prelude -->
-<section class="db-prelude" aria-labelledby="db-pre-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">01</span><span class="db-zh" lang="zh">序</span>prelude</p>
-    <h2 class="db-statement" id="db-pre-h">what happens when a brushstroke is a word, and the word becomes the gesture that brings a picture into being?</h2>
-    <div class="db-cols">
-      <p>Dream Brush is a generative painting experience. You write Chinese characters with a real calligraphy brush, dipped only in water, on a canvas mounted on an easel. The canvas shows the trace of your stroke, then lets it fade as if drying. In its place, the system paints: each character becomes a motif of Chinese painting, with sound.</p>
-      <p>Generative tools are pushing creative work toward detached prompting. Chinese characters offer another way in: a single mark can carry meaning and still be a gesture and a picture. What you write, and where, how large and at what angle you write it, all steer what appears.</p>
+<section class="db-ch db-prelude" aria-labelledby="db-pre-h">
+  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>序</p>
+  <div class="db-ch__body">
+    <p class="db-kicker">Prelude</p>
+    <h2 class="db-statement" id="db-pre-h" data-reveal>What if a brushstroke were a word, and the word the gesture that brings a picture into being?</h2>
+    <div class="db-cols" data-reveal>
+      <p>Dream Brush is a generative painting experience. You write Chinese characters with a real calligraphy brush, dipped only in water, on a canvas that stands on an easel. The canvas shows the trace of your stroke, then lets it fade as if drying. In its place the system paints: each character becomes a motif of Chinese painting, with sound.</p>
+      <p>Generative tools are pushing creative work toward detached prompting. Chinese characters offer another way in. A single mark can carry meaning and still be a gesture and a picture, so what you write, where you write it and how large all steer what appears.</p>
     </div>
-    <blockquote class="db-quote">
-      <p>Writing and painting are different names for the same body.</p>
-      <footer class="db-mono">after Zhang Yanyuan, <cite>Records of Famous Paintings of All Dynasties</cite>, c. 847</footer>
-    </blockquote>
-    <aside class="db-idiom">
-      <p class="db-idiom__zh" lang="zh">梦笔生花</p>
-      <p>The name echoes an old idiom. As a boy, the poet Li Bai dreamt that flowers bloomed from the tip of his brush.</p>
-    </aside>
   </div>
+  <figure class="db-quote" data-reveal>
+    <blockquote lang="zh"><p>书画异名而同体</p></blockquote>
+    <figcaption>
+      <p class="db-quote__en">Writing and painting have different names, but one body.</p>
+      <p class="db-quote__src">Zhang Yanyuan <span lang="zh">张彦远</span>, <cite>Records of Famous Paintings of All Dynasties</cite> <span lang="zh">《历代名画记》</span>, 847</p>
+    </figcaption>
+  </figure>
 </section>
 
-<!-- ============================================================ write -->
-<section class="db-write" id="write" aria-labelledby="db-write-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">02</span><span class="db-zh" lang="zh">写</span>write</p>
-    <h2 class="db-h2" id="db-write-h">choose a character. brush where it goes.</h2>
-    <p class="db-sub">A working model of the canvas. Pick a character, then drag across the paper: the size and place of your stroke are the size and place of the change. Write a second character into the scene and the painting grows around it.</p>
+<figure class="db-photo" data-reveal>
+  <img src="/media/dreambrush/db-hero.webp" width="1920" height="851" alt="A person writes with a calligraphy brush on a tall back-lit canvas on an aluminium easel; a projector sits on the floor behind it" loading="lazy" decoding="async">
+</figure>
 
-    <div class="db-studio">
-      <div class="db-scroll">
-        <div class="db-scroll__rod" aria-hidden="true"></div>
-        <svg class="db-canvas" viewBox="0 0 600 800" role="application" aria-label="Painting canvas. Drag to write the chosen character; or use the button to write it in an open space."></svg>
-        <div class="db-scroll__rod" aria-hidden="true"></div>
-      </div>
-      <div class="db-desk">
-        <p class="db-label db-mono">inkstone</p>
-        <div class="db-chars" role="radiogroup" aria-label="Character to write"></div>
-        <div class="db-desk__buttons">
-          <button type="button" class="db-btn" data-db="place">write in an open space</button>
-          <button type="button" class="db-btn db-btn--ghost" data-db="clear">new paper</button>
-          <button type="button" class="db-btn db-btn--ghost" data-db="sound" aria-pressed="false">sound off</button>
-        </div>
-        <ol class="db-steps db-mono" aria-live="polite"><li class="is-idle">drag on the paper to write <b class="db-zh-inline" lang="zh">山</b></li></ol>
-        <div class="db-suggest" hidden><p class="db-label db-mono">the canvas suggests</p><div class="db-suggest__row"></div></div>
-      </div>
+<!-- ============================================================ write -->
+<section class="db-ch db-write" id="write" aria-labelledby="db-write-h">
+  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>写</p>
+  <div class="db-ch__body">
+    <p class="db-kicker">Try it</p>
+    <h2 class="db-h2" id="db-write-h">Write, then wait.</h2>
+    <p class="db-intro">A working model of the canvas. Choose a character and write it anywhere on the paper, with a mouse, a finger or a pen, or tap and it is written for you. Where you write, and how large, is where and how large the painting changes.</p>
+  </div>
+  <div class="db-studio">
+    <div class="db-scroll">
+      <canvas class="db-canvas" role="img" aria-label="An empty sheet of painting paper"></canvas>
     </div>
-    <p class="db-note db-mono">a model, not the installation: motifs are drawn in your browser, and nothing is recognised from handwriting. The real system reads the written character with a vision model and paints it with an image model in about ten seconds.</p>
+    <div class="db-desk">
+      <div class="db-inkstone" role="radiogroup" aria-label="Character to write"></div>
+      <p class="db-status" aria-live="polite">Choose a character, then write it on the paper.</p>
+      <div class="db-actions">
+        <button type="button" class="db-btn" data-db="auto">Write it for me</button>
+        <button type="button" class="db-btn db-btn--quiet" data-db="clear">New paper</button>
+        <button type="button" class="db-btn db-btn--quiet" data-db="sound" aria-pressed="false">Sound off</button>
+      </div>
+      <p class="db-note">A model, not the installation. These motifs are painted by your browser, and nothing here reads your handwriting. The installation recognises the written character with a vision model and paints it with an image model.</p>
+    </div>
   </div>
 </section>
 
 <!-- ============================================================ rules -->
-<section class="db-rules" aria-labelledby="db-rules-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">03</span><span class="db-zh" lang="zh">法</span>four rules</p>
-    <h2 class="db-h2" id="db-rules-h">one inscription, four meanings.</h2>
-    <p class="db-sub">Each character is read through coupled constraints. A single gesture carries what a screen would split into tool choice, prompt wording and parameters.</p>
-    <ol class="db-rules__grid">
-      <li>
-        <svg viewBox="0 0 160 120" aria-hidden="true"><rect class="frame" x="10" y="8" width="140" height="104"/><rect class="area" x="22" y="18" width="34" height="34"/><text x="39" y="37" class="zh">山</text><rect class="area" x="70" y="34" width="68" height="68"/><text x="104" y="70" class="zh big">山</text></svg>
-        <b>size</b><span>how much of the painting is repainted.</span>
-      </li>
-      <li>
-        <svg viewBox="0 0 160 120" aria-hidden="true"><rect class="frame" x="10" y="8" width="140" height="104"/><path class="motif" d="M14 104 L44 56 L62 78 L86 40 L122 104"/><rect class="area" x="108" y="14" width="32" height="32"/><text x="124" y="32" class="zh">日</text></svg>
-        <b>location</b><span>where the change happens.</span>
-      </li>
-      <li>
-        <svg viewBox="0 0 160 120" aria-hidden="true"><rect class="frame" x="10" y="8" width="140" height="104"/><rect class="area ghost" x="40" y="30" width="60" height="60"/><rect class="area" x="58" y="40" width="60" height="60"/><text x="88" y="72" class="zh">松</text></svg>
-        <b>context</b><span>replace, modify or add, depending on what is already there.</span>
-      </li>
-      <li>
-        <svg viewBox="0 0 160 120" aria-hidden="true"><rect class="frame" x="10" y="8" width="140" height="104"/><g class="rain"><path d="M30 14 l-8 22"/><path d="M58 20 l-8 22"/><path d="M86 12 l-8 22"/><path d="M114 22 l-8 22"/><path d="M44 52 l-8 22"/><path d="M72 58 l-8 22"/><path d="M100 50 l-8 22"/><path d="M128 60 l-8 22"/><path d="M36 86 l-6 18"/><path d="M92 88 l-6 18"/></g><text x="80" y="72" class="zh big">雨</text></svg>
-        <b>semantics</b><span>a literal picture, or a shift in weather or time of day.</span>
-      </li>
-    </ol>
+<section class="db-ch db-rules" aria-labelledby="db-rules-h">
+  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>法</p>
+  <div class="db-ch__body">
+    <p class="db-kicker">Four rules</p>
+    <h2 class="db-h2" id="db-rules-h">One character, four decisions.</h2>
+    <p class="db-intro">Each character is read through four coupled constraints. One gesture carries what a screen would split into a tool, a prompt and its parameters.</p>
   </div>
+  <ol class="db-screen">
+    <li data-reveal>
+      <canvas class="db-panel" data-panel="size" role="img" aria-label="A great mountain written large in front, and a small far mountain written small"></canvas>
+      <p class="db-screen__t"><span lang="zh">大小</span>Size</p>
+      <p>How large you write is how much of the painting changes.</p>
+    </li>
+    <li data-reveal>
+      <canvas class="db-panel" data-panel="place" role="img" aria-label="The character for sun written small in the top corner becomes a red sun there, above the mountains"></canvas>
+      <p class="db-screen__t"><span lang="zh">位置</span>Location</p>
+      <p>Where you write is where the change happens.</p>
+    </li>
+    <li data-reveal>
+      <canvas class="db-panel" data-panel="context" role="img" aria-label="The character for cloud written across a mountain lays a band of mist over it"></canvas>
+      <p class="db-screen__t"><span lang="zh">语境</span>Context</p>
+      <p>What is already there decides whether a character replaces, modifies or adds.</p>
+    </li>
+    <li data-reveal>
+      <canvas class="db-panel" data-panel="meaning" role="img" aria-label="The character for rain, written small, brings rain across the whole painting"></canvas>
+      <p class="db-screen__t"><span lang="zh">语义</span>Semantics</p>
+      <p>Some characters are pictures. Others change the weather, or the hour.</p>
+    </li>
+  </ol>
 </section>
 
 <!-- ============================================================ storyboard -->
-<section class="db-story" aria-labelledby="db-story-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">04</span><span class="db-zh" lang="zh">卷</span>a session</p>
-    <h2 class="db-h2" id="db-story-h">first a mountain. then the sun.</h2>
+<section class="db-ch db-story" aria-labelledby="db-story-h">
+  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>卷</p>
+  <div class="db-ch__body">
+    <p class="db-kicker">A session</p>
+    <h2 class="db-h2" id="db-story-h">First a mountain. Then the sun.</h2>
   </div>
-  <figure class="db-wrap db-story__scroll">
-    <div class="db-story__strip" tabindex="0" aria-label="storyboard, scrolls sideways on small screens">
+  <figure class="db-story__fig" data-reveal>
+    <div class="db-story__strip" tabindex="0" aria-label="Storyboard, scrolls sideways on small screens">
       <img src="/media/dreambrush/db-story.webp" width="3200" height="756" alt="Four sketches: a hand writes the character for mountain; a mountain fills the canvas; the hand writes the character for sun in the top corner; a sun appears there among the mountains" loading="lazy" decoding="async">
     </div>
     <ol class="db-story__caps">
-      <li><span class="db-mono">a</span>Write <b lang="zh">山</b>, mountain, large across the paper.</li>
-      <li><span class="db-mono">b</span>A great mountain becomes the main element of the scene.</li>
-      <li><span class="db-mono">c</span>Write <b lang="zh">日</b>, sun, small in a corner.</li>
-      <li><span class="db-mono">d</span>The sun appears there, at that size, and the mountain stays.</li>
+      <li>Write <span lang="zh">山</span>, mountain, large across the paper.</li>
+      <li>A great mountain becomes the main element of the scene.</li>
+      <li>Write <span lang="zh">日</span>, sun, small in a corner.</li>
+      <li>The sun appears there, at that size, and the mountain stays.</li>
     </ol>
   </figure>
 </section>
 
 <!-- ============================================================ instrument -->
-<section class="db-tool" aria-labelledby="db-tool-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">05</span><span class="db-zh" lang="zh">器</span>the instrument</p>
-    <h2 class="db-h2" id="db-tool-h">a brush, a cup of water, an easel of light.</h2>
-    <figure class="db-tool__fig">
-      <img src="/media/dreambrush/db-render.webp" width="2600" height="1114" alt="Rendering of the installation: a projector on the floor behind a tilted canvas on an aluminium extrusion frame, with a calligraphy brush" loading="lazy" decoding="async">
-    </figure>
-    <dl class="db-spec db-tool__list">
-      <div><dt>canvas</dt><dd>semi-translucent matte acrylic, back-projected, so the trace glows from within</dd></div>
-      <div><dt>sensing</dt><dd>an infrared multi-touch frame around the canvas detects the brush</dd></div>
-      <div><dt>easel</dt><dd>aluminium extrusion, adjustable</dd></div>
-      <div><dt>light</dt><dd>a projector behind the canvas</dd></div>
-      <div><dt>brush</dt><dd>a Chinese calligraphy brush and a cup of water: the feel of brushing, without pigment</dd></div>
-      <div><dt>sound</dt><dd>a speaker</dd></div>
-      <div><dt>mind</dt><dd>a computer coordinating sensing, recognition, generation and output</dd></div>
-    </dl>
+<section class="db-ch db-tool" aria-labelledby="db-tool-h">
+  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>器</p>
+  <div class="db-ch__body">
+    <p class="db-kicker">The instrument</p>
+    <h2 class="db-h2" id="db-tool-h">A brush, a cup of water, an easel of light.</h2>
   </div>
-</section>
-
-<!-- ============================================================ system -->
-<section class="db-sys" aria-labelledby="db-sys-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">06</span><span class="db-zh" lang="zh">理</span>system</p>
-    <h2 class="db-h2" id="db-sys-h">from a stroke to a scene.</h2>
-    <ol class="db-flow">
-      <li><span class="db-mono">01</span><b>capture</b>The handwritten character is captured as an image.</li>
-      <li><span class="db-mono">02</span><b>read</b>A vision model recognises it. The text becomes the concept prompt.</li>
-      <li class="db-flow__split">
-        <div><span class="db-mono">03a</span><b>paint</b>The stroke's place is marked with a bounding region. The image model paints the concept inside it and keeps the rest of the picture stable.</div>
-        <div><span class="db-mono">03b</span><b>sound</b>In parallel, a text-to-sound model composes a sound effect or a short melody.</div>
-      </li>
-      <li><span class="db-mono">04</span><b>reveal</b>When both are ready, the projection changes and the sound plays.</li>
-    </ol>
-  </div>
+  <figure class="db-tool__fig" data-reveal>
+    <img src="/media/dreambrush/db-render.webp" width="2600" height="1340" alt="Rendering of the installation: a projector on the floor behind a tilted canvas on an aluminium extrusion frame, with a calligraphy brush" loading="lazy" decoding="async">
+    <svg class="db-tool__leaders" viewBox="0 0 3950 2036" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M560 658H788M560 1309H1590M2379 499H3260M2688 784H3260M2949 1805H3260"/>
+    </svg>
+    <ul class="db-tool__labels" aria-hidden="true">
+      <li class="is-left" style="--x: 85.8%; --y: 32.3%">Projector</li>
+      <li class="is-left" style="--x: 85.8%; --y: 64.3%">Aluminium easel,<br>adjustable</li>
+      <li style="--x: 83%; --y: 24.5%">Acrylic screen,<br>lit from behind</li>
+      <li style="--x: 83%; --y: 38.5%">Infrared<br>multi-touch frame</li>
+      <li style="--x: 83%; --y: 88.65%">Calligraphy brush</li>
+    </ul>
+  </figure>
+  <dl class="db-spec db-tool__spec">
+    <div><dt>Canvas</dt><dd>Semi-translucent matte acrylic, back-projected, so the trace glows from within.</dd></div>
+    <div><dt>Sensing</dt><dd>An infrared multi-touch frame around the canvas detects the brush.</dd></div>
+    <div><dt>Brush</dt><dd>A Chinese calligraphy brush and a cup of water: the feel of brushing, without pigment.</dd></div>
+    <div><dt>Light</dt><dd>A projector behind the canvas, on an adjustable aluminium easel.</dd></div>
+    <div><dt>Sound</dt><dd>A speaker beside the easel.</dd></div>
+    <div><dt>Mind</dt><dd>A computer coordinating sensing, recognition, painting and sound.</dd></div>
+  </dl>
 </section>
 
 <!-- ============================================================ time -->
-<section class="db-time" aria-labelledby="db-time-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">07</span><span class="db-zh" lang="zh">时</span>time</p>
-    <h2 class="db-h2" id="db-time-h">the waiting is the drying.</h2>
-    <div class="db-time__grid">
-      <p class="db-sub">Painting a new image takes about ten seconds, long enough to collapse into waiting. So the live stroke appears at once, and fades like water drying while the painting is made. The delay becomes part of the work: a rhythm of mark, fade and response, closer to following a material than executing a plan.</p>
-      <div class="db-clock" aria-label="Timeline of one stroke, from 0 to about 10 seconds">
-        <div class="db-clock__row"><span class="db-mono">stroke</span><i class="mark" style="--a: 0; --b: 1"></i></div>
-        <div class="db-clock__row"><span class="db-mono">drying</span><i class="dry" style="--a: 0; --b: 40"></i></div>
-        <div class="db-clock__row"><span class="db-mono">painting</span><i class="work" style="--a: 0; --b: 96"></i></div>
-        <div class="db-clock__row"><span class="db-mono">sound</span><i class="work" style="--a: 0; --b: 70"></i></div>
-        <div class="db-clock__row"><span class="db-mono">reveal</span><i class="mark red" style="--a: 96; --b: 100"></i></div>
-        <div class="db-clock__axis db-mono"><span>0 s</span><span>5 s</span><span>≈ 10 s</span></div>
-        <i class="db-clock__now" aria-hidden="true"></i>
-      </div>
-    </div>
+<section class="db-ch db-time" aria-labelledby="db-time-h">
+  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>时</p>
+  <div class="db-ch__body">
+    <p class="db-kicker">Ten seconds</p>
+    <h2 class="db-h2" id="db-time-h">The waiting is the drying.</h2>
+    <p class="db-intro">Painting a new image takes about ten seconds, long enough to collapse into waiting. So the stroke shows at once and fades like water drying while the painting is made. The delay becomes part of the work: a rhythm of mark, fade and response, closer to following a material than executing a plan.</p>
   </div>
+  <figure class="db-clock" data-reveal>
+    <figcaption class="db-clock__axis"><span>0″</span><span>10″</span></figcaption>
+    <div class="db-clock__row"><p>The stroke appears</p><div class="db-clock__track"><i class="mark" style="--a: 0; --b: 1.2"></i></div></div>
+    <div class="db-clock__row"><p>The water dries</p><div class="db-clock__track"><i class="dry" style="--a: 0; --b: 42"></i></div></div>
+    <div class="db-clock__row"><p>A vision model reads the character</p><div class="db-clock__track"><i style="--a: 3; --b: 14"></i></div></div>
+    <div class="db-clock__row"><p>An image model paints inside the stroke’s bounds</p><div class="db-clock__track"><i style="--a: 14; --b: 96"></i></div></div>
+    <div class="db-clock__row"><p>A sound model composes</p><div class="db-clock__track"><i style="--a: 14; --b: 70"></i></div></div>
+    <div class="db-clock__row"><p>The painting changes, the sound plays</p><div class="db-clock__track"><i class="mark red" style="--a: 96; --b: 100"></i></div></div>
+    <i class="db-clock__now" aria-hidden="true"></i>
+  </figure>
 </section>
 
 <!-- ============================================================ reflections -->
-<section class="db-notes" aria-labelledby="db-notes-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">08</span><span class="db-zh" lang="zh">思</span>reflections</p>
-    <h2 class="db-h2" id="db-notes-h">what people did with it.</h2>
-    <ol class="db-notes__grid">
-      <li>
-        <b>easier than a prompt.</b>
-        <p>People write straight into the area they want, instead of describing a place in words. Many characters are near-square, so turning, scaling or combining them reshapes the target area.</p>
-      </li>
-      <li>
-        <b>a shared game.</b>
-        <p>Two groups of high school students agreed together on what to paint next. When an update landed, they cheered; when it missed, the gap between intention, recognition and painting became a joke and a puzzle to solve together.</p>
-        <p class="db-slips"><span>airplane</span><span>train</span><span>nothing</span><span>cancellation</span></p>
-        <p class="db-mono db-slips__cap">words people tried, to test the edges: anachronisms and negations.</p>
-      </li>
-      <li>
-        <b>where it goes next.</b>
-        <p>Shrink the rectangle to the written shape, so irregular areas can be targeted. Let changes bleed in like ink, not cut. Write short prose or poetry for more abstract answers. Carry the idea to other writing systems.</p>
-      </li>
-    </ol>
+<section class="db-ch db-notes" aria-labelledby="db-notes-h">
+  <p class="db-ch__mark db-brush" lang="zh" aria-hidden="true" data-reveal>思</p>
+  <div class="db-ch__body">
+    <p class="db-kicker">Reflections</p>
+    <h2 class="db-h2" id="db-notes-h">What people did with it.</h2>
   </div>
+  <ol class="db-notes__list">
+    <li data-reveal>
+      <span class="db-notes__n db-brush" lang="zh" aria-hidden="true">一</span>
+      <h3>Easier than a prompt.</h3>
+      <p>People wrote straight into the area they wanted, instead of describing a place in words. Many characters are near-square, so turning, scaling or combining them reshapes the target.</p>
+    </li>
+    <li data-reveal>
+      <span class="db-notes__n db-brush" lang="zh" aria-hidden="true">二</span>
+      <h3>A shared game.</h3>
+      <p>Two groups of high school students agreed together on what to paint next, and cheered when an update landed. When it missed, the gap between intention, recognition and painting became a joke and a puzzle to solve. Some tested the edges with anachronisms and negations: <em>airplane</em>, <em>train</em>, <em>nothing</em>, <em>cancellation</em>.</p>
+    </li>
+    <li data-reveal>
+      <span class="db-notes__n db-brush" lang="zh" aria-hidden="true">三</span>
+      <h3>Where it goes next.</h3>
+      <p>Shrink the rectangle to the written shape, so irregular areas can be targeted. Let changes bleed in like ink, not cut. Write short prose or poetry for more abstract answers. Carry the idea to other writing systems.</p>
+    </li>
+  </ol>
 </section>
 
-<!-- ============================================================ film -->
-<section class="db-film" aria-labelledby="db-film-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">09</span><span class="db-zh" lang="zh">影</span>film</p>
-    <h2 class="db-h2" id="db-film-h">mark, fade, response.</h2>
-    <div class="db-film__grid">
-      <div class="db-film__frame"><iframe src="https://www.youtube-nocookie.com/embed/gdwcuiL3GAE?rel=0&amp;playsinline=1" title="Dream Brush film" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-      <figure class="db-film__photo"><img src="/media/dreambrush/db-photo.webp" width="1619" height="1080" alt="Close view of the writer at the easel, brush on the glowing canvas" loading="lazy" decoding="async"></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ record -->
-<section class="db-record" aria-labelledby="db-record-h">
-  <div class="db-wrap">
-    <p class="db-kicker"><span class="db-num">10</span><span class="db-zh" lang="zh">记</span>record</p>
-    <h2 class="db-h2" id="db-record-h">dream brush.</h2>
-    <div class="db-record__grid">
-      <dl class="db-spec">
-        <div><dt>type</dt><dd>interactive installation · generative painting with Chinese calligraphy</dd></div>
-        <div><dt>input</dt><dd>a calligraphy brush and water, read by an infrared multi-touch frame</dd></div>
-        <div><dt>recognition</dt><dd>vision model · handwritten character to text</dd></div>
-        <div><dt>painting</dt><dd>image model, repainting inside the stroke's bounding region</dd></div>
-        <div><dt>sound</dt><dd>text-to-sound model · effects and short melodies</dd></div>
-        <div><dt>output</dt><dd>rear projection onto a translucent acrylic canvas · speaker</dd></div>
-        <div><dt>lineage</dt><dd>I/O Brush (Ryokai, Marti, Ishii, 2004), a brush that picks up the world as ink</dd></div>
-      </dl>
-      <div>
-        <dl class="db-spec">
-          <div><dt>year</dt><dd>2026</dd></div>
-          <div><dt>lab</dt><dd>MIT Media Lab · Tangible Media Group</dd></div>
-          <div><dt>team</dt><dd>Chuanqi Sun*, Yuhan Wang*, Quincy Kuang, Hiroshi Ishii</dd></div>
-          <div><dt></dt><dd class="db-mono">* equal contribution</dd></div>
-        </dl>
-        <span class="db-seal db-seal--end" aria-hidden="true"><span>夢</span><span>筆</span></span>
-      </div>
-    </div>
+<!-- ============================================================ close -->
+<section class="db-close" aria-labelledby="db-close-h">
+  <p class="db-close__brush db-brush" lang="zh" aria-hidden="true" data-reveal><span>梦</span><span>笔</span><span>生</span><span>花</span></p>
+  <div class="db-close__body">
+    <p class="db-kicker">The name</p>
+    <h2 class="db-h2" id="db-close-h">Flowers from the tip of a brush.</h2>
+    <p class="db-intro">Dream Brush echoes an old idiom, <span lang="zh">梦笔生花</span>. As a boy, the poet Li Bai dreamt that flowers bloomed from the tip of his brush.</p>
+    <dl class="db-spec db-credits">
+      <div><dt>Year</dt><dd>2026</dd></div>
+      <div><dt>Lab</dt><dd>MIT Media Lab, Tangible Media Group</dd></div>
+      <div><dt>Team</dt><dd>Chuanqi Sun*, Yuhan Wang*, Quincy Kuang, Hiroshi Ishii <small>* equal contribution</small></dd></div>
+      <div><dt>Medium</dt><dd>Interactive installation; generative painting with Chinese calligraphy</dd></div>
+      <div><dt>Built with</dt><dd>Infrared multi-touch frame, vision model, image model, text-to-sound model, rear projection</dd></div>
+      <div><dt>Lineage</dt><dd>I/O Brush (Ryokai, Marti, Ishii, 2004), a brush that picks up the world as ink</dd></div>
+    </dl>
+    <span class="db-seal db-close__seal" lang="zh" aria-hidden="true"><span>梦</span><span>笔</span></span>
   </div>
 </section>
 
