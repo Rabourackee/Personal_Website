@@ -4,54 +4,405 @@ section: "research"
 order: 9
 topics: ["UI/UX", "AI", "CAD", "Data Visualization"]
 cover: "/media/codex-synth/cover.webp"
+description: "CODEX-2 and SYNTH-2: two AI tools for designers, made at HDR's D3 group. Draw and describe to build CAD models; ask a building's data for charts. Try working models of both."
+fullBleed: true
+bodyClass: "cs-page"
+styles: ["/assets/css/codex-synth.css"]
+scripts: ["/assets/js/codex-synth.js"]
 ---
+<!--
+  Custom product page. Styles: src/assets/css/codex-synth.css
+  Everything drawn (hero, suburb, mesh-or-model, the working CODEX-2 and
+  SYNTH-2): src/assets/js/codex-synth.js. Without JavaScript the page reads
+  as a document with the two interface captures.
+-->
+<div class="cs">
 
-<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4"><b>CODEX &#x26; SYNTH
-</b><br />
-<span class="caption"><br />
-Time</span><span class="caption">2025<br />
-<br /></span><span class="caption">Program<br />
-<span style="color: rgba(255, 255, 255, 0.82);"></span>HDR.INC.<br />
-<br />
+<!-- ============================================================ hero -->
+<section class="cs-hero" aria-labelledby="cs-title">
+  <canvas class="cs-hero__view" aria-hidden="true"></canvas>
+  <div class="cs-wrap cs-hero__text">
+    <p class="cs-label">hdr · d3 data-driven design · 2025</p>
+    <h1 class="cs-title" id="cs-title">
+      <span class="cs-mark"><b>CODEX-2</b><small>AI MODEL<br>BUILDER</small></span>
+      <span class="cs-mark"><b>SYNTH-2</b><small>AI DATA<br>VISUALIZER</small></span>
+    </h1>
+    <p class="cs-hero__lede">two ai tools for designers. one builds the model you draw and describe. the other reads a building’s data and draws the chart you ask for.</p>
+    <p class="cs-hero__cta"><a class="cs-btn" href="#try-codex">try codex-2 <span aria-hidden="true">↓</span></a><a class="cs-btn cs-btn--ghost" href="#try-synth">try synth-2 <span aria-hidden="true">↓</span></a></p>
+  </div>
+</section>
 
-Leader:<br />
-Matt Goldsberry<br />
+<!-- ============================================================ film -->
+<section class="cs-film" aria-labelledby="cs-film-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">01</p>
+      <h2 id="cs-film-h">see it work</h2>
+      <p class="cs-sub">codex-2, building a street from prompts.</p>
+    </header>
+    <div class="cs-film__frame">
+      <a class="cs-film__play" href="https://www.youtube.com/watch?v=YFcGtJz1kis" data-video="YFcGtJz1kis">
+        <img src="/media/codex-synth/cs-film.webp" width="1280" height="720" alt="" decoding="async">
+        <span class="cs-film__btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span>
+        <span class="cs-film__label">play the film</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-</span>
-<br />
+<!-- ============================================================ CODEX-2 -->
+<section class="cs-band" id="codex" aria-labelledby="cs-codex-h">
+  <div class="cs-wrap">
+    <p class="cs-label">tool 01 / 02</p>
+    <h2 class="cs-band__mark" id="cs-codex-h"><b>CODEX-2</b><small>AI MODEL<br>BUILDER</small></h2>
+    <div class="cs-band__grid">
+      <p class="cs-band__lede">human–ai co-creation in cad. model with the tools you know, and let ai generate, edit and iterate on the model with you.</p>
+      <div class="cs-band__side">
+        <p>CODEX explores the interaction patterns of future AI CAD tools, merging AI 3D generation into the CAD modeling workflow. It was the first research and prototype for AI software products at the D3 group.</p>
+        <a class="cs-btn cs-btn--ghost" href="https://codex.d3-hdr.com/">open codex-2 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<br />
-<br /><br />
+<section class="cs-light cs-problem" aria-labelledby="cs-prob-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">02</p>
+      <h2 id="cs-prob-h">cad is precise. and slow.</h2>
+      <p class="cs-sub">a study of the tools designers use every day.</p>
+    </header>
+    <ol class="cs-traits">
+      <li>
+        <svg viewBox="0 0 160 100" aria-hidden="true"><rect x="40" y="26" width="80" height="50"/><path class="dim" d="M40 88h80M40 84v8M120 84v8M28 26v50M24 26h8M24 76h8"/><text x="80" y="98" text-anchor="middle">2400</text><text x="18" y="54" text-anchor="middle" transform="rotate(-90 18 54)">1500</text></svg>
+        <h3>precise</h3>
+        <p>The model format defines every boundary exactly.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 160 100" aria-hidden="true"><rect x="30" y="14" width="100" height="72"/><rect x="62" y="34" width="40" height="30"/><rect x="74" y="42" width="16" height="12"/><circle class="dot" cx="82" cy="48" r="2"/></svg>
+        <h3>detailed</h3>
+        <p>The process gives control over every dimension.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 160 100" aria-hidden="true"><path d="M70 30l16 40 5-15 15-5z"/><g class="dot"><circle cx="40" cy="30" r="2"/><circle cx="52" cy="22" r="2"/><circle cx="118" cy="28" r="2"/><circle cx="126" cy="44" r="2"/><circle cx="38" cy="58" r="2"/><circle cx="110" cy="76" r="2"/><circle cx="56" cy="80" r="2"/><circle cx="130" cy="64" r="2"/></g></svg>
+        <h3>manual</h3>
+        <p>Every step needs a hand on it, from first line to last.</p>
+      </li>
+    </ol>
+    <div class="cs-pain">
+      <figure class="cs-pain__fig"><canvas class="cs-suburb" role="img" aria-label="A drawn suburb: a hundred small grey houses, and one orange building in the middle"></canvas></figure>
+      <div class="cs-pain__text">
+        <p class="cs-kicker">the pain point</p>
+        <p class="cs-big">the hours go into the hundred ordinary models around the one that matters.</p>
+        <p>Much of the time is spent building standard models that don’t need the most care, and aren’t the core of the design.</p>
+      </div>
+    </div>
+    <div class="cs-venn">
+      <svg viewBox="0 0 520 300" role="img" aria-label="Two circles, AI and traditional CAD; where they overlap, AI-powered CAD">
+        <circle class="a" cx="190" cy="150" r="130"/><circle class="b" cx="330" cy="150" r="130"/>
+        <path class="ab" d="M260 40.6A130 130 0 0 1 260 259.4A130 130 0 0 1 260 40.6Z"/>
+        <text x="130" y="155" text-anchor="middle">ai</text><text x="260" y="146" text-anchor="middle" class="w">ai-powered</text><text x="260" y="168" text-anchor="middle" class="w">cad</text><text x="392" y="146" text-anchor="middle">traditional</text><text x="392" y="168" text-anchor="middle">cad</text>
+      </svg>
+      <div>
+        <p class="cs-kicker">the idea</p>
+        <p class="cs-big">ai-powered cad.</p>
+        <p>AI can produce the standard models without anyone touching every detail, so human effort goes into the designs that need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div><div class="column-unit" style="--span: 8">These Works are done during my internship at HDR. Inc. These are several AI software products involving novel UIUX design and human-AI collaboration. In CODEX, I explored the interaction patterns on future AI CAD tools, merging AI 3D generation into the CAD modeling workflow. User can build 3D models with common CAD tools, meanwhile they are allowed to use AI to generate, edit, and iterate upon the models with intuitive methods. This project served as a initial research and prototypes on the AI software product design and development. <br />
-SYHTH is an AI data visualization tool that can automatically detect data and the connected 3D model from a CSV file and interprete the data into AI generated visualizations with the input prompts. This is another exploration on the field of AI agents as a helper in the field of data interpretation and presentation. This also serves as a prototype of the way of AI enhancing the efficiency and customization functialities of the current data visualization softwares. 
-</div></div><br />
-<br />
-<br />
-<br />
-<div class="gallery-grid" style="--columns: 1; --gutter: 3.5rem; --mobile-gutter: 1rem">
-<a class="media-link" href="https://codex.d3-hdr.com/" target="_blank"><img class="media" src="/media/codex-synth/01.webp" width="2000" height="1051" alt="CODEX & SYNTH" loading="lazy" decoding="async"></a>
+<section class="cs-light cs-mesh" aria-labelledby="cs-mesh-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">03</p>
+      <h2 id="cs-mesh-h">a mesh, or a model?</h2>
+      <p class="cs-sub">ai can already make 3d. what it hands back is the problem. the same house, both ways:</p>
+    </header>
+    <div class="cs-vs">
+      <figure class="cs-vs__card">
+        <canvas class="cs-vs__view" data-vs="mesh" role="img" aria-label="A house as a generated mesh: one lumpy grey skin of triangles"></canvas>
+        <figcaption>
+          <p class="cs-kicker">ai mesh generation</p>
+          <h3>a skin of triangles</h3>
+          <p>Today’s AI 3D generation mostly returns coarse, low-fidelity meshes with poor topology: fine to look at, not ready to build.</p>
+          <dl class="cs-spec">
+            <div><dt>method</dt><dd>networks (GAN, GCN, patches) that output the mesh directly</dd></div>
+            <div><dt>examples</dt><dd>GET3D, TripoSR</dd></div>
+            <div><dt>edit as cad</dt><dd>no</dd></div>
+          </dl>
+        </figcaption>
+      </figure>
+      <figure class="cs-vs__card cs-vs__card--model">
+        <canvas class="cs-vs__view" data-vs="model" role="img" aria-label="The same house as a CAD model: a box, a gable roof, a chimney, a door and windows, each a clean part"></canvas>
+        <figcaption>
+          <p class="cs-kicker">ai cad generation</p>
+          <h3>a list of commands</h3>
+          <p>A transformer writes CAD commands and the CAD software builds them: a watertight, dimensionally exact model you can keep editing.</p>
+          <dl class="cs-spec">
+            <div><dt>method</dt><dd>a transformer writes the commands; the software builds the shapes</dd></div>
+            <div><dt>example</dt><dd>DeepCAD</dd></div>
+            <div><dt>edit as cad</dt><dd>yes</dd></div>
+          </dl>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="cs-note">drag either one to turn both.</p>
+    <div class="cs-merge">
+      <p class="cs-kicker">so codex-2 joins two workflows</p>
+      <ol class="cs-merge__flow">
+        <li>ai mesh generation<small>fast, from a prompt</small></li>
+        <li>cad modeling<small>exact, editable</small></li>
+        <li class="is-out">ai cad generation<small>the speed of one, the format and quality of the other</small></li>
+      </ol>
+    </div>
+    <div class="cs-survey">
+      <p class="cs-kicker">what was out there, summer 2025</p>
+      <table>
+        <thead><tr><th>platform</th><th>what it is</th><th>hands back</th></tr></thead>
+        <tbody>
+          <tr><td>Meshy.ai</td><td>rapid 3D generation, from text or from an image</td><td>a mesh</td></tr>
+          <tr><td>Spline</td><td>online 3D modeling and UI design, with 3D generation added</td><td>a mesh</td></tr>
+          <tr><td>Tencent Hunyuan</td><td>multi-modal generation, with self-defined workflows</td><td>a mesh</td></tr>
+          <tr class="is-us"><td>CODEX-2</td><td>a CAD modeler with an AI agent at its centre</td><td>named groups of CAD primitives</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cs-light cs-design" aria-labelledby="cs-design-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">04</p>
+      <h2 id="cs-design-h">three functions, three promises</h2>
+      <p class="cs-sub">from what users need to what the interface must be.</p>
+    </header>
+    <div class="cs-flow">
+      <div class="cs-flow__step"><p class="cs-kicker">pain point</p><p>CAD tools lack automation and agency.</p></div>
+      <div class="cs-flow__step"><p class="cs-kicker">main goal</p><p>Use AI to enhance the modeling workflow, and free people from repetitive, standard routines.</p></div>
+      <div class="cs-flow__pairs">
+        <p class="cs-kicker">critical functions</p><p class="cs-kicker">design goals</p>
+        <div class="cs-pair"><div><span>01</span><h3>basic cad</h3><p>The essential CAD functions, so a model can be edited the usual way.</p></div><div><h3>familiar</h3><p>Keep CAD’s interface elements, so CAD users can learn it and try it at once.</p></div></div>
+        <div class="cs-pair"><div><span>02</span><h3>ai agent</h3><p>The core: write the commands and build the model from a prompt.</p></div><div><h3>intuitive</h3><p>Make talking to the AI easy to understand and quick to use.</p></div></div>
+        <div class="cs-pair"><div><span>03</span><h3>merging system</h3><p>One system for what the AI makes and what you model by hand.</p></div><div><h3>robust</h3><p>A registry and document system that link AI models and CAD models without seams.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-anat" data-anat aria-labelledby="cs-anat1-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">05</p>
+      <h2 id="cs-anat1-h">the interface</h2>
+      <p class="cs-sub">cad you already know, with an agent at the centre. point at a part.</p>
+    </header>
+    <div class="cs-anat__grid">
+      <figure class="cs-anat__fig">
+        <img src="/media/codex-synth/cs-codex-ui.webp" width="2400" height="1261" alt="CODEX-2: a black viewport on a ground of orange crosses with low-poly pine trees and a rabbit; a tool bar on the left, a prompt box at the bottom centre, and on the right two wheels above the object details and object registry panels" loading="lazy" decoding="async">
+        <span class="cs-anat__box" aria-hidden="true"></span>
+      </figure>
+      <ol class="cs-anat__list">
+        <li><button type="button" data-box="1 26.6 3.4 47"><span>1</span><b>tool bar</b><em>Select, magic pen, shapes, copy, delete, grid, undo and redo: the basic manual functions, so nothing is lost.</em></button></li>
+        <li><button type="button" data-box="8 18 69 70"><span>2</span><b>viewport and ground</b><em>An open ground of orange crosses: a playground for creation, with nothing in the way.</em></button></li>
+        <li><button type="button" data-box="36 89 28 6.4"><span>3</span><b>the prompt</b><em>At the centre, not in a corner. Some tools tuck the chatbox away, which makes the AI an afterthought; here it is the main way to work, and it can name what is in the viewport.</em></button></li>
+        <li><button type="button" data-box="78.3 2 20.8 17.4"><span>4</span><b>the wheels</b><em>They spin while the model writes: proof the system is working, a steady confirmation, and something calm to watch while you wait.</em></button></li>
+        <li><button type="button" data-box="78.3 19.4 20.8 16.2"><span>5</span><b>object details</b><em>Name, colour, size, position and rotation, with a gumball in the viewport: detailed control over anything the AI made.</em></button></li>
+        <li><button type="button" data-box="78.3 35.6 20.8 18"><span>6</span><b>object registry</b><em>Every generated thing becomes a named group of primitives, such as detailed_rabbit, group of 10. A shared language between the CAD model and the AI.</em></button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="cs-try" id="try-codex" aria-labelledby="cs-try1-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">06</p>
+      <h2 id="cs-try1-h">try codex-2</h2>
+      <p class="cs-sub">a working model of the interface, built around the magic pen: draw around something, then say what you want. start with the three tasks the pen was designed for.</p>
+    </header>
+    <ol class="cx-tasks">
+      <li><button type="button" class="cx-task" data-done="false"><span>task 1</span>draw a pond</button></li>
+      <li><button type="button" class="cx-task" data-done="false"><span>task 2</span>a bird on the roof</button></li>
+      <li><button type="button" class="cx-task" data-done="false"><span>task 3</span>delete the tree</button></li>
+      <li class="cx-tasks__reset"><button type="button" class="cs-btn cs-btn--ghost cs-btn--small" data-cx="reset">new scene</button></li>
+    </ol>
+    <div class="cx-app">
+      <canvas class="cx-view" tabindex="0" role="application" aria-label="CODEX-2 viewport. With the select tool, click an object to select it and drag to move it; drag empty ground to turn the view. With the magic pen, draw around objects or an area."></canvas>
+      <p class="cx-brand" aria-hidden="true"><b>CODEX-2</b><span>AI MODEL<br>BUILDER</span></p>
+      <div class="cx-tools" role="toolbar" aria-label="Tools">
+        <button type="button" data-tool="select" aria-pressed="true" title="Select" aria-label="Select tool"><svg viewBox="0 0 24 24"><path class="fill" d="M7 4l11 8-5 1 3 6-2 1-3-6-4 3z"/></svg></button>
+        <button type="button" data-tool="pen" aria-pressed="false" class="is-pen" title="Magic pen: draw to select objects, or to mark an area" aria-label="Magic pen"><svg viewBox="0 0 24 24"><path d="M5 19l1-4L16 5l3 3L9 18zM14 7l3 3"/></svg></button>
+        <i aria-hidden="true"></i>
+        <button type="button" data-act="cube" title="Create cube" aria-label="Create cube"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></button>
+        <i aria-hidden="true"></i>
+        <button type="button" data-act="dup" title="Duplicate object" aria-label="Duplicate object"><svg viewBox="0 0 24 24"><path d="M9 9h10v10H9zM5 15V5h10"/></svg></button>
+        <button type="button" data-act="del" title="Delete object" aria-label="Delete object"><svg viewBox="0 0 24 24"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13"/></svg></button>
+        <i aria-hidden="true"></i>
+        <button type="button" data-act="grid" aria-pressed="true" title="Toggle grid" aria-label="Toggle grid"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16"/></svg></button>
+        <i aria-hidden="true"></i>
+        <button type="button" data-act="undo" title="Undo (Ctrl+Z)" aria-label="Undo"><svg viewBox="0 0 24 24"><path d="M8 5L4 9l4 4M4 9h10a6 6 0 0 1 0 12h-3"/></svg></button>
+      </div>
+      <aside class="cx-panel" aria-label="Object panels">
+        <div class="cx-wheels" aria-hidden="true">
+          <svg class="cx-wheel" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.5"/><path d="M12 12l5 5M28 12l-5 5M12 28l5-5M28 28l-5-5"/></svg>
+          <svg class="cx-wheel" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.5"/><path d="M12 12l5 5M28 12l-5 5M12 28l5-5M28 28l-5-5"/></svg>
+        </div>
+        <section class="cx-details">
+          <h3>object details</h3>
+          <p class="cx-empty">no object selected</p>
+          <div class="cx-fields" hidden>
+            <label class="cx-f"><span>name</span><input type="text" data-f="name" spellcheck="false"></label>
+            <p class="cx-f"><span>color</span><i class="cx-swatch"></i></p>
+            <label class="cx-f"><span>size</span><input type="range" min="0.3" max="3" step="0.01" data-f="size"><output></output></label>
+            <p class="cx-sub-h">position</p>
+            <label class="cx-f cx-x"><span>x</span><input type="range" min="-10" max="10" step="0.1" data-f="x"><output></output></label>
+            <label class="cx-f cx-y"><span>y</span><input type="range" min="0" max="5" step="0.1" data-f="y"><output></output></label>
+            <label class="cx-f cx-z"><span>z</span><input type="range" min="-10" max="10" step="0.1" data-f="z"><output></output></label>
+            <p class="cx-sub-h">rotation</p>
+            <label class="cx-f cx-y"><span>y</span><input type="range" min="-180" max="180" step="1" data-f="rot"><output></output></label>
+          </div>
+        </section>
+        <section class="cx-registry">
+          <h3>object registry</h3>
+          <p class="cx-empty">no object registered</p>
+          <ul></ul>
+        </section>
+      </aside>
+      <form class="cx-prompt">
+        <input type="text" placeholder="describe what you want to build" aria-label="Describe what you want to build" autocomplete="off">
+        <button type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16 5l3 3L9 18z"/></svg>generate</button>
+      </form>
+      <div class="cx-chips" aria-label="Suggestions">
+        <button type="button" class="cx-chip">three pines</button><button type="button" class="cx-chip">a rabbit</button><button type="button" class="cx-chip">a street lamp</button><button type="button" class="cx-chip">make it bigger</button>
+      </div>
+    </div>
+    <p class="cx-status" aria-live="polite"></p>
+    <div class="cx-under">
+      <div>
+        <p class="cs-kicker">what the model writes</p>
+        <pre class="cx-log" aria-label="Commands written for each request"></pre>
+      </div>
+      <p class="cs-note">a model of the interface: fixed recipes stand in for the AI, and nothing is sent anywhere. In CODEX-2 a language model writes these commands, and the scene is built from them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SYNTH-2 -->
+<section class="cs-band cs-band--synth" id="synth" aria-labelledby="cs-synth-h">
+  <div class="cs-wrap">
+    <p class="cs-label">tool 02 / 02</p>
+    <h2 class="cs-band__mark" id="cs-synth-h"><b>SYNTH-2</b><small>AI DATA<br>VISUALIZER</small></h2>
+    <div class="cs-band__grid">
+      <p class="cs-band__lede">a building’s data, as the chart you ask for. ai as a helper in reading data and presenting it.</p>
+      <div class="cs-band__side">
+        <p>SYNTH reads a CSV of project data together with its 3D model, and turns the data into AI-generated visualizations from a prompt: a prototype of AI making today’s data-visualization software faster and more customizable.</p>
+        <a class="cs-btn cs-btn--ghost" href="https://synthesizer.d3-hdr.com/">open synth-2 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <ol class="sy-pipe" aria-label="How SYNTH-2 works">
+      <li><span class="sy-file">model.obj</span><p>the building, element by element. 4,686 of them here.</p></li>
+      <li><span class="sy-file">data.csv</span><p>a row of data for each element.</p></li>
+      <li><span class="sy-file sy-file--opt">model.mtl</span><p>materials. optional.</p></li>
+      <li class="sy-pipe__op"><b>linked</b><p>each row finds its element; elements sort into layers by level.</p></li>
+      <li class="sy-pipe__op"><b>asked</b><p>you ask in words, or pick a suggestion.</p></li>
+      <li class="sy-pipe__op is-out"><b>drawn</b><p>the AI chart renderer draws the answer beside the model.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cs-anat" data-anat aria-labelledby="cs-anat2-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">07</p>
+      <h2 id="cs-anat2-h">the interface</h2>
+      <p class="cs-sub">the model in the middle, its data on the left, the assistant on the right. point at a part.</p>
+    </header>
+    <div class="cs-anat__grid">
+      <figure class="cs-anat__fig">
+        <img src="/media/codex-synth/cs-synth-ui.webp" width="2400" height="1350" alt="SYNTH-2: a grey building model in the middle of a black screen; on the left, layers and details listing levels 01 to 08 with element counts; on the right, an AI assistant panel with an oscilloscope, a prompt and suggestion chips" loading="lazy" decoding="async">
+        <span class="cs-anat__box" aria-hidden="true"></span>
+      </figure>
+      <ol class="cs-anat__list">
+        <li><button type="button" data-box="1 28.4 20 36"><span>1</span><b>layers and details</b><em>The model arrives sorted: ten levels and a roof, each with its element count.</em></button></li>
+        <li><button type="button" data-box="1 64.6 20 32"><span>2</span><b>element details, files</b><em>Pick an element to read its data. Import an OBJ model and a CSV (an MTL is optional); this one holds 4,686 elements.</em></button></li>
+        <li><button type="button" data-box="29 27.5 42 48"><span>3</span><b>the model</b><em>The building stays in the middle, so the data never leaves its form.</em></button></li>
+        <li><button type="button" data-box="67 1.8 32.1 37.4"><span>4</span><b>the oscilloscope</b><em>The assistant’s face: a synthesizer’s scope, true to the tool’s full name, alive while it thinks.</em></button></li>
+        <li><button type="button" data-box="67 39 32.1 16"><span>5</span><b>prompt and suggestions</b><em>Ask in words, or start from a suggestion such as “create a pie chart of building levels”.</em></button></li>
+        <li><button type="button" data-box="67 55 32.1 4.8"><span>6</span><b>ai chart renderer</b><em>Where the AI’s chart appears.</em></button></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="cs-try" id="try-synth" aria-labelledby="cs-try2-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">08</p>
+      <h2 id="cs-try2-h">try synth-2</h2>
+      <p class="cs-sub">a working model, with the sample building’s real element counts. ask the assistant, or point at a floor: the model and the chart answer together.</p>
+    </header>
+    <div class="sy-app">
+      <canvas class="sy-view" role="img" aria-label="The sample building as stacked levels; hover a level to read its element count"></canvas>
+      <p class="cx-brand" aria-hidden="true"><b>SYNTH-2</b><span>AI DATA<br>VISUALIZER</span></p>
+      <aside class="sy-layers">
+        <h3>Layers &amp; Details</h3>
+        <ul></ul>
+        <p class="sy-layers__all"><button type="button" data-sy="all">Show All</button></p>
+        <div class="sy-el"><h4>Element Details</h4><p aria-live="polite">No element selected</p></div>
+      </aside>
+      <aside class="sy-ai">
+        <h3>AI Assistant</h3>
+        <div class="sy-scope" aria-hidden="true"><canvas></canvas><span class="sy-scope__tl">CH1: ACTIVE<br>FREQ: 440Hz</span><span class="sy-scope__tr">GAIN: +12dB<br>SYNC: AUTO</span></div>
+        <form class="sy-ask"><input type="text" placeholder="Ask me to create a visualization…" aria-label="Ask for a visualization" autocomplete="off"><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-6z"/></svg></button></form>
+        <div class="sy-chips"><button type="button" class="sy-chip">Elements per level</button><button type="button" class="sy-chip">Which level is busiest?</button><button type="button" class="sy-chip">Lower vs upper floors</button><button type="button" class="sy-chip">Show level 09</button></div>
+        <p class="sy-answer" aria-live="polite"></p>
+        <div class="sy-render">
+          <p class="sy-render__h">AI Chart Renderer <span class="sy-render__state">• No chart generated</span><button type="button" class="sy-render__table" data-sy="table" hidden>table</button></p>
+          <div class="sy-chart"></div>
+          <p class="sy-tip" hidden></p>
+        </div>
+      </aside>
+    </div>
+    <p class="cs-note sy-note">a model of the interface with the sample building’s real counts (4,686 elements, from the live SYNTH-2). The building is drawn as stacked levels, not its real form; nothing is sent anywhere.</p>
+  </div>
+</section>
+
+<!-- ============================================================ HDR -->
+<section class="cs-light cs-hdr" aria-labelledby="cs-hdr-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">09</p>
+      <h2 id="cs-hdr-h">made at hdr</h2>
+      <p class="cs-sub">a summer internship in the D3 group, 2025.</p>
+    </header>
+    <div class="cs-hdr__grid">
+      <figure class="cs-hdr__photo"><img src="/media/codex-synth/cs-hdr.webp" width="462" height="643" alt="Yuhan Wang standing in front of the HDR logo on a perforated wooden wall" loading="lazy" decoding="async"></figure>
+      <div class="cs-hdr__text">
+        <p class="cs-big">HDR is one of the world’s leading integrated design and engineering firms, with offices in over 200 cities.</p>
+        <p>Its work spans architecture, urban planning, transportation, healthcare and scientific research, and it is known for interdisciplinary collaboration and new technology.</p>
+        <p>D3 (Data-Driven Design) is HDR’s digital innovation hub: computational design, data visualization and AI-powered design tools. Architects, programmers and data scientists work together there on products such as AI CAD plugins and design decision-support platforms, to make design more efficient, intelligent and sustainable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-light cs-record" aria-labelledby="cs-rec-h">
+  <div class="cs-wrap">
+    <header class="cs-head">
+      <p class="cs-num">10</p>
+      <h2 id="cs-rec-h">record</h2>
+    </header>
+    <dl class="cs-spec cs-spec--record">
+      <div><dt>time</dt><dd>2025</dd></div>
+      <div><dt>program</dt><dd>HDR Inc., D3 (Data-Driven Design)</dd></div>
+      <div><dt>leader</dt><dd>Matt Goldsberry</dd></div>
+      <div><dt>work</dt><dd>research, UI/UX design and prototypes of two AI software products</dd></div>
+      <div><dt>codex-2</dt><dd><a href="https://codex.d3-hdr.com/">codex.d3-hdr.com</a></dd></div>
+      <div><dt>synth-2</dt><dd><a href="https://synthesizer.d3-hdr.com/">synthesizer.d3-hdr.com</a></dd></div>
+    </dl>
+  </div>
+</section>
+
 </div>
-
-<iframe class="media embed" src="https://www.youtube-nocookie.com/embed/YFcGtJz1kis?rel=0&playsinline=1" style="aspect-ratio: 200 / 113;" title="CODEX & SYNTH" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe><br /><br /><div class="gallery-grid" style="--columns: 2; --gutter: 2rem; --mobile-gutter: 1rem">
-<img class="media" src="/media/codex-synth/02.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/03.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/04.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/05.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/06.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/07.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/08.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/09.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/10.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/11.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/12.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/13.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/14.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/15.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/16.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async"><img class="media" src="/media/codex-synth/17.webp" width="2000" height="1125" alt="CODEX & SYNTH" loading="lazy" decoding="async">
-</div><br />
-<br />
-<br />
-<br />
-<br />
-
-<div class="gallery-grid" style="--columns: 1; --gutter: 1rem; --mobile-gutter: 1rem">
-<a class="media-link" href="https://synthesizer.d3-hdr.com/"><img class="media" src="/media/codex-synth/18.webp" width="2000" height="1047" alt="CODEX & SYNTH" loading="lazy" decoding="async"></a>
-</div>
-
-<br /><br />
-
-<div class="column-set" style="--columns: 2; --gutter: 1rem"><div class="column-unit">
-
-<span class="heading-3">HDR is one of the world’s leading integrated design and engineering consulting firms, with offices in over 200 cities worldwide. Its work spans architecture, urban planning, transportation, healthcare, and scientific research, and it is renowned for its interdisciplinary collaboration and innovative technologies. HDR’s projects have won numerous international awards and are regarded as benchmarks of innovation in the industry.<br />
-
-<br />
-The D3 (Data-Driven Design) group, where I work, is HDR’s digital innovation hub. It focuses on computational design, data visualization, and the development of AI-powered design tools. The team brings together architects, programmers, and data scientists to create cutting-edge products such as AI CAD plugins and design decision-support platforms, making the design process more efficient, intelligent, and sustainable.</span><br />
-
-</div><div class="column-unit"><img class="media" src="/media/codex-synth/19.webp" width="462" height="643" alt="CODEX & SYNTH" loading="lazy" decoding="async"></div></div>
