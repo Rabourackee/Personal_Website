@@ -1,0 +1,769 @@
+/*
+  Mini TRANSFORM product page (src/projects/mini-transform.html).
+  Lab grey and paper, black type, mono labels, and the three knob colours of a
+  small synthesizer. The device itself is drawn by src/assets/js/mini-transform.js
+*/
+
+.mt-page {
+  --lab: #e9e9e6;
+  --lab-2: #dfdfdb;
+  --paper: #f7f7f4;
+  --ink: #121212;
+  --ink-2: rgba(18, 18, 18, 0.62);
+  --ink-3: rgba(18, 18, 18, 0.42);
+  --line: rgba(18, 18, 18, 0.13);
+  --orange: #ff5a1f;
+  --blue: #2d5bff;
+  --green: #14ad68;
+  --lcd: #0e0e0e;
+  --sans: "Geist Variable", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono Variable", ui-monospace, Menlo, monospace;
+  --gutter: clamp(16px, 4vw, 64px);
+}
+
+/* The site header floats over this page and inverts against what's behind it. */
+.mt-page .site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  mix-blend-mode: difference;
+}
+
+.mt-page main.full-bleed {
+  display: block;
+  overflow-x: clip;
+}
+
+.mt {
+  font-family: var(--sans);
+  font-size: 1.12rem;
+  line-height: 1.45;
+  color: var(--ink);
+  background: var(--lab);
+  text-wrap: pretty;
+}
+
+.mt *,
+.mt *::before,
+.mt *::after {
+  box-sizing: border-box;
+}
+
+/* Resets use :where() so they never outrank a component's own styles. */
+.mt :where(p, h1, h2, h3, ol, ul, dl, dd, figure) {
+  margin: 0;
+}
+
+.mt :where(ol, ul) {
+  padding: 0;
+  list-style: none;
+}
+
+.mt :where(img, canvas, svg) {
+  display: block;
+  max-width: 100%;
+}
+
+.mt :where(img) {
+  height: auto;
+}
+
+.mt :where(h1, h2) {
+  text-wrap: balance;
+}
+
+.mt :where(a) {
+  color: inherit;
+}
+
+.mt-wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.mt-label,
+.mt-spec dt,
+.mt-num,
+.mt-hint {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 450;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+.mt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.95rem 1.4rem;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.mt-btn:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.mt-btn--small {
+  padding: 0.6rem 1rem;
+  font-size: 12px;
+}
+
+.mt-btn--ghost {
+  color: var(--ink);
+  background: none;
+  border-color: var(--line);
+}
+
+.mt-btn--ghost:hover,
+.mt-btn--ghost[aria-pressed="true"] {
+  color: #fff;
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.mt :focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- section heads */
+
+.mt-head {
+  display: grid;
+  grid-template-columns: minmax(3rem, 1fr) 11fr;
+  column-gap: 1.5rem;
+  margin-bottom: clamp(36px, 5vw, 72px);
+}
+
+.mt-num {
+  padding-top: 0.9em;
+  color: var(--orange);
+}
+
+.mt-head h2 {
+  font-size: clamp(40px, 5.4vw, 92px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.mt-sub {
+  grid-column: 2;
+  max-width: 34em;
+  margin-top: 1.1rem;
+  font-size: clamp(18px, 1.35vw, 21px);
+  color: var(--ink-2);
+}
+
+/* ---------------------------------------------------------------- hero */
+
+.mt-hero {
+  padding: calc(5.5rem + 4vh) 0 clamp(48px, 8vh, 100px);
+}
+
+.mt-hero__grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(24px, 3vw, 56px);
+  align-items: center;
+  min-height: min(84svh, 900px);
+}
+
+.mt-wordmark {
+  margin: 0.25em 0 0.35em -0.05em;
+  font-size: clamp(64px, 9.6vw, 176px);
+  font-weight: 650;
+  line-height: 0.84;
+  letter-spacing: -0.065em;
+}
+
+.mt-hero__lede {
+  max-width: 19em;
+  margin-bottom: 2.2rem;
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+
+.mt-hero__device {
+  position: relative;
+}
+
+.mt-hero__device .mt-device {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.mt-tag {
+  position: absolute;
+  top: 6%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.8rem;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.25;
+  color: var(--ink);
+  background: var(--orange);
+  border-radius: 4px;
+}
+
+.mt-tag b {
+  font-family: var(--sans);
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+}
+
+/* ---------------------------------------------------------------- play: the console */
+
+.mt-play {
+  padding: clamp(80px, 12vh, 150px) 0;
+  background: var(--paper);
+}
+
+.mt-console {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+  padding: clamp(14px, 1.6vw, 24px);
+  background: #fcfcfa;
+  border: 1px solid var(--line);
+  border-radius: clamp(20px, 2vw, 32px);
+  box-shadow: 0 40px 80px -60px rgba(0, 0, 0, 0.35);
+}
+
+.mt-stage {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(12px, 1.5vw, 24px);
+  background: var(--lab);
+  border-radius: clamp(12px, 1.4vw, 20px);
+}
+
+.mt-stage .mt-device {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  touch-action: none;
+  cursor: pointer;
+}
+
+.mt-hint {
+  min-height: 3em;
+  margin-top: 0.6rem;
+  color: var(--ink-2);
+}
+
+.mt-panel {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.8vw, 24px);
+  padding: clamp(4px, 0.6vw, 10px);
+}
+
+.mt-lcd {
+  padding: 16px 18px 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  background: var(--lcd);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.mt-lcd__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.mt-lcd__mode {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--orange);
+}
+
+.mt-lcd__map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  margin: 14px 0 12px;
+}
+
+.mt-lcd__map i {
+  position: relative;
+  display: block;
+  aspect-ratio: 1.6 / 1;
+  overflow: hidden;
+  background: #1c1c1c;
+  border-radius: 3px;
+}
+
+.mt-lcd__map b {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#ffffff, #ffffff 3px, var(--orange) 3px);
+  transform-origin: 50% 100%;
+  transform: scaleY(0.06);
+}
+
+.mt-lcd__legend {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.mt-keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mt-key {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  aspect-ratio: 1.45 / 1;
+  padding: 10px 12px;
+  font-family: var(--mono);
+  color: var(--ink);
+  text-align: left;
+  background: #efefeb;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, translate 0.1s;
+}
+
+.mt-key:active {
+  translate: 0 1px;
+}
+
+.mt-key__n {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+.mt-key__name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* the lit key carries a small orange light */
+.mt-key::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.mt-key[aria-checked="true"] {
+  color: #fff;
+  background: var(--ink);
+}
+
+.mt-key[aria-checked="true"] .mt-key__n {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mt-key[aria-checked="true"]::after {
+  background: var(--orange);
+  box-shadow: 0 0 8px var(--orange);
+}
+
+.mt-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.mt-type[hidden] {
+  display: none;
+}
+
+.mt-type input {
+  width: 4.2rem;
+  padding: 0.45rem 0.6rem;
+  font-family: var(--mono);
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: var(--lcd);
+  border: 0;
+  border-radius: 8px;
+}
+
+.mt-knobs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.mt-knob-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mt-knob {
+  position: relative;
+  width: clamp(54px, 4.6vw, 68px);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 6px 12px -6px rgba(0, 0, 0, 0.45), inset 0 -3px 0 rgba(0, 0, 0, 0.18), inset 0 2px 0 rgba(255, 255, 255, 0.35);
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.mt-knob--orange {
+  background: var(--orange);
+}
+
+.mt-knob--blue {
+  background: var(--blue);
+}
+
+.mt-knob--green {
+  background: var(--green);
+}
+
+.mt-knob__dial {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.mt-knob__dial::before {
+  content: "";
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  width: 4px;
+  height: 30%;
+  translate: -50% 0;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.mt-knob__label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.mt-knob__label b {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.mt-utils {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+/* ---------------------------------------------------------------- revival */
+
+.mt-revival {
+  padding: clamp(90px, 13vh, 170px) 0;
+}
+
+.mt-sub a {
+  text-underline-offset: 0.2em;
+}
+
+.mt-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 24px);
+}
+
+.mt-card {
+  padding: clamp(22px, 2.4vw, 40px);
+  background: var(--paper);
+  border-radius: clamp(16px, 1.6vw, 24px);
+}
+
+.mt-dots {
+  width: 100%;
+  margin: clamp(24px, 3vw, 44px) 0;
+}
+
+.mt-big {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: clamp(56px, 7vw, 120px);
+  font-weight: 650;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.mt-big small {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 450;
+  letter-spacing: 0;
+  color: var(--ink-3);
+}
+
+.mt-card--mini .mt-big {
+  color: var(--orange);
+}
+
+.mt-spec {
+  margin-top: clamp(20px, 2.4vw, 36px);
+}
+
+.mt-spec div {
+  display: grid;
+  grid-template-columns: minmax(6rem, 9rem) 1fr;
+  gap: 1rem;
+  padding: 0.75rem 0 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.mt-spec dt {
+  padding-top: 0.25em;
+}
+
+.mt-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 56px);
+  max-width: 1100px;
+  margin: clamp(48px, 6vw, 90px) 0 0 auto;
+  color: var(--ink-2);
+}
+
+/* ---------------------------------------------------------------- parts */
+
+.mt-parts {
+  padding: clamp(90px, 13vh, 170px) 0;
+  background: var(--paper);
+}
+
+.mt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 22px);
+}
+
+.mt-part img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: clamp(10px, 1vw, 16px);
+}
+
+.mt-part p {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-2);
+}
+
+.mt-part p span {
+  color: var(--orange);
+}
+
+/* ---------------------------------------------------------------- film */
+
+.mt-film {
+  padding: clamp(90px, 13vh, 170px) 0;
+  color: #f2f2ef;
+  background: var(--ink);
+}
+
+.mt-film .mt-sub {
+  color: rgba(242, 242, 239, 0.6);
+}
+
+.mt-film__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(24px, 4vw, 72px);
+  align-items: center;
+}
+
+.mt-film__grid .mt-head {
+  margin: 0;
+}
+
+.mt-film__frame {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 420px, calc((100svh - 160px) * 0.5625));
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #000;
+  border-radius: 26px;
+  box-shadow: 0 0 0 8px #232323, 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+}
+
+.mt-film__play {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+
+.mt-film__play img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mt-film__btn {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: var(--orange);
+  border-radius: 50%;
+  transition: scale 0.25s;
+}
+
+.mt-film__btn svg {
+  width: 36%;
+  margin-left: 6%;
+  fill: #111;
+}
+
+.mt-film__label {
+  position: absolute;
+  left: 50%;
+  top: calc(46% + 54px);
+  translate: -50% 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  white-space: nowrap;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+}
+
+.mt-film__play:hover .mt-film__btn {
+  scale: 1.06;
+}
+
+.mt-film iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------- record */
+
+.mt-record {
+  padding: clamp(90px, 13vh, 170px) 0 clamp(100px, 15vh, 190px);
+}
+
+.mt-spec--record {
+  max-width: 900px;
+  margin: 0 0 0 auto;
+}
+
+.mt-spec--record dd {
+  font-size: clamp(18px, 1.4vw, 22px);
+}
+
+/* ---------------------------------------------------------------- smaller screens */
+
+@media (max-width: 1000px) {
+  .mt-hero__grid,
+  .mt-console,
+  .mt-film__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mt-hero__grid {
+    min-height: 0;
+  }
+
+  .mt-hero__device {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .mt-cols {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .mt-head {
+    grid-template-columns: 1fr;
+  }
+
+  .mt-num {
+    padding: 0 0 0.6rem;
+  }
+
+  .mt-sub {
+    grid-column: 1;
+  }
+
+  .mt-compare,
+  .mt-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .mt-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mt-spec div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-key,
+  .mt-btn,
+  .mt-film__btn {
+    transition: none;
+  }
+}

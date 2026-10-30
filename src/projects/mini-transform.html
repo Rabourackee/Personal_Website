@@ -4,43 +4,185 @@ section: "research"
 order: 8
 topics: ["Tangible Interface", "AI"]
 cover: "/media/mini-transform/cover.webp"
+description: "Mini TRANSFORM: a hand-held, five by five shape-changing display, a revival of the Tangible Media Group's TRANSFORM. Play with a virtual one."
+fullBleed: true
+bodyClass: "mt-page"
+styles: ["/assets/css/mini-transform.css"]
+scripts: ["/assets/js/mini-transform.js"]
 ---
+<!--
+  Custom product page. Styles: src/assets/css/mini-transform.css
+  The virtual device (hero and console): src/assets/js/mini-transform.js.
+  Without JavaScript the page reads as a document with photographs.
+-->
+<div class="mt">
 
-<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4">Mini TRANSFORM<span class="caption"><br />
-Time</span><span class="caption">2025-2026<br />
-<br /></span><span class="caption">Program<br />
-<span style="color: rgba(255, 255, 255, 0.82);"></span>MIT Media Lab Tangible Media Group<br />
-MAS.S66 Drawing++<br />
-<br />
+<!-- ============================================================ hero -->
+<section class="mt-hero" aria-labelledby="mt-title">
+  <div class="mt-wrap mt-hero__grid">
+    <div class="mt-hero__text">
+      <p class="mt-label">mit media lab · tangible media group · 2025–26</p>
+      <h1 class="mt-wordmark" id="mt-title">mini<br>transform</h1>
+      <p class="mt-hero__lede">a shape display you can hold. twenty-five pins that rise and fall on command.</p>
+      <a class="mt-btn" href="#play">play with it <span aria-hidden="true">↓</span></a>
+    </div>
+    <figure class="mt-hero__device">
+      <canvas class="mt-device" role="img" aria-label="A rendered Mini TRANSFORM: a grey cube with a five by five grid of white pins, rising and falling into waves, letters and shapes"></canvas>
+      <figcaption class="mt-tag"><b>5×5</b><span>25 pins<br>1 module</span></figcaption>
+    </figure>
+  </div>
+</section>
 
-Team:<br />
-Quincy Kuang<br />
+<!-- ============================================================ play -->
+<section class="mt-play" id="play" aria-labelledby="mt-play-h">
+  <div class="mt-wrap">
+    <header class="mt-head">
+      <p class="mt-num">01</p>
+      <h2 id="mt-play-h">play</h2>
+      <p class="mt-sub">a virtual mini transform. choose a mode, then use the pins. the motors take their time, like the real ones.</p>
+    </header>
+    <div class="mt-console">
+      <div class="mt-stage">
+        <canvas class="mt-device" tabindex="0" role="application" aria-label="Virtual Mini TRANSFORM, five by five pins. Choose a mode with the keys beside it; in draw mode, press pins to raise or lower them." aria-describedby="mt-hint"></canvas>
+        <p class="mt-hint" id="mt-hint" aria-live="polite">press a pin to raise it.</p>
+      </div>
+      <div class="mt-panel">
+        <div class="mt-lcd" aria-hidden="true">
+          <div class="mt-lcd__row"><span class="mt-lcd__mode">draw</span><span class="mt-lcd__stat">00/25 up</span></div>
+          <div class="mt-lcd__map"></div>
+          <div class="mt-lcd__row mt-lcd__legend"><span>pin height, live</span><span>mt·25</span></div>
+        </div>
+        <div class="mt-keys" role="radiogroup" aria-label="Mode">
+          <button type="button" class="mt-key" role="radio" data-mode="draw"><span class="mt-key__n">1</span><span class="mt-key__name">draw</span></button>
+          <button type="button" class="mt-key" role="radio" data-mode="hand"><span class="mt-key__n">2</span><span class="mt-key__name">hand</span></button>
+          <button type="button" class="mt-key" role="radio" data-mode="wave"><span class="mt-key__n">3</span><span class="mt-key__name">wave</span></button>
+          <button type="button" class="mt-key" role="radio" data-mode="ripple"><span class="mt-key__n">4</span><span class="mt-key__name">ripple</span></button>
+          <button type="button" class="mt-key" role="radio" data-mode="type"><span class="mt-key__n">5</span><span class="mt-key__name">type</span></button>
+          <button type="button" class="mt-key" role="radio" data-mode="ball"><span class="mt-key__n">6</span><span class="mt-key__name">ball</span></button>
+        </div>
+        <label class="mt-type" hidden><span>type a letter</span><input type="text" maxlength="2" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Letter or number for the pins to spell"></label>
+        <div class="mt-knobs">
+          <div class="mt-knob-wrap">
+            <button type="button" class="mt-knob mt-knob--orange" data-knob="speed" role="slider" aria-label="Motor speed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="42"><span class="mt-knob__dial"></span></button>
+            <span class="mt-knob__label">speed <b class="mt-knob__val"></b></span>
+          </div>
+          <div class="mt-knob-wrap">
+            <button type="button" class="mt-knob mt-knob--blue" data-knob="travel" role="slider" aria-label="Pin travel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span class="mt-knob__dial"></span></button>
+            <span class="mt-knob__label">travel <b class="mt-knob__val"></b></span>
+          </div>
+          <div class="mt-knob-wrap">
+            <button type="button" class="mt-knob mt-knob--green" data-knob="view" role="slider" aria-label="View angle" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="-36"><span class="mt-knob__dial"></span></button>
+            <span class="mt-knob__label">view <b class="mt-knob__val"></b></span>
+          </div>
+        </div>
+        <div class="mt-utils">
+          <button type="button" class="mt-btn mt-btn--small" data-mt="clear">clear</button>
+          <button type="button" class="mt-btn mt-btn--small mt-btn--ghost" data-mt="sound" aria-pressed="false">sound off</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</span>
+<!-- ============================================================ revival -->
+<section class="mt-revival" aria-labelledby="mt-rev-h">
+  <div class="mt-wrap">
+    <header class="mt-head">
+      <p class="mt-num">02</p>
+      <h2 id="mt-rev-h">transform, at the scale of a hand</h2>
+      <p class="mt-sub">a revival of <a href="https://tangible.media.mit.edu/project/transform/">TRANSFORM</a>, the Tangible Media Group’s shape-changing furniture.</p>
+    </header>
+    <div class="mt-compare">
+      <article class="mt-card">
+        <p class="mt-label">2014 · transform</p>
+        <svg class="mt-dots mt-dots--big" viewBox="0 0 744 172" role="img" aria-label="Three modules of 24 by 16 pins">
+          <defs><pattern id="mt-dot" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2.4" fill="#121212"/></pattern><pattern id="mt-dot-on" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="2.4" fill="#ff5a1f"/></pattern></defs>
+          <rect x="0" y="6" width="240" height="160" fill="url(#mt-dot)"/>
+          <rect x="252" y="6" width="240" height="160" fill="url(#mt-dot)"/>
+          <rect x="504" y="6" width="240" height="160" fill="url(#mt-dot)"/>
+        </svg>
+        <p class="mt-big">1,152<small>pins</small></p>
+        <dl class="mt-spec">
+          <div><dt>modules</dt><dd>3</dd></div>
+          <div><dt>scale</dt><dd>a table</dd></div>
+          <div><dt>first shown</dt><dd>Milan, 2014</dd></div>
+        </dl>
+      </article>
+      <article class="mt-card mt-card--mini">
+        <p class="mt-label">2025 · mini transform</p>
+        <svg class="mt-dots mt-dots--mini" viewBox="0 0 744 172" role="img" aria-label="One module of 5 by 5 pins, drawn at the same pin size">
+          <g transform="translate(0 6)">
+            <rect width="50" height="50" fill="url(#mt-dot-on)"/>
+          </g>
+        </svg>
+        <p class="mt-big">25<small>pins</small></p>
+        <dl class="mt-spec">
+          <div><dt>modules</dt><dd>1</dd></div>
+          <div><dt>scale</dt><dd>a hand</dd></div>
+          <div><dt>status</dt><dd>ongoing</dd></div>
+        </dl>
+      </article>
+    </div>
+    <div class="mt-cols">
+      <p>While the original TRANSFORM occupies the scale of a large desk, Mini TRANSFORM reimagines the system as a compact, hand-held device. It is designed to be graspable and playable, bringing shape-changing interaction into a more personal and tactile scale.</p>
+      <p>We re-engineered the mechanical structure of each pixel and minimized the overall architecture, to reach the smallest possible form factor while keeping movement and responsiveness.</p>
+    </div>
+  </div>
+</section>
 
-</div><div class="column-unit" style="--span: 8">
+<!-- ============================================================ parts -->
+<section class="mt-parts" aria-labelledby="mt-parts-h">
+  <div class="mt-wrap">
+    <header class="mt-head">
+      <p class="mt-num">03</p>
+      <h2 id="mt-parts-h">one pixel, re-engineered</h2>
+      <p class="mt-sub">printed caps, square pins, small geared motors held in printed frames, all in a cube.</p>
+    </header>
+    <ol class="mt-grid">
+      <li class="mt-part mt-part--tall"><img src="/media/mini-transform/mt-caps.webp" width="1350" height="1800" alt="White 3D-printed square caps, each with a deep threaded bore" loading="lazy" decoding="async"><p><span>01</span>caps, with a threaded bore</p></li>
+      <li class="mt-part"><img src="/media/mini-transform/mt-frame.webp" width="1800" height="1350" alt="Rows of small brass-geared motors held in blue 3D-printed frames" loading="lazy" decoding="async"><p><span>02</span>motors in printed frames</p></li>
+      <li class="mt-part mt-part--tall"><img src="/media/mini-transform/mt-pins.webp" width="1350" height="1800" alt="Tall grey square pins standing at full travel above the motor frames" loading="lazy" decoding="async"><p><span>03</span>pins at full travel</p></li>
+      <li class="mt-part"><img src="/media/mini-transform/mt-wiring.webp" width="1800" height="1350" alt="The motor frames from behind, with bundles of coloured wires" loading="lazy" decoding="async"><p><span>04</span>wiring, from behind</p></li>
+      <li class="mt-part mt-part--tall"><img src="/media/mini-transform/mt-inside.webp" width="1350" height="1800" alt="Looking down into the grey housing at the motors and pins inside" loading="lazy" decoding="async"><p><span>05</span>inside the housing</p></li>
+      <li class="mt-part"><img src="/media/mini-transform/mt-grid.webp" width="1800" height="1350" alt="The housing's white top grid, with five caps raised and pins visible in the empty cells" loading="lazy" decoding="async"><p><span>06</span>the top grid, five pins up</p></li>
+    </ol>
+  </div>
+</section>
 
-This project is a revival of the original <span style="color: rgba(0, 227, 0, 0.85);"><a href="https://tangible.media.mit.edu/project/transform/"><u>TRANSFORM</u></a> </span>from the Tangible Media Group. <br />
-<br />
-While the original TRANSFORM occupies the scale of a large desk, Mini TRANSFORM reimagines the system as a compact, hand-held device. It is designed to be graspable and playable, bringing shape-changing interaction into a more personal and tactile scale.<br />
+<!-- ============================================================ film -->
+<section class="mt-film" aria-labelledby="mt-film-h">
+  <div class="mt-wrap mt-film__grid">
+    <header class="mt-head">
+      <p class="mt-num">04</p>
+      <h2 id="mt-film-h">see it move</h2>
+      <p class="mt-sub">the real one, running. Mini TRANSFORM opens new possibilities, particularly for embedding AI agents directly into physical, shape-changing interfaces.</p>
+    </header>
+    <div class="mt-film__frame">
+      <a class="mt-film__play" href="https://www.youtube.com/watch?v=vMpv_F9TfNo" data-video="vMpv_F9TfNo">
+        <img src="/media/mini-transform/mt-film.webp" width="404" height="720" alt="" loading="lazy" decoding="async">
+        <span class="mt-film__btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span>
+        <span class="mt-film__label">play the film</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-<br />
-We re-engineered the mechanical structure of each pixel and minimized the overall architecture to achieve the smallest possible form factor while preserving movement and responsiveness.<br />
+<!-- ============================================================ record -->
+<section class="mt-record" aria-labelledby="mt-rec-h">
+  <div class="mt-wrap">
+    <header class="mt-head">
+      <p class="mt-num">05</p>
+      <h2 id="mt-rec-h">record</h2>
+    </header>
+    <dl class="mt-spec mt-spec--record">
+      <div><dt>time</dt><dd>2025–2026</dd></div>
+      <div><dt>program</dt><dd>MIT Media Lab, Tangible Media Group</dd></div>
+      <div><dt>course</dt><dd>MAS.S66 Drawing++</dd></div>
+      <div><dt>team</dt><dd>Quincy Kuang</dd></div>
+      <div><dt>status</dt><dd>ongoing</dd></div>
+      <div><dt>after</dt><dd><a href="https://tangible.media.mit.edu/project/transform/">TRANSFORM</a> (2014), Tangible Media Group</dd></div>
+    </dl>
+  </div>
+</section>
 
-<br />
-Mini TRANSFORM opens new possibilities, particularly for embedding AI agents directly into physical, shape-changing interfaces.<br />
-
-<br />
-This project is ongoing.<br />
-
-</div></div><br />
-<br />
-<br />
-<br />
-<div style="text-align: center"><iframe class="media embed" src="https://www.youtube-nocookie.com/embed/vMpv_F9TfNo?rel=0&playsinline=1" style="aspect-ratio: 113 / 200; width: 37.3%;" title="Mini TRANSFORM" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><br />
-<br />
-<div style="text-align: center"></div><br />
-
- <div class="gallery-grid" style="--columns: 3; --gutter: 1rem; --mobile-gutter: 1rem">
-<img class="media" src="/media/mini-transform/01.webp" width="2000" height="1500" alt="Mini TRANSFORM" loading="lazy" decoding="async"><img class="media" src="/media/mini-transform/02.webp" width="2000" height="1500" alt="Mini TRANSFORM" loading="lazy" decoding="async"><img class="media" src="/media/mini-transform/03.webp" width="2000" height="1500" alt="Mini TRANSFORM" loading="lazy" decoding="async"><img class="media" src="/media/mini-transform/04.webp" width="2000" height="2667" alt="Mini TRANSFORM" loading="lazy" decoding="async"><img class="media" src="/media/mini-transform/05.webp" width="2000" height="2667" alt="Mini TRANSFORM" loading="lazy" decoding="async"><img class="media" src="/media/mini-transform/06.webp" width="2000" height="2667" alt="Mini TRANSFORM" loading="lazy" decoding="async">
 </div>
