@@ -8,31 +8,168 @@ featured: 6
 summary: "An interactive kinetic installation where a virtual interface moves real, physical boxes."
 highlight: "NYU Shanghai · IMA Capstone · 2024"
 hero: "/media/float/hero.webp"
+description: "FLOAT: sixteen lantern boxes, each on its own stepper motor. Place a block on the screen and a real box rises in the room. NYU Shanghai IMA Capstone, 2024."
+fullBleed: true
+bodyClass: "fl-page"
+styles: ["/assets/css/float.css"]
+scripts: ["/assets/js/float.js"]
 ---
+<!--
+  Custom product page. Styles: src/assets/css/float.css
+  The twin view (block screen and room) and the film: src/assets/js/float.js.
+  Without JavaScript the page reads as a document with the photograph.
+-->
+<div class="fl">
 
-<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4"><b>FLOAT</b><br />
-<br />
-<span class="caption"><br />
-Time</span><span class="caption">2024<br />
-<br />
-Program<br />
+<!-- ============================================================ hero -->
+<section class="fl-hero" aria-labelledby="fl-title">
+  <figure class="fl-hero__photo">
+    <img src="/media/float/fl-hero.webp" width="2800" height="1862" alt="Yuhan Wang crouching among the installation: glowing white fabric boxes, some resting low and some hanging high on thin lines, in front of a grey curtain" fetchpriority="high" decoding="async">
+  </figure>
+  <div class="fl-wrap fl-hero__top">
+    <p class="fl-label">nyu shanghai · ima capstone · 2024</p>
+    <h1 class="fl-wordmark" id="fl-title" aria-label="float"><span aria-hidden="true">f</span><span aria-hidden="true">l</span><span aria-hidden="true">o</span><span aria-hidden="true">a</span><span aria-hidden="true">t</span></h1>
+  </div>
+</section>
+<div class="fl-wrap fl-hero__foot">
+  <p class="fl-hero__lede">place a block on the screen. a real box rises into the air.</p>
+  <dl class="fl-hero__facts">
+    <div><dt>boxes</dt><dd>16</dd></div>
+    <div><dt>stepper motors</dt><dd>16</dd></div>
+    <div><dt>arduino</dt><dd>1</dd></div>
+  </dl>
+  <a class="fl-btn" href="#play">play <span aria-hidden="true">↓</span></a>
+</div>
 
-NYUShanghai IMA Capstone<br />
-<br />
-Team<br />
-Personal Project<br /></span><br />
+<!-- ============================================================ film -->
+<section class="fl-sec fl-film" aria-labelledby="fl-film-h">
+  <div class="fl-wrap">
+    <header class="fl-head">
+      <p class="fl-num">01</p>
+      <h2 id="fl-film-h">see it float</h2>
+      <p class="fl-sub">the installation in the gallery, rising and falling as it is played.</p>
+    </header>
+    <div class="fl-film__frame">
+      <a class="fl-film__play" href="https://www.youtube.com/watch?v=bPHCdlb9cqo" data-video="bPHCdlb9cqo">
+        <img src="/media/float/fl-film.webp" width="1280" height="720" alt="" decoding="async">
+        <span class="fl-film__btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z"/></svg></span>
+        <span class="fl-film__label">play the film</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-</div><div class="column-unit" style="--span: 8"><b>Overview</b><br />
+<!-- ============================================================ play -->
+<section class="fl-sec fl-play" id="play" aria-labelledby="fl-play-h">
+  <div class="fl-wrap">
+    <header class="fl-head">
+      <p class="fl-num">02</p>
+      <h2 id="fl-play-h">the screen and the room</h2>
+      <p class="fl-sub">on the left, the screen: point at a column and click where its box should go, or drag across columns to paint. on the right, the room: every box follows, as fast as its motor allows.</p>
+    </header>
+    <div class="fl-twin">
+      <div class="fl-panes">
+        <figure class="fl-screen">
+          <p class="fl-pane__tag"><i class="is-virtual"></i>virtual · instant</p>
+          <canvas tabindex="0" role="application" aria-label="Block screen: a four by four grid of columns, each with one box. Click a column at a height to move its box there, or drag across columns. With the keyboard, arrow keys move between columns and plus or minus move a box up or down." aria-describedby="fl-hint"></canvas>
+        </figure>
+        <div class="fl-link" aria-hidden="true"><span>serial</span><svg viewBox="0 0 60 12"><path d="M0 6h54M48 1l6 5-6 5"/></svg><span>arduino</span></div>
+        <figure class="fl-room">
+          <p class="fl-pane__tag"><i class="is-physical"></i>physical · motor pace</p>
+          <canvas role="img" aria-label="The room: sixteen glowing fabric boxes hanging on lines over a wooden floor, in front of a grey curtain, rising and falling to match the screen. Drag to walk around."></canvas>
+        </figure>
+      </div>
+      <div class="fl-deck">
+        <div class="fl-keys" role="radiogroup" aria-label="Arrangement">
+          <button type="button" class="fl-key" role="radio" data-shape="ground"><span>01</span>ground</button>
+          <button type="button" class="fl-key" role="radio" data-shape="stairs"><span>02</span>stairs</button>
+          <button type="button" class="fl-key" role="radio" data-shape="pyramid"><span>03</span>pyramid</button>
+          <button type="button" class="fl-key" role="radio" data-shape="arch"><span>04</span>arch</button>
+          <button type="button" class="fl-key" role="radio" data-shape="cloud"><span>05</span>cloud</button>
+          <button type="button" class="fl-key" role="radio" data-shape="wave"><span>06</span>wave</button>
+          <button type="button" class="fl-key" role="radio" data-shape="checker"><span>07</span>checker</button>
+          <button type="button" class="fl-key" role="radio" data-shape="random"><span>08</span>random</button>
+        </div>
+        <div class="fl-readout">
+          <p class="fl-stat" aria-live="off">16 steppers · in place</p>
+          <div class="fl-motors" aria-hidden="true"></div>
+          <p class="fl-hint" id="fl-hint" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+    <p class="fl-note">a model of the installation: the screen here is a sketch of the idea, not the original interface, and the boxes’ speed is an estimate. Six heights per box, from the floor to well above head height.</p>
+  </div>
+</section>
 
-<br />
-This project is my capstone project for undergraduate studies of Interactive Media Arts at NYU Shanghai.  It is an interactive kinetic installation that connects the virtual to the reality. Audiences are able to control the position of physical boxes via a virtual user interface.<br />
+<!-- ============================================================ how -->
+<section class="fl-sec fl-how" aria-labelledby="fl-how-h">
+  <div class="fl-wrap">
+    <header class="fl-head">
+      <p class="fl-num">03</p>
+      <h2 id="fl-how-h">from a click to a box in the air</h2>
+      <p class="fl-sub">every virtual box on the screen has one real box in the room, and one motor between them.</p>
+    </header>
+    <ol class="fl-chain">
+      <li>
+        <svg viewBox="0 0 120 90" aria-hidden="true"><rect x="10" y="10" width="100" height="62" rx="5"/><path d="M45 84h30M60 72v12"/><g class="b"><path d="M44 46l10-6 10 6-10 6z"/><path d="M60 36l10-6 10 6-10 6z"/><path d="M52 26l10-6 10 6-10 6z"/></g></svg>
+        <h3>the screen</h3><p>A block world on a computer. Put a box where you want it, as in a game.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 120 90" aria-hidden="true"><rect x="22" y="22" width="76" height="46" rx="4"/><circle cx="40" cy="45" r="7"/><path d="M58 34h28M58 45h28M58 56h20M30 14v8M42 14v8M54 14v8M66 14v8M78 14v8M90 14v8"/></svg>
+        <h3>arduino</h3><p>The computer sends the new heights; the Arduino turns them into steps.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 120 90" aria-hidden="true"><g class="grid"><rect x="18" y="12" width="16" height="16" rx="3"/><rect x="40" y="12" width="16" height="16" rx="3"/><rect x="62" y="12" width="16" height="16" rx="3"/><rect x="84" y="12" width="16" height="16" rx="3"/><rect x="18" y="32" width="16" height="16" rx="3"/><rect x="40" y="32" width="16" height="16" rx="3"/><rect x="62" y="32" width="16" height="16" rx="3"/><rect x="84" y="32" width="16" height="16" rx="3"/><rect x="18" y="52" width="16" height="16" rx="3"/><rect x="40" y="52" width="16" height="16" rx="3"/><rect x="62" y="52" width="16" height="16" rx="3"/><rect x="84" y="52" width="16" height="16" rx="3"/><rect x="18" y="72" width="16" height="16" rx="3"/><rect x="40" y="72" width="16" height="16" rx="3"/><rect x="62" y="72" width="16" height="16" rx="3"/><rect x="84" y="72" width="16" height="16" rx="3"/></g></svg>
+        <h3>16 stepper motors</h3><p>One per box, each turning exactly as far as it is told.</p>
+      </li>
+      <li class="is-out">
+        <svg viewBox="0 0 120 90" aria-hidden="true"><path class="line" d="M42 0v40M78 0v40M54 0v30M66 0v30"/><path class="lan" d="M38 40l22-10 22 10v34l-22 10-22-10z"/><path class="lan2" d="M38 40l22 10 22-10M60 50v34"/><path class="arr" d="M100 70V30M95 36l5-6 5 6M95 64l5 6 5-6"/></svg>
+        <h3>a box in the air</h3><p>The box rises or falls on its lines, to the place it was given on the screen.</p>
+      </li>
+    </ol>
+  </div>
+</section>
 
-<br />
-<b>Design</b><br />
-<br />
+<!-- ============================================================ idea -->
+<section class="fl-sec fl-idea" aria-labelledby="fl-idea-h">
+  <div class="fl-wrap">
+    <header class="fl-head">
+      <p class="fl-num">04</p>
+      <h2 id="fl-idea-h">like minecraft, in a room</h2>
+    </header>
+    <p class="fl-statement">When we move things in a game or a modelling tool, nothing in the room moves. What if a physical model answered to the virtual one, at the scale of architecture?</p>
+    <div class="fl-idea__grid">
+      <div class="fl-idea__text">
+        <p>FLOAT connects a virtual space directly to a physical one. As in Minecraft, you put blocks where you like; here each block is also a real box, in front of you, in real time. The boxes form one structure that seems to float: an interactive architecture, shaped by whoever is at the screen.</p>
+        <p>It gives a virtual environment a body: tangible interaction, something to touch and walk around, and an output you see, feel and stand inside, not only look at.</p>
+      </div>
+      <ol class="fl-adds">
+        <li><b>tangible</b><span>the virtual move becomes a physical one</span></li>
+        <li><b>haptic</b><span>the space you build is there to touch</span></li>
+        <li><b>multi-modal</b><span>sight, touch and the space around you, at once</span></li>
+      </ol>
+    </div>
+    <blockquote class="fl-quote">
+      <p>Architecture not merely inhabited, but co-created: a partner in creation, responsive to and shaped by the people inside it.</p>
+    </blockquote>
+  </div>
+</section>
 
-This project aims to create a direct connection between the Virtual Space and the Physical Space. When we manipulate the virtual space in games or modeling software, what would happen if one physical model would act corresponding to the virtual model? This project FLOAT will give the audience a way to experience the affect of controlling their physical space in the way they interact with a virtual space on the architectural scale. Just like the game Minecraft, the audiences are able to put blocks onto spacial positions they like, except in this project, there will be physical blocks rendered in reality in real-time. This would not only provide tangible interactions and haptic feedback for the virtual space, but also provide multi-modal sensory output for a virtual environment, uniting the virtual experience and virtual power to the reality.<br /><br />The design of the project focus on a matrix of floating boxes, each individually controlled by the computer and corresponding to a virtual box in the User Interface. When the audience controls the virtual boxes on the computer, it sends signals to the Arduino controlling 16 stepper motors, and the motors will let the boxes rise and fall as controlled by the audience. The overall structure of the boxes forms an interactive architectural structure in the appearance of a dynamic shape floating in the air. <br /><br />Building on the tangible interplay between virtual and physical space, this project, FLOAT, explores profound creative, philosophical, and conceptual territories. By allowing users to manipulate physical space as easily as virtual elements, the project challenges conventional boundaries between digital and physical experiences, proposing a new paradigm where architecture is not merely inhabited but interactively co-created. This dynamic interaction underscores a philosophical shift towards viewing architectural spaces as partners in creation rather than static environments. Conceptually, FLOAT posits architecture as an active participant in its own evolution, responsive to and shaped by human interaction. This symbiosis between human intent and architectural response not only enriches the user experience but also elevates the discourse on the future of interactive and adaptive environments.
+<!-- ============================================================ record -->
+<section class="fl-sec fl-record" aria-labelledby="fl-rec-h">
+  <div class="fl-wrap">
+    <header class="fl-head">
+      <p class="fl-num">05</p>
+      <h2 id="fl-rec-h">record</h2>
+    </header>
+    <dl class="fl-spec">
+      <div><dt>time</dt><dd>2024</dd></div>
+      <div><dt>program</dt><dd>NYU Shanghai, Interactive Media Arts, capstone project</dd></div>
+      <div><dt>team</dt><dd>Personal project</dd></div>
+      <div><dt>type</dt><dd>Interactive kinetic installation</dd></div>
+      <div><dt>built with</dt><dd>16 stepper motors, an Arduino, a virtual interface on a computer, 16 fabric boxes on lines</dd></div>
+    </dl>
+  </div>
+</section>
 
-<br />
-</div></div><br /><br />
-<iframe class="media embed" src="https://www.youtube-nocookie.com/embed/bPHCdlb9cqo?rel=0&playsinline=1" style="aspect-ratio: 200 / 113;" title="FLOAT" loading="lazy" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe><br /><br />
+</div>
