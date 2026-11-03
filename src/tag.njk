@@ -8,7 +8,21 @@ permalink: "/tag/{{ topic | topicSlug }}/"
 eleventyComputed:
   title: "{{ topic }}"
 ---
-{% from "thumbnails.njk" import thumbnails %}
-<span class="heading-3">{{ topic }}</span><br>
-<br>
-{{ thumbnails(collections.projects | withTopic(topic), { captions: true }) }}
+{%- from "cards.njk" import cards %}
+{%- set list = collections.projects | withTopic(topic) %}
+<header class="pg-head">
+  <p class="lbl"><a class="crumb" href="/project-categories/">projects</a> / tag</p>
+  <h1 class="pg-title">{{ topic }}</h1>
+  <p class="lbl pg-aside">{{ list.length }} project{% if list.length != 1 %}s{% endif %}</p>
+</header>
+<div class="px" data-view="grid">
+  {{ cards(list, collections.projects) }}
+</div>
+<nav class="pg-tags" aria-label="All tags">
+  <p class="lbl">all tags</p>
+  <ul class="chips">
+    {%- for t in collections.topics | sort %}
+    <li><a class="chip" href="/tag/{{ t | topicSlug }}/"{% if t == topic %} aria-current="page"{% endif %}>{{ t }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>

@@ -1,0 +1,66 @@
+{#
+  Project cards and the filterable index (homepage, Projects page, tag pages).
+  Styles: "cards" and "index" in site.css. Behaviour (field filter, grid/list
+  view, list preview): src/assets/js/site.js. Without JavaScript every card shows.
+#}
+
+{# One project. n: its number in the index. #}
+{% macro card(p, n) %}
+{%- set fs = p.data.topics | fields %}
+{%- set video = p.data.cover.endsWith(".mp4") %}
+<li class="card" data-fields="{{ fs | join(' ') }}">
+  <a class="card-link" href="{{ p.url }}" data-peek="{{ (p.data.hero or p.data.cover) if video else p.data.cover }}">
+    <span class="card-media">
+      {%- if video %}
+      <video src="{{ p.data.cover }}" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      {%- else %}
+      <img src="{{ p.data.cover }}" width="900" height="600" alt="" loading="lazy" decoding="async">
+      {%- endif %}
+    </span>
+    <span class="card-n">{{ n | pad }}</span>
+    <span class="card-title">{{ p.data.title }}</span>
+    <span class="card-year">{{ p.data.year }}</span>
+    <span class="fields card-fields">{% for f in fs %}<i class="f-{{ f }}"></i>{% endfor %}</span>
+    <span class="card-topics">{{ p.data.topics | join(", ") }}</span>
+  </a>
+</li>
+{% endmacro %}
+
+{# A list of cards, numbered by their place in the whole index. #}
+{% macro cards(projects, all) %}
+<ol class="cards">
+  {%- for p in projects %}
+  {{ card(p, all | projectNumber(p.url)) }}
+  {%- endfor %}
+</ol>
+{% endmacro %}
+
+{# The index: field keys, a grid/list switch, then one group of cards per section. #}
+{% macro projectIndex(all, disciplines) %}
+{%- set groups = [
+  { title: "research & professional works", items: all | inSection("research") },
+  { title: "works out of interest & hobbies", items: all | inSection("interests") }
+] %}
+<div class="px" data-index data-view="grid">
+  <div class="px-bar">
+    <div class="px-keys" role="group" aria-label="Show projects in">
+      <button type="button" class="key" data-field="all" aria-pressed="true">all <span class="key-n">{{ all.length }}</span></button>
+      {%- for d in disciplines %}
+      <button type="button" class="key" data-field="{{ d.key }}" aria-pressed="false"><i class="f-{{ d.key }}" aria-hidden="true"></i>{{ d.label }} <span class="key-n">{{ (all | inField(d.key)).length }}</span></button>
+      {%- endfor %}
+    </div>
+    <div class="px-view" role="group" aria-label="View as">
+      <button type="button" class="key key--icon" data-view="grid" aria-pressed="true" aria-label="Grid"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="6" height="6"/><rect x="9" y="1" width="6" height="6"/><rect x="1" y="9" width="6" height="6"/><rect x="9" y="9" width="6" height="6"/></svg></button>
+      <button type="button" class="key key--icon" data-view="list" aria-pressed="false" aria-label="List"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="2" width="14" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="1" y="12" width="14" height="2"/></svg></button>
+    </div>
+  </div>
+  {%- for g in groups %}
+  <section class="px-group" aria-label="{{ g.title }}">
+    <h3 class="px-h">{{ g.title }} <span class="px-count">{{ g.items.length }}</span></h3>
+    {{ cards(g.items, all) }}
+  </section>
+  {%- endfor %}
+  <p class="px-status" aria-live="polite"></p>
+  <figure class="px-peek" aria-hidden="true"><img alt=""></figure>
+</div>
+{% endmacro %}

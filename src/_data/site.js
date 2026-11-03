@@ -5,15 +5,17 @@ export default {
   url: "https://yuhanwang.net",
 
   nav: [
-    { label: "PROJECTS", href: "/project-categories/" },
-    { label: "VISION", href: "/vision/" },
-    { label: "ABOUT | CV", href: "/about/" },
+    { label: "projects", href: "/project-categories/" },
+    { label: "vision", href: "/vision/" },
+    { label: "about / cv", href: "/about/" },
   ],
 
   contact: {
     email: "yuhan_wang@gsd.harvard.edu",
     linkedin: "https://www.linkedin.com/in/yuhan-wang-095874264",
     instagram: "@rabourackey",
-    phone: "8577563864",
+    instagramUrl: "https://www.instagram.com/rabourackey/",
+    phone: "857 756 3864",
+    phoneHref: "+18577563864",
   },
 };

@@ -1,4 +1,5 @@
 import { HtmlBasePlugin } from "@11ty/eleventy";
+import disciplines from "./src/_data/disciplines.js";
 
 export default function (eleventyConfig) {
   // Rewrites root-relative URLs (/media/..., /about/) when the site is served
@@ -48,6 +49,22 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("topicSlug", (topic) =>
     topic.toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-")
   );
+
+  // The fields (src/_data/disciplines.js) a project's topics belong to: ["xr", "ai"].
+  const fieldsOf = (topics = []) =>
+    disciplines.filter((d) => topics.some((t) => d.match.test(t))).map((d) => d.key);
+  eleventyConfig.addFilter("fields", fieldsOf);
+  eleventyConfig.addFilter("inField", (projects, key) =>
+    projects.filter((p) => fieldsOf(p.data.topics).includes(key))
+  );
+  // A project's number in the index: its 1-based position in collections.projects.
+  eleventyConfig.addFilter("projectNumber", (projects, url) => projects.findIndex((p) => p.url === url) + 1);
+  eleventyConfig.addFilter("pad", (n) => String(n).padStart(2, "0"));
+  // "2010–2026": the earliest and latest year any of the projects mentions.
+  eleventyConfig.addFilter("yearSpan", (projects) => {
+    const years = projects.flatMap((p) => String(p.data.year || "").match(/\d{4}/g) || []).map(Number);
+    return years.length ? `${Math.min(...years)}–${Math.max(...years)}` : "";
+  });
 
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title and page.url != "/" %}{{ title }} — {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ description or site.description }}">
+  <meta name="theme-color" content="#f5f5f5">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ title or site.title }}">
   <meta property="og:description" content="{{ description or site.description }}">
@@ -15,7 +16,8 @@
   <script>
     // Same sizing model as Cargo: the root font size follows the viewport's
     // short side (so everything in rem scales with the window), and portrait
-    // screens get the mobile layout via html.mobile.
+    // screens get the mobile layout via html.mobile. The shared frame (header,
+    // footer, index) is sized in px instead, so it looks the same everywhere.
     (function () {
       var root = document.documentElement;
       function size() {
@@ -39,48 +41,103 @@
   <link rel="stylesheet" href="{{ href }}?v={{ build.version }}">
   {%- endfor %}
 </head>
-<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
-  <header class="page site-header">
-    <div class="page-layout"><div class="page-content bodycopy">
-      <nav class="column-set no-stack" style="--columns: 5; --gutter: 2rem">
-        <div class="column-unit"><a href="/">YUHAN WANG</a></div>
-        <div class="column-unit"></div>
-        {%- for item in site.nav %}
-        <div class="column-unit" style="text-align: right"><a href="{{ item.href }}"{% if page.url == item.href %} class="active"{% endif %}>{{ item.label }}</a></div>
-        {%- endfor %}
-      </nav>
-      <hr><br>
-    </div></div>
+{#- isProject: any page in src/projects/. Custom-designed project pages (fullBleed)
+    get the overlay header, which floats over their first section. #}
+{%- set isProject = "/projects/" in page.inputPath %}
+{%- set inProjects = isProject or page.url.startsWith("/tag/") %}
+<body{% if bodyClass or (fullBleed and isProject) %} class="{{ bodyClass }}{% if fullBleed and isProject %} is-overlay{% endif %}"{% endif %}>
+  <a class="skip" href="#main">skip to content</a>
+  <header class="site-header">
+    <a class="sh-mark" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>
+      <svg class="sh-glyph" viewBox="0 0 13 13" aria-hidden="true"><rect x="0" y="0" width="3" height="3"/><rect x="5" y="0" width="3" height="3"/><rect x="10" y="0" width="3" height="3"/><rect x="0" y="5" width="3" height="3"/><rect class="on" x="5" y="5" width="3" height="3"/><rect x="10" y="5" width="3" height="3"/><rect x="0" y="10" width="3" height="3"/><rect x="5" y="10" width="3" height="3"/><rect x="10" y="10" width="3" height="3"/></svg>
+      <span>yuhan wang</span>
+    </a>
+    <nav class="sh-nav" aria-label="Main">
+      {%- for item in site.nav %}
+      <a href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
   </header>
 
   {%- if fullBleed %}
   {#- Custom-designed pages (e.g. Roulettective) lay out their own sections edge to edge. #}
-  <main class="full-bleed">
+  <main id="main" class="full-bleed">
 {{ content | safe }}
   </main>
   {%- else %}
-  <main class="page">
+  <main id="main" class="page">
     <div class="page-layout"><div class="page-content bodycopy">
+      {%- if isProject %}
+      {%- set n = collections.projects | projectNumber(page.url) %}
+      <header class="ph">
+        <p class="ph-crumb"><a class="crumb" href="/project-categories/">projects</a><span aria-hidden="true">/</span><span>{{ n | pad }}</span></p>
+        <h1 class="ph-title">{{ title }}</h1>
+        <div class="ph-meta">
+          <span class="ph-year">{{ year }}</span>
+          <span class="fields" aria-hidden="true">{% for f in topics | fields %}<i class="f-{{ f }}"></i>{% endfor %}</span>
+          <ul class="chips" aria-label="Topics">
+            {%- for t in topics %}<li><a class="chip" href="/tag/{{ t | topicSlug }}/">{{ t }}</a></li>{% endfor -%}
+          </ul>
+        </div>
+      </header>
+      {%- endif %}
 {{ content | safe }}
     </div></div>
   </main>
   {%- endif %}
 
-  <footer class="page site-footer">
-    <div class="page-layout"><div class="page-content bodycopy">
-      <hr>
-      <div class="column-set" style="--columns: 12; --gutter: 3rem">
-        <div class="column-unit" style="--span: 5"><b><i>Contact</i></b><br><br>
-          <span class="caption">
-            Email: {{ site.contact.email }}<br>
-            Linkedin: <a href="{{ site.contact.linkedin }}" target="_blank">{{ site.contact.linkedin }}</a><br>
-            Instagram: {{ site.contact.instagram }}<br>
-            TEL: {{ site.contact.phone }}
-          </span>
+  {%- if isProject %}
+  {%- set prev = collections.projects | getPreviousCollectionItem(page) or collections.projects | last %}
+  {%- set next = collections.projects | getNextCollectionItem(page) or collections.projects | first %}
+  <nav class="pn" aria-label="More projects">
+    <a class="pn-link pn-prev" href="{{ prev.url }}">
+      <span class="lbl"><span aria-hidden="true">←</span> previous</span>
+      <span class="pn-title">{{ prev.data.title }}</span>
+    </a>
+    <a class="pn-all" href="/project-categories/"><span class="lbl">index</span><span class="pn-title">all projects</span></a>
+    <a class="pn-link pn-next" href="{{ next.url }}">
+      <span class="lbl">next <span aria-hidden="true">→</span></span>
+      <span class="pn-title">{{ next.data.title }}</span>
+    </a>
+  </nav>
+  {%- endif %}
+
+  <footer class="site-footer">
+    <div class="sf-in">
+      <p class="lbl">contact</p>
+      <a class="sf-mail" href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+      <div class="sf-grid">
+        <div>
+          <p class="lbl">index</p>
+          <ul>
+            <li><a href="/">home</a></li>
+            {%- for item in site.nav %}
+            <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+            {%- endfor %}
+          </ul>
+        </div>
+        <div>
+          <p class="lbl">elsewhere</p>
+          <ul>
+            <li><a href="{{ site.contact.linkedin }}" target="_blank" rel="noopener">linkedin <span aria-hidden="true">↗</span></a></li>
+            <li><a href="{{ site.contact.instagramUrl }}" target="_blank" rel="noopener">instagram {{ site.contact.instagram }} <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="lbl">tel</p>
+          <ul><li><a href="tel:{{ site.contact.phoneHref }}">{{ site.contact.phone }}</a></li></ul>
+        </div>
+        <div class="sf-up">
+          <a class="key" href="#main">back to top <span aria-hidden="true">↑</span></a>
         </div>
       </div>
-    </div></div>
+      <div class="sf-base">
+        <span>© {{ build.year }} yuhan wang</span>
+        <span>harvard gsd · mit media lab</span>
+      </div>
+    </div>
   </footer>
+  <script src="/assets/js/site.js?v={{ build.version }}" defer></script>
   {%- for src in scripts %}
   <script src="{{ src }}?v={{ build.version }}" defer></script>
   {%- endfor %}

@@ -881,6 +881,13 @@
     root.querySelectorAll(".db-hero, .db-film, .db-photo").forEach(function (n) {
       bands.observe(n);
     });
+    // and gone once the page ends, over the site's next-project links and footer
+    var end = document.querySelector(".pn") || document.querySelector(".site-footer");
+    if (end) {
+      new IntersectionObserver(function (es) {
+        nav.classList.toggle("is-past", es[0].isIntersecting || es[0].boundingClientRect.top < 0);
+      }, { rootMargin: "0px 0px -40% 0px" }).observe(end);
+    }
   })();
 
   // a character written in water: dark while wet, on a transparent layer

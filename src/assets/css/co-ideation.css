@@ -34,13 +34,6 @@
   --ci-gutter: clamp(16px, 4vw, 64px);
 }
 
-.ci-page .site-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  mix-blend-mode: difference;
-}
-
 .ci-page main.full-bleed {
   display: block;
   overflow-x: clip;

@@ -23,20 +23,6 @@
   --gutter: clamp(16px, 4vw, 64px);
 }
 
-/* The site header floats over this page and inverts against what's behind it. */
-.rb-page .site-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  mix-blend-mode: difference;
-  pointer-events: none;
-}
-
-/* only the links take clicks, so the controls under the header stay usable */
-.rb-page .site-header a {
-  pointer-events: auto;
-}
-
 .rb-page main.full-bleed {
   display: block;
   overflow-x: clip;

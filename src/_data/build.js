@@ -2,4 +2,5 @@
 // fetch fresh files after each deploy instead of reusing a cached copy.
 export default {
   version: Date.now().toString(36),
+  year: new Date().getFullYear(),
 };

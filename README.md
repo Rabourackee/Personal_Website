@@ -15,16 +15,19 @@ npm run build      # writes the finished site to _site/
 | What | File |
 | --- | --- |
 | Header nav, contact info, site title | `src/_data/site.js` |
-| Page frame (head, header, footer) | `src/_includes/base.njk` |
-| Homepage intro + project grids | `src/index.njk` |
-| Homepage highlights carousel | `src/_includes/hero.njk`, `src/assets/js/hero.js` |
-| Projects page (grids by topic) | `src/project-categories.njk` |
+| The four fields (architecture, XR, physical interaction, AI) | `src/_data/disciplines.js` |
+| Page frame (head, header, project header, previous / next, footer) | `src/_includes/base.njk` |
+| Homepage: pin table, credentials, selected works, index | `src/index.njk`, `src/assets/css/home.css`, `src/assets/js/home.js` |
+| Project cards and the filterable index | `src/_includes/cards.njk`, `src/assets/js/site.js` |
+| Projects page (the full index) | `src/project-categories.njk` |
 | Tag pages (`/tag/ai/` …) | `src/tag.njk` (generated for every topic) |
 | One file per project | `src/projects/<url>.html` |
 | About, Vision | `src/about.html`, `src/vision.html` |
-| All styling | `src/assets/css/site.css` |
+| Shared styling (palette, frame, index, standard pages) | `src/assets/css/site.css` |
 | Images and videos | `src/media/<project>/` |
 | PDFs | `src/files/` |
+
+The palette is set at the top of `site.css`: `#f5f5f5` page, `#d2d3d4` panels and keys, `#000` ink and the `#ff5722` orange accent (pressed keys, the current item, hover marks). Yellow, green, blue and red mark only the four fields.
 
 ### A project file
 
@@ -32,8 +35,9 @@ npm run build      # writes the finished site to _site/
 ---
 title: "Roulettective"
 section: "research"        # "research" or "interests" (which homepage grid it's in)
-order: 5                   # position in the grids
-topics: ["AI", "Game"]     # tags under the thumbnail, and the Projects page
+order: 5                   # position in the index
+year: "2025"               # shown on its card and in its header ("2022–23" for a span)
+topics: ["AI", "Game"]     # tags under the card; they also decide its fields
 cover: "/media/roulettective/cover.webp"
 ---
 <div class="column-set" style="--columns: 12; --gutter: 2rem">
@@ -47,21 +51,24 @@ cover: "/media/roulettective/cover.webp"
 </div>
 ```
 
-To show a project in the homepage carousel, add these fields to its front matter. The carousel orders slides by `featured`. Remove the fields to take a project out.
+To show a project under "selected works" on the homepage, add these fields to its front matter. They are ordered by `featured`. Remove the fields to take a project out.
 
 ```yaml
-featured: 2                                   # position in the carousel
+featured: 2                                   # position in selected works
 summary: "One line under the title."
 highlight: "NeurIPS 2025 · UIST 2025"         # award / publication line (optional)
 hero: "/media/roulettective/hero.webp"        # wide image (optional, defaults to cover)
 ```
 
-The file name sets the URL: `src/projects/roulettective.html` is served at `/roulettective/`. To add a project, copy an existing file and change the front matter at the top. It appears on the homepage, the Projects page and its tag pages automatically.
+The file name sets the URL: `src/projects/roulettective.html` is served at `/roulettective/`. To add a project, copy an existing file and change the front matter at the top. It appears on the homepage, the Projects page and its tag pages automatically, and the page gets its header (number, title, year, fields, topics) and the previous / next links from the front matter.
+
+A project's fields come from its topics, using the patterns in `src/_data/disciplines.js` (any "…Architecture" topic counts as architecture; MR, VR and Immersive as XR; Tangible Interface, Haptic, Sensor and Soft Robotics as physical interaction; AI and Computer Vision as AI). The index filters by field, and `/project-categories/?field=ai` opens the Projects page filtered.
 
 These building blocks reproduce Cargo's layout tools:
 
 - `column-set` / `column-unit`: a 12-column grid. Set the width of each column with `--span`. Columns stack on phones (add `no-stack` to the set to keep them side by side).
 - `gallery-grid`: an image grid. Use `--columns` and `--gutter`, plus optional `--mobile-columns` and `--mobile-gutter` for phones.
+- `<dl class="spec">` with `<div><dt>time</dt><dd>2025</dd></div>` rows: the facts column at the top of a project page.
 - `class="caption"`: the grey monospace text style.
 - `style="--font-scale: 2"`: makes text 2× its normal size.
 
@@ -71,6 +78,7 @@ A project can opt out of the standard layout and design its own sections edge to
 
 ```yaml
 fullBleed: true                                  # no standard page frame; sections span the window
+                                                 # (the site header then floats over the first section)
 bodyClass: "rt-page"
 styles: ["/assets/css/roulettective.css"]        # extra stylesheets for this page only
 scripts: ["/assets/js/roulettective.js"]         # extra scripts for this page only

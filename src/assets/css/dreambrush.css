@@ -24,13 +24,6 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.db-page .site-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  mix-blend-mode: difference;
-}
-
 .db-page main.full-bleed {
   display: block;
   overflow-x: clip;
@@ -1012,7 +1005,8 @@
   color: #e2675a;
 }
 
-.db-index.is-away {
+.db-index.is-away,
+.db-index.is-past {
   opacity: 0;
   pointer-events: none;
 }

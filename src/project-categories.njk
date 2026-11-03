@@ -2,12 +2,13 @@
 layout: base.njk
 title: Projects
 permalink: /project-categories/
-categories: ["AI", "MR", "Tangible Interface", "Architecture"]
 ---
-{% from "thumbnails.njk" import thumbnails %}
-{%- for topic in categories %}
-<span class="heading-3">{{ topic }}</span><br>
-<br>
-{{ thumbnails(collections.projects | withTopic(topic)) }}
-{%- if not loop.last %}<br><br>{% endif %}
-{%- endfor %}
+{#- The full index. ?field=ai (or architecture, xr, physical) opens it filtered. #}
+{%- from "cards.njk" import projectIndex %}
+{%- set all = collections.projects %}
+<header class="pg-head">
+  <p class="lbl">index</p>
+  <h1 class="pg-title">projects</h1>
+  <p class="lbl pg-aside">{{ all.length }} projects · {{ all | yearSpan }}</p>
+</header>
+{{ projectIndex(all, disciplines) }}

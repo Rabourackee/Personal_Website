@@ -2,15 +2,102 @@
 layout: base.njk
 permalink: /
 bodyClass: home
+fullBleed: true
+styles: ["/assets/css/home.css"]
+scripts: ["/assets/js/home.js"]
 ---
-{% from "thumbnails.njk" import thumbnails %}
-{% include "hero.njk" %}
-<span style="--font-scale: 2;">I’m a Designer, Maker and Creative Technologist producing works <br>on Architecture, XR, Physical Interaction and AI.</span>
-<br><br><br><br>
-<span style="--font-scale: 1.2;">Research Project &amp; Professional Works</span><br>
-<br><br>
-{{ thumbnails(collections.projects | inSection("research"), { gutter: "2rem", mobileColumns: 1, mobileGutter: "3rem", mobileRowGutter: "1.5rem", captions: true }) }}
-<br><br><br>
-<span style="--font-scale: 1.2;">Works out of Interest &amp; Hobbies</span><br>
-<br><br>
-{{ thumbnails(collections.projects | inSection("interests"), { gutter: "2rem", mobileGutter: "1rem", captions: true }) }}
+{#-
+  Homepage. Styles: src/assets/css/home.css (hero, credentials, selected works)
+  and site.css (the index). The pin table and the selected-works console:
+  src/assets/js/home.js. Without JavaScript the hero shows the name as text and
+  the console shows its first project.
+#}
+{%- from "cards.njk" import projectIndex %}
+{%- set all = collections.projects %}
+{%- set featured = collections.featured %}
+
+<!-- ============================================================ hero: the pin table -->
+<section class="hh" aria-labelledby="hh-name">
+  <div class="hh-stage">
+    <h1 class="hh-name" id="hh-name">Yuhan Wang</h1>
+    <canvas class="hh-canvas" aria-hidden="true"></canvas>
+    <p class="lbl hh-tag hh-tag--tl">shape display <span class="hh-dim"></span></p>
+    <p class="lbl hh-tag hh-tag--tr" aria-hidden="true"><span class="hh-up">—</span> pins up</p>
+  </div>
+  <div class="hh-bar">
+    <p class="hh-statement">I’m a designer, maker and creative technologist producing works on
+      {%- for d in disciplines %} <a class="hh-field" href="/project-categories/?field={{ d.key }}" data-field="{{ d.key }}"><i class="f-{{ d.key }}" aria-hidden="true"></i>{{ d.label }}</a>{% if loop.revindex == 2 %} and{% elif not loop.last %},{% endif %}{% endfor %}.</p>
+    <div class="hh-deck">
+      <div class="hh-keys" role="radiogroup" aria-label="What the pins show">
+        <button type="button" class="key" role="radio" aria-checked="true" data-mode="name"><span class="key-n">01</span>name</button>
+        <button type="button" class="key" role="radio" aria-checked="false" data-mode="wave"><span class="key-n">02</span>wave</button>
+        <button type="button" class="key" role="radio" aria-checked="false" data-mode="type"><span class="key-n">03</span>type</button>
+        <button type="button" class="key" role="radio" aria-checked="false" data-mode="draw"><span class="key-n">04</span>draw</button>
+      </div>
+      <label class="hh-type" hidden>
+        <span class="lbl">your text</span>
+        <input type="text" maxlength="32" autocomplete="off" spellcheck="false" placeholder="type here">
+      </label>
+      <p class="lbl hh-hint" aria-live="polite">move over the pins to push them up · click to send a wave</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ credentials -->
+<section class="hc" aria-label="In brief">
+  <dl class="hc-row">
+    <div><dt class="lbl">study</dt><dd>Master of Design Studies (Mediums), Harvard Graduate School of Design</dd></div>
+    <div><dt class="lbl">research</dt><dd>Visiting student, MIT Media Lab, Tangible Media Group</dd></div>
+    <div><dt class="lbl">published at</dt><dd>NeurIPS · CVPR · CHI · UIST · DIS · TEI · ISMAR</dd></div>
+    <div><dt class="lbl">index</dt><dd><b>{{ all.length }}</b> projects, {{ all | yearSpan }}</dd></div>
+  </dl>
+</section>
+
+<!-- ============================================================ selected works -->
+{%- if featured.length %}
+<section class="hs" id="selected" aria-labelledby="hs-h">
+  <header class="sec-head">
+    <p class="sec-n">01</p>
+    <h2 id="hs-h">selected works</h2>
+    <p class="lbl sec-aside">{{ featured.length | pad }} projects</p>
+  </header>
+  <div class="hs-console">
+    <div class="hs-stage">
+      {%- for p in featured %}
+      <article class="hs-slide{% if loop.first %} is-on{% endif %}" data-i="{{ loop.index0 }}"{% if not loop.first %} aria-hidden="true"{% endif %}>
+        <a class="hs-media" href="{{ p.url }}" tabindex="-1">
+          <img src="{{ p.data.hero or p.data.cover }}" alt=""{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+        </a>
+        <div class="hs-cap">
+          <h3 class="hs-title"><a href="{{ p.url }}">{{ p.data.title }}</a></h3>
+          {%- if p.data.summary %}<p class="hs-summary">{{ p.data.summary }}</p>{% endif %}
+          {%- if p.data.highlight %}<p class="lbl hs-highlight">{{ p.data.highlight }}</p>{% endif %}
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+    <ol class="hs-list">
+      {%- for p in featured %}
+      <li>
+        <a class="hs-item" href="{{ p.url }}" data-i="{{ loop.index0 }}"{% if loop.first %} aria-current="true"{% endif %}>
+          <span class="hs-n">{{ loop.index | pad }}</span>
+          <span class="hs-t">{{ p.data.title }}</span>
+          <span class="hs-y">{{ p.data.year }}</span>
+          <span class="hs-bar" aria-hidden="true"><i></i></span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+{%- endif %}
+
+<!-- ============================================================ index -->
+<section class="hx" id="index" aria-labelledby="hx-h">
+  <header class="sec-head">
+    <p class="sec-n">02</p>
+    <h2 id="hx-h">index</h2>
+    <p class="lbl sec-aside">{{ all.length }} projects · {{ all | yearSpan }}</p>
+  </header>
+  {{ projectIndex(all, disciplines) }}
+</section>

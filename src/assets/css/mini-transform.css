@@ -21,14 +21,6 @@
   --gutter: clamp(16px, 4vw, 64px);
 }
 
-/* The site header floats over this page and inverts against what's behind it. */
-.mt-page .site-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  mix-blend-mode: difference;
-}
-
 .mt-page main.full-bleed {
   display: block;
   overflow-x: clip;
