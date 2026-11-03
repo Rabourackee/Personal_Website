@@ -1,17 +1,15 @@
 {#
   Project cards and the filterable index (homepage, Projects page, tag pages).
-  Styles: "cards" and "index" in site.css. Behaviour (field filter, grid/list
-  view, list preview): src/assets/js/site.js. Without JavaScript every card shows.
+  Styles: "index" in site.css. Behaviour (field filter, list / grid view):
+  src/assets/js/site.js. Without JavaScript every card shows, as a list.
 #}
 
 {# One project. n: its number in the index. #}
 {% macro card(p, n) %}
-{%- set fs = p.data.topics | fields %}
-{%- set video = p.data.cover.endsWith(".mp4") %}
-<li class="card" data-fields="{{ fs | join(' ') }}">
-  <a class="card-link" href="{{ p.url }}" data-peek="{{ (p.data.hero or p.data.cover) if video else p.data.cover }}">
+<li class="card" data-fields="{{ p.data.topics | fields | join(' ') }}">
+  <a class="card-link" href="{{ p.url }}">
     <span class="card-media">
-      {%- if video %}
+      {%- if p.data.cover.endsWith(".mp4") %}
       <video src="{{ p.data.cover }}" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
       {%- else %}
       <img src="{{ p.data.cover }}" width="900" height="600" alt="" loading="lazy" decoding="async">
@@ -19,9 +17,8 @@
     </span>
     <span class="card-n">{{ n | pad }}</span>
     <span class="card-title">{{ p.data.title }}</span>
-    <span class="card-year">{{ p.data.year }}</span>
-    <span class="fields card-fields">{% for f in fs %}<i class="f-{{ f }}"></i>{% endfor %}</span>
     <span class="card-topics">{{ p.data.topics | join(", ") }}</span>
+    <span class="card-year">{{ p.data.year }}</span>
   </a>
 </li>
 {% endmacro %}
@@ -35,32 +32,33 @@
 </ol>
 {% endmacro %}
 
-{# The index: field keys, a grid/list switch, then one group of cards per section. #}
+{# One labelled group of cards: the label sits in the left column, as in a catalogue. #}
+{% macro group(label, projects, all) %}
+<section class="px-group" aria-label="{{ label }}">
+  <h3 class="px-h"><span>{{ label }}</span> <span class="px-count">{{ projects.length }}</span></h3>
+  {{ cards(projects, all) }}
+</section>
+{% endmacro %}
+
+{# The index: field filter and view switch, then one group per section. #}
 {% macro projectIndex(all, disciplines) %}
-{%- set groups = [
-  { title: "research & professional works", items: all | inSection("research") },
-  { title: "works out of interest & hobbies", items: all | inSection("interests") }
-] %}
-<div class="px" data-index data-view="grid">
+<div class="px" data-index data-view="list">
   <div class="px-bar">
     <div class="px-keys" role="group" aria-label="Show projects in">
-      <button type="button" class="key" data-field="all" aria-pressed="true">all <span class="key-n">{{ all.length }}</span></button>
+      <span class="px-tag">filter</span>
+      <button type="button" class="tb" data-field="all" aria-pressed="true">all<sup>{{ all.length }}</sup></button>
       {%- for d in disciplines %}
-      <button type="button" class="key" data-field="{{ d.key }}" aria-pressed="false"><i class="f-{{ d.key }}" aria-hidden="true"></i>{{ d.label }} <span class="key-n">{{ (all | inField(d.key)).length }}</span></button>
+      <button type="button" class="tb" data-field="{{ d.key }}" aria-pressed="false">{{ d.label }}<sup>{{ (all | inField(d.key)).length }}</sup></button>
       {%- endfor %}
     </div>
     <div class="px-view" role="group" aria-label="View as">
-      <button type="button" class="key key--icon" data-view="grid" aria-pressed="true" aria-label="Grid"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="6" height="6"/><rect x="9" y="1" width="6" height="6"/><rect x="1" y="9" width="6" height="6"/><rect x="9" y="9" width="6" height="6"/></svg></button>
-      <button type="button" class="key key--icon" data-view="list" aria-pressed="false" aria-label="List"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="2" width="14" height="2"/><rect x="1" y="7" width="14" height="2"/><rect x="1" y="12" width="14" height="2"/></svg></button>
+      <span class="px-tag">view as</span>
+      <button type="button" class="tb" data-view="list" aria-pressed="true">list</button>
+      <button type="button" class="tb" data-view="grid" aria-pressed="false">grid</button>
     </div>
   </div>
-  {%- for g in groups %}
-  <section class="px-group" aria-label="{{ g.title }}">
-    <h3 class="px-h">{{ g.title }} <span class="px-count">{{ g.items.length }}</span></h3>
-    {{ cards(g.items, all) }}
-  </section>
-  {%- endfor %}
+  {{ group("research & professional works", all | inSection("research"), all) }}
+  {{ group("out of interest & hobbies", all | inSection("interests"), all) }}
   <p class="px-status" aria-live="polite"></p>
-  <figure class="px-peek" aria-hidden="true"><img alt=""></figure>
 </div>
 {% endmacro %}

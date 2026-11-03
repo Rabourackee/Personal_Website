@@ -47,16 +47,21 @@
 {%- set inProjects = isProject or page.url.startsWith("/tag/") %}
 <body{% if bodyClass or (fullBleed and isProject) %} class="{{ bodyClass }}{% if fullBleed and isProject %} is-overlay{% endif %}"{% endif %}>
   <a class="skip" href="#main">skip to content</a>
-  <header class="site-header">
-    <a class="sh-mark" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>
-      <svg class="sh-glyph" viewBox="0 0 13 13" aria-hidden="true"><rect x="0" y="0" width="3" height="3"/><rect x="5" y="0" width="3" height="3"/><rect x="10" y="0" width="3" height="3"/><rect x="0" y="5" width="3" height="3"/><rect class="on" x="5" y="5" width="3" height="3"/><rect x="10" y="5" width="3" height="3"/><rect x="0" y="10" width="3" height="3"/><rect x="5" y="10" width="3" height="3"/><rect x="10" y="10" width="3" height="3"/></svg>
-      <span>yuhan wang</span>
-    </a>
+  <header class="site-header" id="top">
+    <a class="sh-mark" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>yuhan <br>wang</a>
     <nav class="sh-nav" aria-label="Main">
       {%- for item in site.nav %}
-      <a href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      <div class="sh-item">
+        <a class="sh-word" href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {%- if item.sub %}
+        <ul class="sh-sub">
+          {%- for s in item.sub %}<li><a href="{{ s.href }}">{{ s.label }}</a></li>{% endfor %}
+        </ul>
+        {%- endif %}
+      </div>
       {%- endfor %}
     </nav>
+    <a class="sh-motto" href="/vision/" lang="zh-Hans" aria-label="Vision: all things are born from existence, and existence is born from non-existence">万物生于有，<br>有生于无</a>
   </header>
 
   {%- if fullBleed %}
@@ -74,7 +79,6 @@
         <h1 class="ph-title">{{ title }}</h1>
         <div class="ph-meta">
           <span class="ph-year">{{ year }}</span>
-          <span class="fields" aria-hidden="true">{% for f in topics | fields %}<i class="f-{{ f }}"></i>{% endfor %}</span>
           <ul class="chips" aria-label="Topics">
             {%- for t in topics %}<li><a class="chip" href="/tag/{{ t | topicSlug }}/">{{ t }}</a></li>{% endfor -%}
           </ul>
@@ -102,7 +106,7 @@
   </nav>
   {%- endif %}
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="sf-in">
       <p class="lbl">contact</p>
       <a class="sf-mail" href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
@@ -128,7 +132,7 @@
           <ul><li><a href="tel:{{ site.contact.phoneHref }}">{{ site.contact.phone }}</a></li></ul>
         </div>
         <div class="sf-up">
-          <a class="key" href="#main">back to top <span aria-hidden="true">↑</span></a>
+          <a class="go" href="#top">back to top <span aria-hidden="true">↑</span></a>
         </div>
       </div>
       <div class="sf-base">

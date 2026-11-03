@@ -14,10 +14,10 @@ npm run build      # writes the finished site to _site/
 
 | What | File |
 | --- | --- |
-| Header nav, contact info, site title | `src/_data/site.js` |
+| Header nav (with each word's sub-links), contact info, site title | `src/_data/site.js` |
 | The four fields (architecture, XR, physical interaction, AI) | `src/_data/disciplines.js` |
 | Page frame (head, header, project header, previous / next, footer) | `src/_includes/base.njk` |
-| Homepage: pin table, credentials, selected works, index | `src/index.njk`, `src/assets/css/home.css`, `src/assets/js/home.js` |
+| Homepage: selected works, statement, index | `src/index.njk`, `src/assets/css/home.css`, `src/assets/js/home.js` |
 | Project cards and the filterable index | `src/_includes/cards.njk`, `src/assets/js/site.js` |
 | Projects page (the full index) | `src/project-categories.njk` |
 | Tag pages (`/tag/ai/` …) | `src/tag.njk` (generated for every topic) |
@@ -27,7 +27,7 @@ npm run build      # writes the finished site to _site/
 | Images and videos | `src/media/<project>/` |
 | PDFs | `src/files/` |
 
-The palette is set at the top of `site.css`: `#f5f5f5` page, `#d2d3d4` panels and keys, `#000` ink and the `#ff5722` orange accent (pressed keys, the current item, hover marks). Yellow, green, blue and red mark only the four fields.
+The palette is set at the top of `site.css` and is kept monochrome: `#f5f5f5` page, `#d2d3d4` panels, `#000` ink. The `#ff5722` orange appears only as a mark on action links ("view project →", "open the pdf ↗") and as the text selection. Index thumbnails are shown in greyscale and take their colour when you point at them (on phones, as they pass the middle of the screen).
 
 ### A project file
 
@@ -51,13 +51,13 @@ cover: "/media/roulettective/cover.webp"
 </div>
 ```
 
-To show a project under "selected works" on the homepage, add these fields to its front matter. They are ordered by `featured`. Remove the fields to take a project out.
+To show a project in "selected works", the full-width stage at the top of the homepage, add these fields to its front matter. They are ordered by `featured`. Remove the fields to take a project out.
 
 ```yaml
 featured: 2                                   # position in selected works
 summary: "One line under the title."
 highlight: "NeurIPS 2025 · UIST 2025"         # award / publication line (optional)
-hero: "/media/roulettective/hero.webp"        # wide image (optional, defaults to cover)
+hero: "/media/roulettective/rt-hero.webp"     # large image for the stage (optional, defaults to cover)
 ```
 
 The file name sets the URL: `src/projects/roulettective.html` is served at `/roulettective/`. To add a project, copy an existing file and change the front matter at the top. It appears on the homepage, the Projects page and its tag pages automatically, and the page gets its header (number, title, year, fields, topics) and the previous / next links from the front matter.
