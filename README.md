@@ -59,7 +59,7 @@ featured: 2                                   # position in selected works
 summary: "One line under the title."
 highlight: "NeurIPS 2025 · UIST 2025"         # award / publication line (optional)
 hero: "/media/roulettective/rt-hero.webp"     # large image for the stage (optional, defaults to cover)
-heroFocus: "50% 38%"                          # which part of it the stage keeps when it crops (optional; default centre)
+heroFocus: "50% 44%"                          # which part of it the stage keeps when it crops (optional; default centre)
 ```
 
 The file name sets the URL: `src/projects/roulettective.html` is served at `/roulettective/`. To add a project, copy an existing file and change the front matter at the top. It appears on the homepage, the Projects page and its tag pages automatically, and the page gets its header (number, title, year, fields, topics) and the previous / next links from the front matter.
