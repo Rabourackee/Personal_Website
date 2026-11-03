@@ -51,14 +51,7 @@
     <a class="sh-mark" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>yuhan <br>wang</a>
     <nav class="sh-nav" aria-label="Main">
       {%- for item in site.nav %}
-      <div class="sh-item">
-        <a class="sh-word" href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}</a>
-        {%- if item.sub %}
-        <ul class="sh-sub">
-          {%- for s in item.sub %}<li><a href="{{ s.href }}">{{ s.label }}</a></li>{% endfor %}
-        </ul>
-        {%- endif %}
-      </div>
+      <a class="sh-word" href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}</a>
       {%- endfor %}
     </nav>
   </header>

@@ -14,7 +14,7 @@ npm run build      # writes the finished site to _site/
 
 | What | File |
 | --- | --- |
-| Header nav (with each word's sub-links), contact info, site title | `src/_data/site.js` |
+| Header nav, contact info, site title | `src/_data/site.js` |
 | The four fields (architecture, XR, physical interaction, AI) | `src/_data/disciplines.js` |
 | Page frame (head, header, project header, previous / next, footer) | `src/_includes/base.njk` |
 | Homepage: selected works, statement, index | `src/index.njk`, `src/assets/css/home.css`, `src/assets/js/home.js` |

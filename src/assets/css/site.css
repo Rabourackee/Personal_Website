@@ -28,7 +28,8 @@
   --font-mono: "Geist Mono Variable", ui-monospace, Menlo, monospace;
   --gut: clamp(16px, 3.2vw, 48px);
   --lab: clamp(140px, 16vw, 250px); /* the label column of the editorial grid */
-  --head-h: 158px; /* the header's height, for the homepage stage */
+  --sh-size: clamp(28px, 2.9vw, 44px); /* header words */
+  --head-h: calc(2 * var(--sh-size) + 44px); /* the header's height, for the homepage stage */
   --display: 600; /* heading weight */
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --pad-scale: 1;
@@ -61,7 +62,14 @@ html.mobile {
 
 @media (max-width: 760px) {
   :root {
-    --head-h: 84px;
+    --sh-size: 21px;
+    --head-h: calc(2 * var(--sh-size) + 40px);
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --sh-size: 18px;
   }
 }
 
@@ -340,8 +348,7 @@ a:active {
 }
 
 /* ---------------------------------------------------------------- header
-   A wordmark and three words, each with its small sub-links. It scrolls
-   away with the page. */
+   A wordmark and three words, large. It scrolls away with the page. */
 
 .site-header {
   position: relative;
@@ -362,8 +369,8 @@ a:active {
 
 .sh-mark,
 .sh-word {
-  font: var(--display) 27px/1 var(--font-sans);
-  letter-spacing: -0.045em;
+  font: var(--display) var(--sh-size)/1 var(--font-sans);
+  letter-spacing: -0.05em;
 }
 
 .sh-nav {
@@ -373,7 +380,7 @@ a:active {
 }
 
 .sh-word {
-  display: inline-block;
+  justify-self: start;
   transition: opacity 0.15s;
 }
 
@@ -381,23 +388,6 @@ a:active {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-}
-
-.sh-sub {
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-  font: 400 13px/1.45 var(--font-sans);
-}
-
-.sh-sub a {
-  color: var(--ink-2);
-  transition: color 0.15s;
-}
-
-.sh-sub a:hover,
-.sh-word:hover {
-  color: var(--ink);
 }
 
 .sh-nav:hover .sh-word:not(:hover) {
@@ -410,28 +400,14 @@ a:active {
     padding-top: 16px;
   }
 
-  .sh-mark,
-  .sh-word {
-    font-size: 21px;
-  }
-
   .sh-nav {
     display: flex;
     justify-content: flex-end;
     gap: 16px;
   }
-
-  .sh-sub {
-    display: none;
-  }
 }
 
 @media (max-width: 380px) {
-  .sh-mark,
-  .sh-word {
-    font-size: 18px;
-  }
-
   .sh-nav {
     gap: 12px;
   }
@@ -456,8 +432,7 @@ a:active {
   pointer-events: auto;
 }
 
-.is-overlay .sh-mark br,
-.is-overlay .sh-sub {
+.is-overlay .sh-mark br {
   display: none;
 }
 
