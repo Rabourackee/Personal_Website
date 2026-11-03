@@ -22,7 +22,7 @@ scripts: ["/assets/js/home.js"]
   <div class="hv-stage">
     {%- for p in featured %}
     <figure class="hv-slide{% if loop.first %} is-on{% endif %}" data-i="{{ loop.index0 }}" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ featured.length }}: {{ p.data.title }}"{% if not loop.first %} aria-hidden="true"{% endif %}>
-      <img src="{{ p.data.hero or p.data.cover }}" alt=""{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+      <img src="{{ p.data.hero or p.data.cover }}" alt=""{% if p.data.heroFocus %} style="object-position: {{ p.data.heroFocus }}"{% endif %}{% if loop.first %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
     </figure>
     {%- endfor %}
     <button type="button" class="hv-half hv-half--prev" aria-label="Previous project" hidden></button>
