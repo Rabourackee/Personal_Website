@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Relativity (Escher Simulator)",
+    "repo": "https://github.com/Rabourackee/Escher_Simulator.git",
+    "local": "../Escher_Simulator",
+    "path": "play/relativity",
+    "drop": ["tests", "README.md", ".gitattributes"]
+  }
+]

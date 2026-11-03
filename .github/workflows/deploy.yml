@@ -26,6 +26,8 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v6
       - run: npm ci
+      # copy in the interactive apps (apps.json) from their own repositories
+      - run: node scripts/fetch_apps.mjs
       # base_path is "/Personal_Website" on username.github.io, "" once a custom domain is set
       - run: npx @11ty/eleventy --pathprefix="${{ steps.pages.outputs.base_path }}/"
       - uses: actions/upload-pages-artifact@v5

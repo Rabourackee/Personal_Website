@@ -790,6 +790,125 @@ iframe.media {
   font-variant-numeric: tabular-nums;
 }
 
+/* ---------------------------------------------------------------- live apps
+   A poster that becomes the app itself when you press play (embed.js), with
+   a bar for the full-screen link. Also: page sections and wide figures used
+   by newer standard project pages. */
+
+.app {
+  margin: clamp(56px, 7vw, 104px) 0;
+}
+
+.app-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.app-frame img,
+.app-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.app-play {
+  appearance: none;
+  position: absolute;
+  left: 3.5%;
+  bottom: 6%;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px 14px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font: 500 15px/1 var(--font-sans);
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease);
+}
+
+.app-play[hidden] {
+  display: none;
+}
+
+.app-play:hover {
+  transform: scale(1.04);
+}
+
+.app-play:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* a small orange light: the one coloured mark, saying "live" */
+.app-play__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: app-blink 1.6s ease-in-out infinite;
+}
+
+@keyframes app-blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.app-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  padding-top: 14px;
+}
+
+.bodycopy .lede {
+  margin-top: 0;
+  font-size: 1.35em;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.column-set.section {
+  margin-top: clamp(64px, 8vw, 120px);
+}
+
+.column-set.section .lbl + .heading-3 {
+  margin-top: 6px;
+}
+
+.column-set.section p:first-child,
+.column-set .column-unit > p.lbl:first-child {
+  margin-top: 0;
+}
+
+.wide-fig {
+  margin: clamp(40px, 5vw, 72px) 0 0;
+}
+
+.wide-fig .caption {
+  margin-top: 10px;
+}
+
+.credit {
+  margin-top: clamp(64px, 8vw, 120px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-play__dot {
+    animation: none;
+  }
+}
+
 /* ---------------------------------------------------------------- previous / next */
 
 .pn {

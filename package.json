@@ -4,8 +4,10 @@
   "type": "module",
   "description": "Yuhan Wang's portfolio site (yuhanwang.net), built with Eleventy.",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "start": "node scripts/fetch_apps.mjs --local && eleventy --serve",
+    "build": "node scripts/fetch_apps.mjs && eleventy",
+    "apps": "node scripts/fetch_apps.mjs",
+    "apps:local": "node scripts/fetch_apps.mjs --local"
   },
   "repository": {
     "type": "git",

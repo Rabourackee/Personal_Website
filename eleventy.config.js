@@ -11,6 +11,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/media");
   eleventyConfig.addPassthroughCopy("src/files");
   eleventyConfig.addPassthroughCopy({ "src/static": "/" });
+  // Interactive apps from their own repositories, copied in by scripts/fetch_apps.mjs.
+  eleventyConfig.addPassthroughCopy({ ".apps": "/" });
   for (const font of ["geist", "geist-mono"]) {
     const from = `node_modules/@fontsource-variable/${font}`;
     eleventyConfig.addPassthroughCopy({

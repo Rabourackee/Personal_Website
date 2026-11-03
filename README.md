@@ -6,8 +6,8 @@ Yuhan Wang's portfolio, migrated from Cargo to a static site built with [Elevent
 
 ```sh
 npm install
-npm start          # http://localhost:8080, reloads on save
-npm run build      # writes the finished site to _site/
+npm start          # http://localhost:8080, reloads on save (apps copied from their local folders)
+npm run build      # writes the finished site to _site/ (apps cloned from GitHub)
 ```
 
 ## Where things live
@@ -86,6 +86,14 @@ scripts: ["/assets/js/roulettective.js"]         # extra scripts for this page o
 ```
 
 Dream Brush self-hosts its fonts in `src/assets/fonts/dreambrush/`: Cormorant Garamond, plus three Chinese faces cut down to just the characters the page uses: two brush scripts, and AR PL UKai, a carved regular script under the Arphic Public License (its text ships beside it as `ARPHICPL.TXT`). If you add a new Chinese character to that page, re-fetch the face it appears in (the steps and the character lists are in the comment at the top of `fonts.css`), or the new character falls back to a system font. Its ink paintings are drawn live by the page script, not stored as images.
+
+### Interactive apps (hosted from their own repositories)
+
+Bigger interactive pieces, like the Relativity walk through Escher's print, keep their own GitHub repository and are not copied into this one. `apps.json` lists them. At build time, `scripts/fetch_apps.mjs` takes a copy of each one and publishes it under this domain, for example `Rabourackee/Escher_Simulator` → `yuhanwang.net/play/relativity/`. The deploy clones from GitHub; `npm start` copies from the folder named in `"local"` (`../Escher_Simulator`), so you can preview unpushed changes.
+
+- **To show an update** to an app on the live site, push it to the app's repository, then re-run this site's deploy: **Actions → Deploy to GitHub Pages → Run workflow**. A push to this repository also picks it up.
+- **To add an app:** it must be a static site (plain HTML, CSS and JS, or the output of its own build) with relative paths. Add an entry to `apps.json` with a `path` under `play/`. Then make a project page that embeds it with `<figure class="app" data-app="/play/…/">` (see `src/projects/relativity.html`), plus `scripts: ["/assets/js/embed.js"]`. The page shows a poster and loads the app only when someone presses play.
+- **Limits:** GitHub Pages allows a 1 GB site, files under 100 MB and about 100 GB of traffic a month. Small apps like Relativity (under 1 MB) are no trouble. An app with large assets (big 3D models, video, datasets) should be published on its own instead: switch on Pages in its repository (it is then at `rabourackee.github.io/<repo>/`) and point `data-app` at that address.
 
 ### Adding images
 

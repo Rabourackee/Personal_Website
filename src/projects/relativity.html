@@ -1,0 +1,105 @@
+---
+title: "Relativity"
+section: "interests"
+order: 29
+year: "2026"
+topics: ["3D Environment", "Computational Design", "Game"]
+cover: "/media/relativity/cover.webp"
+description: "Relativity: a walkable, endlessly generated space after M. C. Escher's lithograph, drawn in real time as an etching. Play it in the browser."
+scripts: ["/assets/js/embed.js"]
+---
+<!--
+  The simulator itself lives in its own repository (Rabourackee/Escher_Simulator)
+  and is copied in at build time to /play/relativity/ (apps.json,
+  scripts/fetch_apps.mjs). This page shows a poster; src/assets/js/embed.js
+  swaps it for the live app when you press play.
+-->
+<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4">
+<dl class="spec">
+  <div><dt>time</dt><dd>2026</dd></div>
+  <div><dt>team</dt><dd>Personal project</dd></div>
+  <div><dt>type</dt><dd>Real-time interactive space, in the browser</dd></div>
+  <div><dt>built with</dt><dd>three.js, WebGL 2, a Web Worker for generation</dd></div>
+  <div><dt>play</dt><dd><a href="/play/relativity/" target="_blank" rel="noopener">yuhanwang.net/play/relativity</a></dd></div>
+  <div><dt>source</dt><dd><a href="https://github.com/Rabourackee/Escher_Simulator" target="_blank" rel="noopener">github.com/Rabourackee/Escher_Simulator</a></dd></div>
+</dl>
+</div><div class="column-unit" style="--span: 8">
+
+<p class="lede">A walkable, endlessly generated space after M.&nbsp;C. Escher’s lithograph <i>Relativity</i> (1953), drawn in real time as an etching.</p>
+
+<p>You start in front of the print: a 3D reconstruction of it, seen through the print’s own camera. Click one of its sixteen inhabitants and the plate grows to fill the screen while the camera dives into that figure’s eyes. From there you walk, and the ground under your feet decides which way is down. Walk into a wall and keep pushing, and the wall becomes your floor. Walk off an edge, and you roll over it onto the side below. Every staircase serves two gravities, as in the print: one people climbs its treads while another walks its risers. Everything beyond the print’s three halls is generated as you approach it.</p>
+
+</div></div>
+
+<figure class="app" data-app="/play/relativity/" data-title="Relativity, an endless Escher space">
+  <div class="app-frame">
+    <img src="/media/relativity/rl-title.webp" width="1600" height="1000" alt="The title screen: the reconstructed print on cream paper, with the line “Choose an inhabitant — click a figure to step into its world”" loading="lazy" decoding="async">
+    <button type="button" class="app-play" hidden><span class="app-play__dot" aria-hidden="true"></span>play here</button>
+  </div>
+  <figcaption class="app-bar">
+    <span class="lbl">live · runs in your browser · needs WebGL 2, a keyboard and a mouse</span>
+    <a class="go go--accent" href="/play/relativity/" target="_blank" rel="noopener">open full screen <span aria-hidden="true">↗</span></a>
+  </figcaption>
+</figure>
+
+<div class="column-set" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">controls</p>
+</div>
+<div class="column-unit" style="--span: 8">
+<dl class="spec">
+  <div><dt>click a figure</dt><dd>Step into its world</dd></div>
+  <div><dt>W A S D</dt><dd>Walk (arrow keys work too); Shift to run</dd></div>
+  <div><dt>mouse</dt><dd>Look around</dd></div>
+  <div><dt>space</dt><dd>Jump. Off an edge you fall along your gravity to the ground below</dd></div>
+  <div><dt>into a wall</dt><dd>Push for a moment, and that wall becomes your floor</dd></div>
+  <div><dt>over an edge</dt><dd>Roll over onto the face below</dd></div>
+  <div><dt>esc</dt><dd>Pause, then resume or return to the print</dd></div>
+</dl>
+</div>
+</div>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">01</p>
+<span class="heading-3">The print, reconstructed</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p><i>Relativity</i> is drawn in true three-point perspective, so its camera can be recovered. The print’s straight edges were detected and fitted to three vanishing points, which give the focal length (a vertical field of view of about 52°) and the camera’s orientation: it looks up about 32° into the corner where the ceiling and two walls meet. Each staircase, landing, arch and opening was then placed by casting rays from the print through that camera onto the plane it lies on, and each inhabitant was lifted to 3D from the size it is drawn at.</p>
+<p>The hall’s three peoples are the print’s: the floor people, upright; the left-wall people, such as the garden party seen through the arch; and the right-wall people, such as the couple in the garden at the top left. On the top stairway, a left-wall person and a right-wall person walk side by side, each on their own face of the same steps.</p>
+</div>
+</div>
+
+<figure class="wide-fig">
+<img class="media" src="/media/relativity/rl-outline.webp" width="2000" height="1250" alt="The reconstruction drawn in outline only, at the print's exact framing: the crossing staircases, the arch, the barred window and the figures on three different gravities" loading="lazy" decoding="async">
+<figcaption class="caption">The reconstruction in outline only, at the print’s exact framing.</figcaption>
+</figure>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">02</p>
+<span class="heading-3">An endless lattice of halls</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>The world is a lattice of halls. Each hall is a 40 × 40 × 40 voxel cube, about 20 metres a side, and neighbouring halls share a wall. Whether that wall exists, and how it is opened up, is a pure function of its position, so two halls always agree on it no matter which is generated first. About a third of the walls are missing altogether; most of the rest are arcades, grand arches or frames around one huge opening, so the halls run into each other.</p>
+<p>Inside a hall, features are placed and then validated. The vocabulary is <i>Relativity</i>’s: corner stairs, thin double-sided stairs flying from floor to wall, balconies with doors to the “basements” beneath them, bridges, towers, columns, gardens, urns and statues. Each feature is written once and can be rotated into any of the 24 orientations of the cube, so it can belong to any of the six gravities. It is only committed if the voxels it fills are free, the voxels it needs empty stay empty, and the voxels it hangs on are already stone. Stairs are 45° wedges, walkable by both gravities whose “up” lies in the wedge’s normal, which is what makes one staircase usable by two peoples at once.</p>
+</div>
+</div>
+
+<figure class="wide-fig">
+<img class="media" src="/media/relativity/rl-walk.webp" width="1288" height="930" alt="Looking down into a generated hall during the dive: a tiled floor, a tower with a balcony, stairs and a garden, all drawn in dense parallel hatching" loading="lazy" decoding="async">
+<figcaption class="caption">Diving into a hall, drawn as an etching.</figcaption>
+</figure>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">03</p>
+<span class="heading-3">Drawn as an etching</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>The etching is two passes. First the scene is drawn with hatching laid out in world space on every face, one, two or three layers of lines depending on tone. Each line family doubles or halves its spacing with distance, so the density of lines stays constant on the “paper”, like a real engraving. Then a screen pass draws ink outlines wherever depth, surface orientation or material changes, fades distant ink into the paper and adds paper grain. Tone comes from a fixed light and from ambient occlusion read out of a 3D texture of the voxels around you, which darkens the hatching in corners and recesses.</p>
+<p>Halls are generated in a Web Worker, closest first, and dropped when far away. Fog fades everything beyond about 30 metres into the paper, so the edge of the world is never visible.</p>
+</div>
+</div>
+
+<p class="spec-note credit"><i>Relativity</i> is a work by M.&nbsp;C. Escher. This project is an homage and is not affiliated with the M.&nbsp;C. Escher Company.</p>
