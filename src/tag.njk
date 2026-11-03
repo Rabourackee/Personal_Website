@@ -15,7 +15,7 @@ eleventyComputed:
   <h1 class="pg-title">{{ topic }}</h1>
   <p class="lbl pg-aside">{{ list.length }} project{% if list.length != 1 %}s{% endif %}</p>
 </header>
-<div class="px" data-view="list">
+<div class="px" data-view="grid">
   {{ group("tagged " + topic, list, collections.projects) }}
 </div>
 <nav class="pg-tags" aria-label="All tags">

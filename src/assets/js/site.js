@@ -1,5 +1,5 @@
 // Shared behaviour for the project index (cards.njk): the field filter and the
-// list / grid switch. Links with data-field (the homepage statement) filter the
+// grid / list switch (the choice is remembered). Links with data-field (the homepage statement) filter the
 // index on the same page; elsewhere they go to /project-categories/?field=…,
 // which opens filtered.
 (function () {
@@ -60,7 +60,7 @@
       viewKeys.forEach(function (k) {
         k.setAttribute("aria-pressed", k.dataset.view === view ? "true" : "false");
       });
-      store("index-view", view);
+      store("index-layout", view);
       if (animate) setField(px.querySelector('.px-keys [aria-pressed="true"]').dataset.field, true);
     }
 
@@ -76,20 +76,7 @@
       });
     });
 
-    // On touch screens there is no pointing, so a project's image takes its
-    // colour while it passes through the middle of the screen.
-    if (matchMedia("(hover: none)").matches && "IntersectionObserver" in window) {
-      var lit = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          e.target.classList.toggle("is-lit", e.isIntersecting);
-        });
-      }, { rootMargin: "-42% 0px -42% 0px" });
-      cards.forEach(function (c) {
-        lit.observe(c);
-      });
-    }
-
-    var saved = store("index-view");
+    var saved = store("index-layout");
     if (saved === "list" || saved === "grid") setView(saved, false);
     var asked = new URLSearchParams(location.search).get("field");
     if (asked) setField(asked, false);

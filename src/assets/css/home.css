@@ -153,8 +153,8 @@
 
 .hv-count {
   margin: 0;
-  font: 300 28px/1 var(--font-sans);
-  letter-spacing: -0.03em;
+  font: var(--display) 28px/1 var(--font-sans);
+  letter-spacing: -0.05em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -254,8 +254,8 @@
 .hv-title {
   grid-area: title;
   margin: 0;
-  font: 300 clamp(32px, 3.8vw, 60px)/1 var(--font-sans);
-  letter-spacing: -0.045em;
+  font: var(--display) clamp(34px, 4vw, 64px)/0.95 var(--font-sans);
+  letter-spacing: -0.06em;
 }
 
 .hv-title a {

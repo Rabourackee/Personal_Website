@@ -59,7 +59,10 @@ scripts: ["/assets/js/home.js"]
 <section class="hi" aria-label="In brief">
   <p class="lbl hi-tag">yuhan wang</p>
   <p class="hi-statement">I’m a designer, maker and creative technologist producing works on
-    {%- for d in disciplines %} <a href="/project-categories/?field={{ d.key }}" data-field="{{ d.key }}">{{ d.label }}</a>{% if loop.revindex == 2 %} and{% elif not loop.last %},{% endif %}{% endfor %}.</p>
+    <a href="/project-categories/?field=architecture" data-field="architecture">architecture</a>,
+    <a href="/project-categories/?field=xr" data-field="xr">XR</a>,
+    <a href="/project-categories/?field=physical" data-field="physical">physical interaction</a> and
+    <a href="/project-categories/?field=ai" data-field="ai">AI</a>.</p>
   <dl class="hi-facts">
     <div><dt class="lbl">study</dt><dd>Master of Design Studies (Mediums), Harvard Graduate School of Design</dd></div>
     <div><dt class="lbl">research</dt><dd>Visiting student, MIT Media Lab, Tangible Media Group</dd></div>

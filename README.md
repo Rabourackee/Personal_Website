@@ -27,7 +27,7 @@ npm run build      # writes the finished site to _site/
 | Images and videos | `src/media/<project>/` |
 | PDFs | `src/files/` |
 
-The palette is set at the top of `site.css` and is kept monochrome: `#f5f5f5` page, `#d2d3d4` panels, `#000` ink. The `#ff5722` orange appears only as a mark on action links ("view project →", "open the pdf ↗") and as the text selection. Index thumbnails are shown in greyscale and take their colour when you point at them (on phones, as they pass the middle of the screen).
+The palette is set at the top of `site.css`: `#f5f5f5` page, `#d2d3d4` panels, `#000` ink, so the colour comes from the project images. The `#ff5722` orange appears only as a mark on action links ("view project →", "open the pdf ↗") and as the text selection. Headings use Geist semibold tracked tight (the `--display` weight); running text stays light or regular.
 
 ### A project file
 

@@ -11,10 +11,10 @@ export default {
       label: "projects",
       href: "/project-categories/",
       sub: [
-        { label: "architecture", href: "/project-categories/?field=architecture" },
-        { label: "XR", href: "/project-categories/?field=xr" },
-        { label: "physical interaction", href: "/project-categories/?field=physical" },
         { label: "AI", href: "/project-categories/?field=ai" },
+        { label: "physical interaction", href: "/project-categories/?field=physical" },
+        { label: "XR", href: "/project-categories/?field=xr" },
+        { label: "architecture", href: "/project-categories/?field=architecture" },
       ],
     },
     {

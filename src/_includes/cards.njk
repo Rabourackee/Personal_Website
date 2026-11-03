@@ -1,7 +1,7 @@
 {#
   Project cards and the filterable index (homepage, Projects page, tag pages).
-  Styles: "index" in site.css. Behaviour (field filter, list / grid view):
-  src/assets/js/site.js. Without JavaScript every card shows, as a list.
+  Styles: "index" in site.css. Behaviour (field filter, grid / list view):
+  src/assets/js/site.js. Without JavaScript every card shows, as a grid.
 #}
 
 {# One project. n: its number in the index. #}
@@ -42,7 +42,7 @@
 
 {# The index: field filter and view switch, then one group per section. #}
 {% macro projectIndex(all, disciplines) %}
-<div class="px" data-index data-view="list">
+<div class="px" data-index data-view="grid">
   <div class="px-bar">
     <div class="px-keys" role="group" aria-label="Show projects in">
       <span class="px-tag">filter</span>
@@ -53,8 +53,8 @@
     </div>
     <div class="px-view" role="group" aria-label="View as">
       <span class="px-tag">view as</span>
-      <button type="button" class="tb" data-view="list" aria-pressed="true">list</button>
-      <button type="button" class="tb" data-view="grid" aria-pressed="false">grid</button>
+      <button type="button" class="tb" data-view="grid" aria-pressed="true">grid</button>
+      <button type="button" class="tb" data-view="list" aria-pressed="false">list</button>
     </div>
   </div>
   {{ group("research & professional works", all | inSection("research"), all) }}
