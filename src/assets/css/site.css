@@ -493,7 +493,7 @@ a:active {
   display: inline-block;
   margin: 14px 0 clamp(56px, 7vw, 104px);
   color: #fff;
-  font: var(--display) clamp(28px, 5.8vw, 96px)/1 var(--font-sans);
+  font: var(--display) clamp(20px, 6.2vw, 96px)/1 var(--font-sans);
   letter-spacing: -0.06em;
   text-decoration: none;
   overflow-wrap: anywhere;
@@ -1203,6 +1203,25 @@ iframe.media {
 .ab-text b {
   font-weight: 400;
   color: var(--ink);
+}
+
+/* a quiet note on the mark, under the facts */
+.ab-mark {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  margin: 32px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.ab-mark img {
+  display: block;
+  width: 26px;
+  height: auto;
+  margin-top: 2px;
 }
 
 .ab-cv {
