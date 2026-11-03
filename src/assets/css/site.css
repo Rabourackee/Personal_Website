@@ -899,6 +899,20 @@ iframe.media {
   margin-top: 10px;
 }
 
+.gallery-grid.wide-fig figure {
+  margin: 0;
+}
+
+/* a single portrait plate: half the width, under the text column */
+.narrow-fig {
+  width: 50%;
+  margin-left: auto;
+}
+
+.mobile .narrow-fig {
+  width: 100%;
+}
+
 .credit {
   margin-top: clamp(64px, 8vw, 120px);
 }

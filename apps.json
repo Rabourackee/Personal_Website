@@ -5,6 +5,21 @@
     "ref": "main",
     "local": "../Escher_Simulator",
     "path": "play/relativity",
-    "drop": ["tests", "README.md", ".gitattributes"]
+    "drop": [
+      "tests",
+      "README.md",
+      ".gitattributes"
+    ]
+  },
+  {
+    "name": "Carceri d'Invenzione (Piranesi drawing)",
+    "repo": "https://github.com/Rabourackee/Piranesi_drawing.git",
+    "ref": "main",
+    "local": "../Piranesi_drawing",
+    "path": "play/carceri",
+    "drop": [
+      "README.md",
+      ".gitattributes"
+    ]
   }
 ]

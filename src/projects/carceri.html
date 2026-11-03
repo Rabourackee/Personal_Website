@@ -1,0 +1,119 @@
+---
+title: "Carceri d'Invenzione"
+section: "interests"
+order: 29.5
+year: "2026"
+topics: ["Architectural Design", "Computational Design", "UI/UX"]
+cover: "/media/carceri/cover.webp"
+description: "Carceri d'Invenzione: draw a few strokes and a procedural etching machine reads them as architecture, engraving a plate in the manner of Piranesi's Imaginary Prisons. Play it in the browser."
+scripts: ["/assets/js/embed.js"]
+---
+<!--
+  The drawing machine lives in its own repository (Rabourackee/Piranesi_drawing)
+  and is copied in at build time to /play/carceri/ (apps.json,
+  scripts/fetch_apps.mjs). src/assets/js/embed.js swaps the poster for the
+  live app when you press play.
+-->
+<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4">
+<dl class="spec">
+  <div><dt>time</dt><dd>2026</dd></div>
+  <div><dt>team</dt><dd>Personal project</dd></div>
+  <div><dt>type</dt><dd>Procedural drawing tool, in the browser</dd></div>
+  <div><dt>built with</dt><dd>Canvas 2D, plain JavaScript; no AI and no network calls</dd></div>
+  <div><dt>play</dt><dd><a href="/play/carceri/" target="_blank" rel="noopener">yuhanwang.net/play/carceri</a></dd></div>
+  <div><dt>source</dt><dd><a href="https://github.com/Rabourackee/Piranesi_drawing" target="_blank" rel="noopener">github.com/Rabourackee/Piranesi_drawing</a></dd></div>
+</dl>
+</div><div class="column-unit" style="--span: 8">
+
+<p class="lede">Draw a few simple strokes. The machine reads them as architecture and engraves a plate in the manner of Piranesi’s <i>Imaginary Prisons</i>.</p>
+
+<p>A vertical line becomes a rusticated pier, a horizontal one a bridge with a balustrade and hanging chains, an arc an arch with voussoirs and a receding vault, a run of steps a staircase. Around your sketch the prison imagines the rest: your bay repeats down the hall, bridges join your piers, stairs climb to them, lanterns and chains hang from real soffits. Then time breaks it, and a trembling hand engraves it, line by line, onto aged paper. It uses no AI. Everything is geometry, perspective, seeded noise and hatching, and every plate can be made again from its seed.</p>
+
+</div></div>
+
+<figure class="app" data-app="/play/carceri/" data-title="Carceri d'Invenzione, a procedural Piranesi etching machine">
+  <div class="app-frame">
+    <img src="/media/carceri/cx-poster.webp" width="1600" height="1000" alt="The drawing machine: an etched plate of a prison hall with a great arch, piers, a bridge and a barred window, on aged paper, with the Etch, Plants and People buttons beneath" loading="lazy" decoding="async">
+    <button type="button" class="app-play" hidden><span class="app-play__dot" aria-hidden="true"></span>play here</button>
+  </div>
+  <figcaption class="app-bar">
+    <span class="lbl">live · runs in your browser · draw with a mouse or pen, then press etch</span>
+    <a class="go go--accent" href="/play/carceri/" target="_blank" rel="noopener">open full screen <span aria-hidden="true">↗</span></a>
+  </figcaption>
+</figure>
+
+<div class="column-set" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">what a stroke becomes</p>
+</div>
+<div class="column-unit" style="--span: 8">
+<dl class="spec">
+  <div><dt>vertical line</dt><dd>Rusticated pier with plinth and capital, sometimes an iron ring and chain</dd></div>
+  <div><dt>horizontal line</dt><dd>Bridge with cornice, balustrade and hanging chains</dd></div>
+  <div><dt>gentle hump ⌒</dt><dd>Curved bridge whose deck and railing follow the curve</dd></div>
+  <div><dt>arc ∩</dt><dd>Arch with voussoirs and keystone, a receding barrel vault, sometimes a walkway on top</dd></div>
+  <div><dt>steps or a diagonal</dt><dd>Staircase with railing, solid to the floor or flying</dd></div>
+  <div><dt>sagging curve ∪</dt><dd>Chain</dd></div>
+  <div><dt>wavy drop</dt><dd>Hanging chain with a lantern, hook, weight or ring</dd></div>
+  <div><dt>closed loop</dt><dd>Barred window: lit above the horizon, a dark cell below it</dd></div>
+  <div><dt>dot</dt><dd>A tiny gesturing figure</dd></div>
+</dl>
+</div>
+</div>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">01</p>
+<span class="heading-3">From a sketch to a plate</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>Each stroke is measured for straightness, corners, bulge above or below its chord, wiggle, closure and size, then classified and regularised: piers snap plumb, arcs become true elliptical arches, loops become windows. A drawn outline lives in a picture plane at a depth and is extruded toward the vanishing point, each edge becoming a face, toned by a fixed light from the upper left. You don’t have to draw down to the floor: a pier that stops short is read as standing further back, on the floor line through its foot.</p>
+</div>
+</div>
+
+<div class="gallery-grid wide-fig" style="--columns: 2; --gutter: 1rem">
+<figure><img class="media" src="/media/carceri/cx-sketch.webp" width="1100" height="1457" alt="The sketch: two tall vertical lines, a horizontal bridge, a pointed arch, a small square window, a sagging chain, a wavy line and a run of steps, each labelled with what it was read as" loading="lazy" decoding="async"><figcaption class="caption">The sketch, with what each stroke was read as; the grey bands are the shadow brush.</figcaption></figure>
+<figure><img class="media" src="/media/carceri/cx-etch.webp" width="1100" height="1457" alt="The same sketch etched: a prison hall with rusticated piers, a timber bridge, a great pointed arch opening onto a receding hall, a barred window, chains, a stair and small figures" loading="lazy" decoding="async"><figcaption class="caption">The plate it etched.</figcaption></figure>
+</div>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">02</p>
+<span class="heading-3">Everything has to stand up</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>Before anything is drawn, every element, yours and imagined, is made to stand up. Piers rest on the floor or a beam, arches spring from what lies under their legs, and stairs start on a surface and arrive on a landing, which is built if it is missing. Bridges are anchored at both ends, or a new pier is raised under the free end. Chains, lanterns and ropes hang from a soffit, and figures stand on floors, bridges and treads. An audit then starts from the floor and the vaults and follows what touches what: anything imagined that is not held up is not built.</p>
+<p>Parts are joined the way a builder would join them. Great piers get stairs wound around them, turning on landings corbelled out of their flanks. A beam that meets a pier grows out of it on a corbel, a scrolled console or a timber brace.</p>
+</div>
+</div>
+
+<div class="gallery-grid wide-fig" style="--columns: 2; --gutter: 1rem">
+<figure><img class="media" src="/media/carceri/cx-plate-4.webp" width="1100" height="1457" alt="A plate from two great pillars: stairs wind around a round tower and a rusticated pier, turning on corbelled landings" loading="lazy" decoding="async"><figcaption class="caption">Two great pillars, and the stairs wound around them.</figcaption></figure>
+<figure><img class="media" src="/media/carceri/cx-plate-3.webp" width="1100" height="1457" alt="A plate with a rose window high on the back wall, curved bridges, a long flight of steps and ivy trailing from the broken tops" loading="lazy" decoding="async"><figcaption class="caption">Curved and varied forms, with plants taking root.</figcaption></figure>
+</div>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">03</p>
+<span class="heading-3">Time, and the hand</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>Each element gets its own look from the seed: square, banded or rubble piers, fluted columns or round towers; bridges flat, arched or timber; railings of balusters, wrought iron or rope. After it is built, time breaks it. Breaches cut ragged holes through the walls, tops break off in steps, blocks fall out, cracks branch, water streaks the stone and weeds, shrubs and ivy take root.</p>
+<p>No line is ever ruled. Every path wanders off true with slow noise, then is laid down as a chain of short, overlapping strokes, each with its own pressure; contours cross at the corners, and faint construction lines stay visible, as in a real drawing. The marks are replayed in order, so you watch the burin work, and the ink is printed onto procedurally aged paper with grain, foxing and a plate mark.</p>
+</div>
+</div>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">04</p>
+<span class="heading-3">One point, or two</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>One-point looks straight down the hall. Two-point sees the prison from a corner, like a camera turned sideways: verticals stay vertical, and the depth of the hall runs to a vanishing point on one side. The turn is a plane homography, which keeps straight lines straight, so the prison is built in one-point space and every pen line, fill and clip is carried onto the canvas.</p>
+</div>
+</div>
+
+<figure class="wide-fig narrow-fig">
+<img class="media" src="/media/carceri/cx-two.webp" width="1100" height="1457" alt="The first sketch etched in two-point perspective: the hall seen from a corner, piers and the arch receding sideways" loading="lazy" decoding="async">
+<figcaption class="caption">The same sketch, etched in two-point perspective.</figcaption>
+</figure>
