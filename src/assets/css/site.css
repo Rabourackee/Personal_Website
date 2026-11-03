@@ -384,10 +384,12 @@ a:active {
   transition: opacity 0.15s;
 }
 
+/* the current page: underlined with the same weight of line as the mark's bar */
 .sh-word[aria-current] {
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.089em;
+  text-underline-offset: 0.07em;
+  text-decoration-skip-ink: none;
 }
 
 .sh-nav:hover .sh-word:not(:hover) {
