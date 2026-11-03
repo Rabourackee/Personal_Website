@@ -1,0 +1,104 @@
+---
+title: "Honkaku Trick Atelier"
+section: "interests"
+order: 29.7
+year: "2026"
+topics: ["Game", "UI/UX"]
+cover: "/media/honkaku/cover.webp"
+description: "Honkaku Trick Atelier (本格诡计构筑所): a murder mystery generator that takes the classic detective tricks apart and recombines them into a complete case file, with a floor plan, evidence, a challenge to the reader and a sealed solution. In Chinese and English."
+scripts: ["/assets/js/embed.js"]
+---
+<!--
+  The generator lives in its own repository (Rabourackee/Murder_Mystery_Generator)
+  and is copied in at build time to /play/honkaku/ (apps.json,
+  scripts/fetch_apps.mjs). src/assets/js/embed.js swaps the poster for the
+  live app when you press play.
+-->
+<div class="column-set" style="--columns: 12; --gutter: 2rem"><div class="column-unit" style="--span: 4">
+<dl class="spec">
+  <div><dt>time</dt><dd>2026</dd></div>
+  <div><dt>team</dt><dd>Personal project</dd></div>
+  <div><dt>type</dt><dd>Mystery generator, in the browser</dd></div>
+  <div><dt>languages</dt><dd><span lang="zh-Hans">中文</span> and English, one case in both</dd></div>
+  <div><dt>built with</dt><dd>Plain JavaScript; seeded and reproducible, no AI</dd></div>
+  <div><dt>play</dt><dd><a href="/play/honkaku/" target="_blank" rel="noopener">yuhanwang.net/play/honkaku</a></dd></div>
+  <div><dt>source</dt><dd><a href="https://github.com/Rabourackee/Murder_Mystery_Generator" target="_blank" rel="noopener">github.com/Rabourackee/Murder_Mystery_Generator</a></dd></div>
+</dl>
+</div><div class="column-unit" style="--span: 8">
+
+<p class="lede">The great tricks of the detective story, taken apart into parts and put back together by number, into a complete case file you can try to solve.</p>
+
+<p><i lang="zh-Hans">本格诡计构筑所</i>, the Honkaku Trick Atelier, takes the devices of classic “fair play” detective fiction (the locked room, the false alibi, the impossible crime) and recombines them, adding the “flavours” of the newer schools. Each case comes as a dossier: the dramatis personae, a floor plan of the scene, the story, a list of evidence, a challenge to the reader, and a solution under a wax seal. Every case is reproducible from its number, and the whole setup travels in the link, so you can send someone the same murder.</p>
+
+</div></div>
+
+<figure class="app" data-app="/play/honkaku/" data-title="Honkaku Trick Atelier, a murder mystery generator">
+  <div class="app-frame">
+    <img src="/media/honkaku/hk-poster.webp" width="1600" height="1000" alt="The atelier: a dark desk with the builder's controls on the left and an open case file on the right, titled The Holly Lodge Murders, stamped Confidential, with dials for ingenuity, fairness and purity" loading="lazy" decoding="async">
+    <button type="button" class="app-play" hidden><span class="app-play__dot" aria-hidden="true"></span>play here</button>
+  </div>
+  <figcaption class="app-bar">
+    <span class="lbl">live · runs in your browser · press the wax seal to build a case · <span lang="zh-Hans">中文</span> / EN at the top right</span>
+    <a class="go go--accent" href="/play/honkaku/" target="_blank" rel="noopener">open full screen <span aria-hidden="true">↗</span></a>
+  </figcaption>
+</figure>
+
+<div class="column-set" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">the parts</p>
+</div>
+<div class="column-unit" style="--span: 8">
+<dl class="spec">
+  <div><dt>tricks</dt><dd>54, in seven drawers: locked room, alibi, identity, narrative, weapon and poison, logic, and the scene and the body</dd></div>
+  <div><dt>flavours</dt><dd>28, from six schools: shin-honkaku, special rules, social, horror and folklore, everyday, structural experiments</dd></div>
+  <div><dt>stages</dt><dd>15 settings, from a lighthouse mansion to a lodge two thousand metres up</dd></div>
+  <div><dt>detectives</dt><dd>12, each with a Watson</dd></div>
+  <div><dt>the rules</dt><dd>Knox’s ten commandments and Van Dine’s twenty rules, checked against every case</dd></div>
+</dl>
+</div>
+</div>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">01</p>
+<span class="heading-3">Building a case</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>Press the wax seal and a new case number is drawn. From it come the stage, the detective, a core trick and a supporting one, and a motive. Any of these can be chosen by hand or locked, so pressing the seal again keeps them and redraws the rest. The trick drawers choose which kinds of trick take part; the flavour cabinet adds the colour of a school, by hand or at random. With “strict rules” on, any part that would break Knox’s commandments is left out: the supernatural, the detective as culprit, the narrator as culprit, twins, unknown poisons.</p>
+<p>Each case is scored before you read it: how ingenious the trick is, how fair (whether a reader could deduce it from the clues), and how pure, that is, how close to the classic puzzle.</p>
+</div>
+</div>
+
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">02</p>
+<span class="heading-3">Fair play</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>The case is written to be solved. The clues the trick needs are laid into the investigation and the list of evidence; a decisive slip that would give the answer away is replaced in the evidence by a neutral observation. Evidence cards can be marked as suspicious as you read. Then comes the challenge to the reader: name your suspect, and only then break the seal on the solution.</p>
+</div>
+</div>
+
+<div class="gallery-grid wide-fig" style="--columns: 2; --gutter: 1rem">
+<figure><img class="media" src="/media/honkaku/hk-evidence.webp" width="1400" height="719" alt="The evidence: nine numbered cards pinned with red pins, each with one observation, such as a large supply of painkillers found in a guest's room" loading="lazy" decoding="async"><figcaption class="caption">The evidence, pinned up; click a card to mark it suspicious.</figcaption></figure>
+<figure><img class="media" src="/media/honkaku/hk-challenge.webp" width="1240" height="1042" alt="A Challenge to the Reader: the author's promise that every clue has been fairly set down, a row of suspects' names to choose from, and a red wax seal to break" loading="lazy" decoding="async"><figcaption class="caption">The challenge to the reader, and the seal on the solution.</figcaption></figure>
+</div>
+
+<div class="column-set section" style="--columns: 12; --gutter: 2rem">
+<div class="column-unit" style="--span: 4">
+<p class="lbl">03</p>
+<span class="heading-3">One case, two languages</span>
+</div>
+<div class="column-unit" style="--span: 8">
+<p>The Chinese parts are the single source of the structure: ids, scores, tags and constraints are written only there, and English is a layer of text over them. Every random decision depends on the structure alone, so a case number is the same case in both languages, and switching language translates the case in front of you rather than making a new one.</p>
+<p>The trick atlas lists the classic novels each trick comes from. Their titles are blurred until you point at them, so nothing is spoiled by accident.</p>
+</div>
+</div>
+
+<div class="gallery-grid wide-fig" style="--columns: 2; --gutter: 1rem">
+<figure><img class="media" src="/media/honkaku/hk-cover-en.webp" width="1400" height="329" alt="The case file's title in English: Case File No. XU-2494, The Holly Lodge Murders, Honkaku Mystery, Black Comedy" loading="lazy" decoding="async"></figure>
+<figure><img class="media" src="/media/honkaku/hk-cover-zh.webp" width="1400" height="347" alt="The same case file in Chinese: 第 XU-2494 号事件, 冬青山庄杀人事件, 本格推理, 黑色幽默" loading="lazy" decoding="async"></figure>
+<figure><img class="media" src="/media/honkaku/hk-plan-en.webp" width="1400" height="706" alt="The floor plan in English" loading="lazy" decoding="async"></figure>
+<figure><img class="media" src="/media/honkaku/hk-plan-zh.webp" width="1400" height="719" alt="The same floor plan in Chinese, with the same rooms and the same scene of the crime" loading="lazy" decoding="async"><figcaption class="caption">Case XU-2494 in English and in Chinese: the same lodge, the same rooms, the same murder. The X on each floor plan marks where the body was found.</figcaption></figure>
+</div>
