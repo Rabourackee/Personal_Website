@@ -49,17 +49,14 @@
 {%- set inProjects = isProject or page.url.startsWith("/tag/") %}
 <body{% if bodyClass or (fullBleed and isProject) %} class="{{ bodyClass }}{% if fullBleed and isProject %} is-overlay{% endif %}"{% endif %}>
   <a class="skip" href="#main">skip to content</a>
-  {#- The homepage shows the mark at the header's right end; it links to About. #}
-  <header class="site-header{% if page.url == "/" %} has-logo{% endif %}" id="top">
+  {#- On the homepage the mark follows the word "about", inside the same link. #}
+  <header class="site-header" id="top">
     <a class="sh-mark" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>yuhan <br>wang</a>
     <nav class="sh-nav" aria-label="Main">
       {%- for item in site.nav %}
-      <a class="sh-word" href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      <a class="sh-word" href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}{% if page.url == "/" and item.href == "/about/" %}{% include "mark.svg" %}{% endif %}</a>
       {%- endfor %}
     </nav>
-    {%- if page.url == "/" %}
-    <a class="sh-logo" href="/about/" aria-label="About Yuhan Wang">{% include "mark.svg" %}</a>
-    {%- endif %}
   </header>
 
   {%- if fullBleed %}

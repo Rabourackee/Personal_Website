@@ -394,50 +394,36 @@ a:active {
   opacity: 0.45;
 }
 
-/* The mark (homepage only), as tall as the two-line wordmark. Pointing at it
-   tips it over a little, with a small spring. */
-.site-header.has-logo {
-  grid-template-columns: var(--lab) minmax(0, 1fr) auto;
-}
-
+/* The mark (homepage only) follows "about", about as tall as the letters.
+   Pointing at the link, the mark's own bar slides out to the left and runs
+   under the word, so it becomes the link's underline. --reach (how many
+   times its width the bar grows) is measured by site.js. */
 .sh-logo {
-  display: block;
-  line-height: 0;
-}
-
-.sh-logo__svg {
-  display: block;
-  height: calc(2 * var(--sh-size));
+  display: inline-block;
+  height: 0.95em;
   width: auto;
   aspect-ratio: 1200 / 1133;
-  transform-origin: 50% 90%;
-  transition: transform 0.6s cubic-bezier(0.34, 1.7, 0.5, 1);
+  margin-left: 0.3em;
+  vertical-align: -0.16em;
+  overflow: visible;
 }
 
-.sh-logo:hover .sh-logo__svg,
-.sh-logo:focus-visible .sh-logo__svg {
-  transform: rotate(-9deg) scale(1.04);
+.sh-logo__bar {
+  transform-box: fill-box;
+  transform-origin: 100% 50%;
+  transition: transform 0.5s var(--ease);
 }
 
-.sh-logo:focus-visible {
-  outline: 1px solid var(--ink);
-  outline-offset: 6px;
+.sh-word:hover .sh-logo__bar,
+.sh-word:focus-visible .sh-logo__bar {
+  transform: scaleX(var(--reach, 6.6));
+  transition-duration: 0.65s;
 }
 
 @media (max-width: 760px) {
-  .site-header,
-  .site-header.has-logo {
+  .site-header {
     grid-template-columns: auto minmax(0, 1fr);
     padding-top: 16px;
-  }
-
-  .site-header.has-logo {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 14px;
-  }
-
-  .sh-logo__svg {
-    height: calc(1.8 * var(--sh-size));
   }
 
   .sh-nav {
@@ -1338,7 +1324,7 @@ iframe.media {
   .card-title,
   .pn-title,
   .tb::after,
-  .sh-logo__svg {
+  .sh-logo__bar {
     transition: none;
   }
 }

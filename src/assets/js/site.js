@@ -84,6 +84,23 @@
     return { el: px, setField: setField };
   }
 
+  // The mark after "about" in the homepage header: measure how far its bar has
+  // to grow (to the right of the bar, leftwards) to reach the start of the word.
+  var logo = document.querySelector(".sh-logo");
+  if (logo) {
+    var link = logo.closest("a"), bar = logo.querySelector(".sh-logo__bar");
+    var reach = function () {
+      var m = logo.getScreenCTM(), bb = bar.getBBox();
+      if (!m) return;
+      var left = m.a * bb.x + m.e, right = m.a * (bb.x + bb.width) + m.e;
+      var start = link.getBoundingClientRect().left;
+      if (right - left > 0) logo.style.setProperty("--reach", ((right - start) / (right - left)).toFixed(3));
+    };
+    reach();
+    addEventListener("resize", reach);
+    if (document.fonts) document.fonts.ready.then(reach);
+  }
+
   // The homepage statement: filter the index below instead of leaving the page.
   document.querySelectorAll("a[data-field]").forEach(function (a) {
     a.addEventListener("click", function (e) {
