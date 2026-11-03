@@ -55,6 +55,11 @@ for (const app of apps) {
     }
   }
   for (const name of app.drop || []) fs.rmSync(path.join(dest, name), { recursive: true, force: true });
+  // an app repository without its page (an unpushed commit, a wrong branch) would
+  // otherwise publish an empty folder and a broken play button
+  if (!fs.existsSync(path.join(dest, "index.html"))) {
+    throw new Error(`${app.name}: no index.html in ${useLocal ? app.local : app.repo}; has its work been pushed?`);
+  }
 }
 } catch (err) {
   console.log(`::error::${hide(err && err.message || err).slice(0, 500)}`);
