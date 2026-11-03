@@ -25,6 +25,7 @@ npm run build      # writes the finished site to _site/
 | About, Vision | `src/about.html`, `src/vision.html` |
 | Shared styling (palette, frame, index, standard pages) | `src/assets/css/site.css` |
 | Images and videos | `src/media/<project>/` |
+| The mark: browser-tab icons, and the homepage header (links to About) | `src/static/icon.svg`, `favicon.ico`, `apple-touch-icon.png`; `src/_includes/mark.svg` |
 | PDFs | `src/files/` |
 
 The palette is set at the top of `site.css`: `#f5f5f5` page, `#d2d3d4` panels, `#000` ink, so the colour comes from the project images. The `#ff5722` orange appears only as a mark on action links ("view project →", "open the pdf ↗") and as the text selection. Headings use Geist semibold tracked tight (the `--display` weight); running text stays light or regular.

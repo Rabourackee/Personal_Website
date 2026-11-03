@@ -394,10 +394,50 @@ a:active {
   opacity: 0.45;
 }
 
+/* The mark (homepage only), as tall as the two-line wordmark. Pointing at it
+   tips it over a little, with a small spring. */
+.site-header.has-logo {
+  grid-template-columns: var(--lab) minmax(0, 1fr) auto;
+}
+
+.sh-logo {
+  display: block;
+  line-height: 0;
+}
+
+.sh-logo__svg {
+  display: block;
+  height: calc(2 * var(--sh-size));
+  width: auto;
+  aspect-ratio: 1200 / 1133;
+  transform-origin: 50% 90%;
+  transition: transform 0.6s cubic-bezier(0.34, 1.7, 0.5, 1);
+}
+
+.sh-logo:hover .sh-logo__svg,
+.sh-logo:focus-visible .sh-logo__svg {
+  transform: rotate(-9deg) scale(1.04);
+}
+
+.sh-logo:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 6px;
+}
+
 @media (max-width: 760px) {
-  .site-header {
+  .site-header,
+  .site-header.has-logo {
     grid-template-columns: auto minmax(0, 1fr);
     padding-top: 16px;
+  }
+
+  .site-header.has-logo {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 14px;
+  }
+
+  .sh-logo__svg {
+    height: calc(1.8 * var(--sh-size));
   }
 
   .sh-nav {
@@ -1297,7 +1337,8 @@ iframe.media {
   .card-media video,
   .card-title,
   .pn-title,
-  .tb::after {
+  .tb::after,
+  .sh-logo__svg {
     transition: none;
   }
 }

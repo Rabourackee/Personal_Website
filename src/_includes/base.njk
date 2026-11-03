@@ -12,7 +12,9 @@
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:image" content="{{ site.url }}{{ cover if cover and not cover.endsWith('.mp4') else '/og-image.jpg' }}">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script>
     // Same sizing model as Cargo: the root font size follows the viewport's
     // short side (so everything in rem scales with the window), and portrait
@@ -47,13 +49,17 @@
 {%- set inProjects = isProject or page.url.startsWith("/tag/") %}
 <body{% if bodyClass or (fullBleed and isProject) %} class="{{ bodyClass }}{% if fullBleed and isProject %} is-overlay{% endif %}"{% endif %}>
   <a class="skip" href="#main">skip to content</a>
-  <header class="site-header" id="top">
+  {#- The homepage shows the mark at the header's right end; it links to About. #}
+  <header class="site-header{% if page.url == "/" %} has-logo{% endif %}" id="top">
     <a class="sh-mark" href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>yuhan <br>wang</a>
     <nav class="sh-nav" aria-label="Main">
       {%- for item in site.nav %}
       <a class="sh-word" href="{{ item.href }}"{% if page.url == item.href or (item.href == "/project-categories/" and inProjects) %} aria-current="page"{% endif %}>{{ item.label }}</a>
       {%- endfor %}
     </nav>
+    {%- if page.url == "/" %}
+    <a class="sh-logo" href="/about/" aria-label="About Yuhan Wang">{% include "mark.svg" %}</a>
+    {%- endif %}
   </header>
 
   {%- if fullBleed %}
